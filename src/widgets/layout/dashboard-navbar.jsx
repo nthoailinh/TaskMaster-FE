@@ -27,63 +27,71 @@ export function DashboardNavbar() {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a
-          href="#"
-          className={`flex items-center ${
-            activeSection === "overview"
-              ? "text-lightBlue-500"
-              : "text-blueGray-500"
-          }`}
-          onMouseEnter={() => setActiveSection("overview")}
-          onMouseLeave={() => setActiveSection(null)}
+      <Button color="white" className="normal-case">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
         >
-          Tổng quan
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a
-          href="#"
-          className={`flex items-center ${
-            activeSection === "personal"
-              ? "text-lightBlue-500"
-              : "text-blueGray-500"
-          }`}
-          onMouseEnter={() => setActiveSection("personal")}
-          onMouseLeave={() => setActiveSection(null)}
+          <a
+            href="#"
+            className={`flex items-center ${
+              activeSection === "overview"
+                ? "text-lightBlue-500"
+                : "text-blueGray-500"
+            }`}
+            onMouseEnter={() => setActiveSection("overview")}
+            onMouseLeave={() => setActiveSection(null)}
+          >
+            Tổng quan
+          </a>
+        </Typography>
+      </Button>
+
+      <Button color="white" className="normal-case">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
         >
-          Cá nhân
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a
-          href="#"
-          className={`flex items-center ${
-            activeSection === "group"
-              ? "text-lightBlue-500"
-              : "text-blueGray-500"
-          }`}
-          onMouseEnter={() => setActiveSection("group")}
-          onMouseLeave={() => setActiveSection(null)}
+          <a
+            href="#"
+            className={`flex items-center ${
+              activeSection === "personal"
+                ? "text-lightBlue-500"
+                : "text-blueGray-500"
+            }`}
+            onMouseEnter={() => setActiveSection("personal")}
+            onMouseLeave={() => setActiveSection(null)}
+          >
+            Cá nhân
+          </a>
+        </Typography>
+      </Button>
+
+      <Button color="white" className="normal-case">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
         >
-          Nhóm
-        </a>
-      </Typography>
+          <a
+            href="#"
+            className={`flex items-center ${
+              activeSection === "group"
+                ? "text-lightBlue-500"
+                : "text-blueGray-500"
+            }`}
+            onMouseEnter={() => setActiveSection("group")}
+            onMouseLeave={() => setActiveSection(null)}
+          >
+            Nhóm
+          </a>
+        </Typography>
+      </Button>
     </ul>
   );
 
@@ -92,13 +100,27 @@ export function DashboardNavbar() {
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         <div className="hidden lg:block">{navList}</div>
         <div className="ml-auto flex items-center">
-          <Button color="purple" className="mr-5 flex items-center">
+          <Button color="purple" className="mr-5 flex items-center normal-case">
             <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
-            Tích hợp
+            <Typography
+              as="li"
+              variant="small"
+              color="white"
+              className="p-1 font-normal"
+            >
+              Tích hợp
+            </Typography>
           </Button>
-          <Button className="mr-2 flex items-center">
+          <Button className="mr-2 flex items-center normal-case">
             <PlusIcon className="text-500 mr-1 h-5 w-5" />
-            Thêm việc
+            <Typography
+              as="li"
+              variant="small"
+              color="white"
+              className="p-1 font-normal"
+            >
+              Thêm việc
+            </Typography>
           </Button>
         </div>
       </div>
