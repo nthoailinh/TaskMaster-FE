@@ -13,6 +13,7 @@ import {
   UserIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export function DashboardNavbar() {
   const [openNav, setOpenNav] = useState(false);
@@ -27,49 +28,53 @@ export function DashboardNavbar() {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Button color="white" className="normal-case">
-        <Typography
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="p-1 font-normal"
-        >
-          <a
-            href="#"
-            className={`flex items-center ${
-              activeSection === "overview"
-                ? "text-lightBlue-500"
-                : "text-blueGray-500"
-            }`}
-            onMouseEnter={() => setActiveSection("overview")}
-            onMouseLeave={() => setActiveSection(null)}
+      <Link to={`/home`}>
+        <Button color="white" className="normal-case">
+          <Typography
+            as="li"
+            variant="small"
+            color="blue-gray"
+            className="p-1 font-normal"
           >
-            Tổng quan
-          </a>
-        </Typography>
-      </Button>
+            <a
+              href="#"
+              className={`flex items-center ${
+                activeSection === "overview"
+                  ? "text-lightBlue-500"
+                  : "text-blueGray-500"
+              }`}
+              onMouseEnter={() => setActiveSection("overview")}
+              onMouseLeave={() => setActiveSection(null)}
+            >
+              Tổng quan
+            </a>
+          </Typography>
+        </Button>
+      </Link>
 
-      <Button color="white" className="normal-case">
-        <Typography
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="p-1 font-normal"
-        >
-          <a
-            href="#"
-            className={`flex items-center ${
-              activeSection === "personal"
-                ? "text-lightBlue-500"
-                : "text-blueGray-500"
-            }`}
-            onMouseEnter={() => setActiveSection("personal")}
-            onMouseLeave={() => setActiveSection(null)}
+      <Link to={`/profile`}>
+        <Button color="white" className="normal-case">
+          <Typography
+            as="li"
+            variant="small"
+            color="blue-gray"
+            className="p-1 font-normal"
           >
-            Cá nhân
-          </a>
-        </Typography>
-      </Button>
+            <a
+              href="#"
+              className={`flex items-center ${
+                activeSection === "personal"
+                  ? "text-lightBlue-500"
+                  : "text-blueGray-500"
+              }`}
+              onMouseEnter={() => setActiveSection("personal")}
+              onMouseLeave={() => setActiveSection(null)}
+            >
+              Cá nhân
+            </a>
+          </Typography>
+        </Button>
+      </Link>
 
       <Button color="white" className="normal-case">
         <Typography
