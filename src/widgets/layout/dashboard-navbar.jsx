@@ -1,109 +1,77 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import {
   Navbar,
   MobileNav,
   Typography,
   Button,
+  MenuItem,
   IconButton,
 } from "@material-tailwind/react";
-
 import {
-  PlusIcon,
+  CubeTransparentIcon,
+  UserCircleIcon,
+  CodeBracketSquareIcon,
   ArrowsRightLeftIcon,
-  UserIcon,
-  UserGroupIcon,
+  PlusIcon,
+  Bars2Icon,
 } from "@heroicons/react/24/outline";
+
 import { Link } from "react-router-dom";
 
-export function DashboardNavbar() {
-  const [openNav, setOpenNav] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
+const navListItems = [
+  {
+    label: "Tổng quan",
+    icon: UserCircleIcon,
+  },
+  {
+    label: "Cá nhân",
+    icon: CubeTransparentIcon,
+  },
+  {
+    label: "Nhóm",
+    icon: CodeBracketSquareIcon,
+  },
+];
 
-  useEffect(() => {
+function NavList() {
+  return (
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+      {navListItems.map(({ label, icon }, key) => (
+        <Typography
+          key={label}
+          as="a"
+          href="#"
+          variant="small"
+          color="blue-gray"
+          className="font-normal"
+        >
+          <MenuItem className="flex items-center gap-2 lg:rounded-full">
+            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
+            {label}
+          </MenuItem>
+        </Typography>
+      ))}
+    </ul>
+  );
+}
+
+export function DashboardNavbar() {
+  const [isNavOpen, setIsNavOpen] = React.useState(false);
+  const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+
+  React.useEffect(() => {
     window.addEventListener(
       "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
+      () => window.innerWidth >= 960 && setIsNavOpen(false)
     );
   }, []);
 
-  const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Link to={`/home`}>
-        <Button color="white" className="normal-case">
-          <Typography
-            as="li"
-            variant="small"
-            color="blue-gray"
-            className="p-1 font-normal"
-          >
-            <a
-              href="#"
-              className={`flex items-center ${
-                activeSection === "overview"
-                  ? "text-lightBlue-500"
-                  : "text-blueGray-500"
-              }`}
-              onMouseEnter={() => setActiveSection("overview")}
-              onMouseLeave={() => setActiveSection(null)}
-            >
-              Tổng quan
-            </a>
-          </Typography>
-        </Button>
-      </Link>
-
-      <Link to={`/profile`}>
-        <Button color="white" className="normal-case">
-          <Typography
-            as="li"
-            variant="small"
-            color="blue-gray"
-            className="p-1 font-normal"
-          >
-            <a
-              href="#"
-              className={`flex items-center ${
-                activeSection === "personal"
-                  ? "text-lightBlue-500"
-                  : "text-blueGray-500"
-              }`}
-              onMouseEnter={() => setActiveSection("personal")}
-              onMouseLeave={() => setActiveSection(null)}
-            >
-              Cá nhân
-            </a>
-          </Typography>
-        </Button>
-      </Link>
-
-      <Button color="white" className="normal-case">
-        <Typography
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="p-1 font-normal"
-        >
-          <a
-            href="#"
-            className={`flex items-center ${
-              activeSection === "group"
-                ? "text-lightBlue-500"
-                : "text-blueGray-500"
-            }`}
-            onMouseEnter={() => setActiveSection("group")}
-            onMouseLeave={() => setActiveSection(null)}
-          >
-            Nhóm
-          </a>
-        </Typography>
-      </Button>
-    </ul>
-  );
-
   return (
-    <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4">
-      <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <div className="hidden lg:block">{navList}</div>
+    <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-3 lg:py-4">
+      <div className="relative mx-auto flex items-center text-blue-gray-900">
+        <div>
+          <NavList />
+        </div>
         <div className="ml-auto flex items-center">
           <Button color="purple" className="mr-5 flex items-center normal-case">
             <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
@@ -128,23 +96,44 @@ export function DashboardNavbar() {
             </Typography>
           </Button>
         </div>
+        <IconButton
+          size="sm"
+          color="blue-gray"
+          variant="text"
+          onClick={toggleIsNavOpen}
+          className="ml-auto mr-2 lg:hidden"
+        >
+          <Bars2Icon className="h-6 w-6" />
+        </IconButton>
       </div>
-      <MobileNav open={openNav}>
+      <MobileNav open={isNavOpen} className="overflow-scroll">
         <div className="ml-auto flex items-center">
-          <Button color="purple" className="mr-5 flex items-center">
+          <Button color="purple" className="mr-5 flex items-center normal-case">
             <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
-            Tích hợp
+            <Typography
+              as="li"
+              variant="small"
+              color="white"
+              className="p-1 font-normal"
+            >
+              Tích hợp
+            </Typography>
           </Button>
-          <Button className="mr-2 flex items-center">
+          <Button className="mr-2 flex items-center normal-case">
             <PlusIcon className="text-500 mr-1 h-5 w-5" />
-            Thêm việc
+            <Typography
+              as="li"
+              variant="small"
+              color="white"
+              className="p-1 font-normal"
+            >
+              Thêm việc
+            </Typography>
           </Button>
         </div>
       </MobileNav>
     </Navbar>
   );
 }
-
-DashboardNavbar.displayName = "/src/widgets/layout/dashboard-navbar.jsx";
 
 export default DashboardNavbar;
