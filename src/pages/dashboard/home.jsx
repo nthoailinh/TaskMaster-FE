@@ -90,26 +90,6 @@ export function Home() {
           </CardHeader>
         </Card>
       </div>
-
-      {/* <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {CardData.map(({ tag, title, footer, ...rest }) => {
-          return (
-            <TaskCard
-              key={title}
-              {...rest}
-              title={title}
-              tag={tag}
-              footer={
-                <Typography className="font-normal text-blue-gray-600">
-                  <div>Deadline </div>
-                  <strong className="font-bold">{footer.value}</strong>
-                  &nbsp;{footer.label}
-                </Typography>
-              }
-            />
-          );
-        })}
-      </div> */}
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
         {statisticsChartsData.map((props) => (
           <StatisticsChart
