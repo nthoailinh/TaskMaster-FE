@@ -40,7 +40,7 @@ export function Home() {
             className="m-0 flex items-center justify-between p-6"
           >
             <div>
-              <Typography variant="h6" color="blue-gray" className="mb-1">
+              <Typography variant="h5" color="blue-gray" className="mb-1">
                 Xin chào Hoài Linh
               </Typography>
               <Typography
@@ -62,12 +62,12 @@ export function Home() {
             className="m-0 flex items-center justify-between p-6"
           >
             <div>
-              <Typography variant="h6" color="blue-gray" className="mb-1">
-                Các công việc sắp hết hạn
+              <Typography variant="h5" color="blue-gray" className="mb-1">
+              Các công việc <br className="hidden sm:inline" /> sắp hết hạn
               </Typography>
             </div>
             <div className="p-5">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5 md:gap-6">
+              <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
                 {CardData.map(({ tag, title, footer, ...rest }) => {
                   return (
                     <TaskCard
@@ -77,7 +77,7 @@ export function Home() {
                       tag={tag}
                       footer={
                         <Typography className="font-normal text-blue-gray-600">
-                          <div>Deadline </div>
+                          <div>Deadline</div>
                           <strong className="font-bold">{footer.value}</strong>
                           &nbsp;{footer.label}
                         </Typography>

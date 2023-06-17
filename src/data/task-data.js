@@ -31,14 +31,6 @@ export const CardData = [
       value: "11:00 AM 08/06/2023",
     },
   },
-  {
-    color: "red",
-    title: "Code dự án Vbee",
-    tag: 'ACR',
-    footer: {
-      value: "16:00 AM 05/06/2023",
-    },
-  },
 ];
 
 export default CardData;

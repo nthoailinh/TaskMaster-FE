@@ -18,8 +18,7 @@ export function TaskCard({ color, tag, title, value, footer }) {
       </CardHeader>
       <CardBody className="p-4 text-right">
         <Typography
-          variant="big"
-          className="text-left font-normal font-bold text-blue-gray-600"
+          className="text-left text-xl font-normal font-bold text-blue-gray-600"
         >
           {title}
         </Typography>
