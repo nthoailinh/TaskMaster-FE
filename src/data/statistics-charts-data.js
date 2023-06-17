@@ -60,37 +60,38 @@ const dailySalesChart = {
   },
 };
 
-const completedTasksChart = {
-  ...dailySalesChart,
-  series: [
-    {
-      name: "Tasks",
-      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-    },
-  ],
-};
-
 export const statisticsChartsData = [
   {
+    datasets: [
+      {
+        data: [80, 20],
+        backgroundColor: [
+          "#7DC27C",
+          "#E5EAFC"
+        ],
+        display: true,
+        borderColor: "#D1D6DC"
+      }
+    ],
     color: "blue",
-    title: "Website View",
-    description: "Last Campaign Performance",
-    footer: "campaign sent 2 days ago",
-    chart: websiteViewsChart,
+    title: "Công việc cá nhân đã hoàn thành",
+    description: "Số liệu trong 7 ngày gần nhất",
   },
   {
+    datasets: [
+      {
+        data: [80, 20],
+        backgroundColor: [
+          "#7DC27C",
+          "#E5EAFC"
+        ],
+        display: true,
+        borderColor: "#D1D6DC"
+      }
+    ],
     color: "pink",
-    title: "Daily Sales",
-    description: "15% increase in today sales",
-    footer: "updated 4 min ago",
-    chart: dailySalesChart,
-  },
-  {
-    color: "green",
-    title: "Completed Tasks",
-    description: "Last Campaign Performance",
-    footer: "just updated",
-    chart: completedTasksChart,
+    title: "Công việc nhóm đã hoàn thành",
+    description: "Số liệu trong 7 ngày gần nhất",
   },
 ];
 

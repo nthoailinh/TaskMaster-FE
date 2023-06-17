@@ -2,7 +2,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
 } from "@material-tailwind/react";
 import PropTypes from "prop-types";
@@ -21,12 +20,7 @@ export function StatisticsChart({ color, chart, title, description, footer }) {
         <Typography variant="small" className="font-normal text-blue-gray-600">
           {description}
         </Typography>
-      </CardBody>
-      {footer && (
-        <CardFooter className="border-t border-blue-gray-50 px-6 py-5">
-          {footer}
-        </CardFooter>
-      )}
+      </CardBody> 
     </Card>
   );
 }
