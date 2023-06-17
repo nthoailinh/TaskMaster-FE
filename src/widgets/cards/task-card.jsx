@@ -7,22 +7,20 @@ import {
 } from "@material-tailwind/react";
 import PropTypes from "prop-types";
 
-export function StatisticsCard({ color, icon, title, value, footer }) {
+export function TaskCard({ color, tag, title, value, footer }) {
   return (
     <Card>
       <CardHeader
-        variant="gradient"
         color={color}
-        className="absolute -mt-4 grid h-16 w-16 place-items-center"
+        className="relative -mt-4 grid h-7 w-16 place-items-center"
       >
-        {icon}
+        {tag}
       </CardHeader>
       <CardBody className="p-4 text-right">
-        <Typography variant="small" className="font-normal text-blue-gray-600">
+        <Typography
+          className="text-left text-xl font-normal font-bold text-blue-gray-600"
+        >
           {title}
-        </Typography>
-        <Typography variant="h4" color="blue-gray">
-          {value}
         </Typography>
       </CardBody>
       {footer && (
@@ -34,12 +32,12 @@ export function StatisticsCard({ color, icon, title, value, footer }) {
   );
 }
 
-StatisticsCard.defaultProps = {
+TaskCard.defaultProps = {
   color: "blue",
   footer: null,
 };
 
-StatisticsCard.propTypes = {
+TaskCard.propTypes = {
   color: PropTypes.oneOf([
     "white",
     "blue-gray",
@@ -68,6 +66,6 @@ StatisticsCard.propTypes = {
   footer: PropTypes.node,
 };
 
-StatisticsCard.displayName = "/src/widgets/cards/statistics-card.jsx";
+TaskCard.displayName = "/src/widgets/cards/statistics-card.jsx";
 
-export default StatisticsCard;
+export default TaskCard;

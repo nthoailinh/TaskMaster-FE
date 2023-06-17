@@ -9,7 +9,8 @@ import {
 } from "@material-tailwind/react";
 import {
   CubeTransparentIcon,
-  UserCircleIcon,
+  UserIcon,
+  UserGroupIcon,
   CodeBracketSquareIcon,
   ArrowsRightLeftIcon,
   PlusIcon,
@@ -21,15 +22,15 @@ import { Link } from "react-router-dom";
 const navListItems = [
   {
     label: "Tổng quan",
-    icon: UserCircleIcon,
+    icon: CodeBracketSquareIcon,
   },
   {
     label: "Cá nhân",
-    icon: CubeTransparentIcon,
+    icon: UserIcon,
   },
   {
     label: "Nhóm",
-    icon: CodeBracketSquareIcon,
+    icon: UserGroupIcon,
   },
 ];
 
@@ -67,7 +68,7 @@ export function DashboardNavbar() {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-3 lg:py-4">
+    <Navbar className="min-w-full py-2 px-4 lg:px-3 lg:py-4">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
         <div>
           <NavList />
