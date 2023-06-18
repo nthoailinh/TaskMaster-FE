@@ -26,8 +26,8 @@ const Stepper = () => {
           .map(({ title, tag, description, color, footer, time }, index) => (
             <div
               key={index}
-              className={`my-6 flex items-center ${
-                index === 0 ? "rounded-xl bg-red-50 pl-4 pt-5 pb-1 pr-1" : ""
+              className={`my-3 flex items-center pl-4 pt-5 pb-1 pr-1 ${
+                index === 0 ? "rounded-xl bg-red-50 " : ""
               }`}
             >
               <div className="mr-4">{time.hour}</div>
