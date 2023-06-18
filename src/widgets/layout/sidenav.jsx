@@ -27,7 +27,7 @@ const Stepper = () => {
             <div
               key={index}
               className={`my-6 flex items-center ${
-                index === 0 ? "bg-red-50" : ""
+                index === 0 ? "rounded-xl bg-red-50 pl-4 pt-5 pb-1 pr-1" : ""
               }`}
             >
               <div className="mr-4">{time.hour}</div>
