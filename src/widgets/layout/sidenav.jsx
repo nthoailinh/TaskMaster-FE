@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Avatar, Button, Typography } from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 import { CardData, statisticsChartsData } from "@/data";
@@ -8,48 +8,56 @@ import { TaskCard } from "@/widgets/cards";
 
 const Stepper = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [cardData, setCardData] = useState(CardData);
+
+  useEffect(() => {
+    setCardData(CardData);
+  }, [CardData]);
 
   const handleStepClick = (stepIndex) => {
     setActiveStep(stepIndex);
   };
 
-  const steps = ["09:00 AM", "10:00 AM", "11:00 AM"]; // Danh sách các bước
-
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col gap-2">
-        {steps.map((step, index) => (
-          <div key={index} className="flex items-center">
-            <div className="mr-4">{step}</div> {/* Hiển thị chữ bước */}
-            <Button
-              className={`rounded-full p-2 ${
-                activeStep === index ? "bg-blue-500 text-white" : "bg-gray-200"
+        {cardData
+          .slice(0, 3)
+          .map(({ title, tag, description, color, footer, time }, index) => (
+            <div
+              key={index}
+              className={`my-6 flex items-center ${
+                index === 0 ? "bg-red-50" : ""
               }`}
-              onClick={() => handleStepClick(index)}
             >
-              {index + 1} {/* Hiển thị số bước */}
-            </Button>
-            {/* Task card here */}
-          </div>
-        ))}
+              <div className="mr-4">{time.hour}</div>
+              <Button
+                className={`mr-4 rounded-full p-2 ${
+                  activeStep === index ? "bg-red-400 text-white" : "bg-gray-400"
+                }`}
+                onClick={() => handleStepClick(index)}
+              >
+                {index + 1}
+              </Button>
+              <TaskCard
+                key={title}
+                title={title}
+                tag={tag}
+                description={description}
+                color={color}
+                footer={
+                  <Typography className="font-normal text-blue-gray-600">
+                    <span>{footer.piority}</span>
+                    <br />
+                    <span>{footer.status}</span>
+                    &nbsp;
+                  </Typography>
+                }
+                cardColor={`${index === 0 ? "bg-red-50" : ""}`}
+              />
+            </div>
+          ))}
       </div>
-      {/* <div className="mt-2 flex gap-2">
-        <div
-          className={`h-1 w-1 rounded-full ${
-            activeStep === 0 ? "bg-blue-500" : "bg-blue-200"
-          }`}
-        />
-        <div
-          className={`h-1 w-1 rounded-full ${
-            activeStep === 1 ? "bg-blue-500" : "bg-blue-200"
-          }`}
-        />
-        <div
-          className={`h-1 w-1 rounded-full ${
-            activeStep === 2 ? "bg-blue-500" : "bg-blue-200"
-          }`}
-        />
-      </div> */}
     </div>
   );
 };
@@ -66,7 +74,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
     <aside
       className={`${sidenavTypes[sidenavType]} ${
         openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-1/5 rounded-xl transition-transform duration-300 xl:translate-x-0`}
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-1/4 rounded-xl transition-transform duration-300 xl:translate-x-0`}
     >
       <div
         className={`relative border-b ${
@@ -89,5 +97,11 @@ export function Sidenav({ brandImg, brandName, routes }) {
     </aside>
   );
 }
+
+Sidenav.propTypes = {
+  brandImg: PropTypes.string.isRequired,
+  brandName: PropTypes.string.isRequired,
+  routes: PropTypes.array.isRequired,
+};
 
 export default Sidenav;

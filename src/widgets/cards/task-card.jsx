@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export function TaskCard({ color, tag, title, footer }) {
+export function TaskCardShort({ color, tag, title, time }) {
   return (
     <Card>
       <CardHeader
@@ -20,13 +20,42 @@ export function TaskCard({ color, tag, title, footer }) {
           {title}
         </Typography>
       </CardBody>
-      {footer && (
+      {time && (
         <CardFooter className="border-t border-blue-gray-50 p-4">
-          {footer}
+          {time}
         </CardFooter>
       )}
     </Card>
   );
 }
 
-export default TaskCard;
+export function TaskCard({
+  title,
+  tag,
+  description,
+  color,
+  footer,
+  cardColor,
+}) {
+  return (
+    <Card className={`w-64 ${cardColor}`}>
+      <CardHeader
+        color={color}
+        className="relative -mt-4 grid h-7 w-16 place-items-center"
+      >
+        {tag}
+      </CardHeader>
+      <CardBody className="p-4 text-right">
+        <Typography className="text-left text-xl font-normal font-bold text-blue-gray-600">
+          {title}
+        </Typography>
+        <Typography className="text-left text-base font-normal text-blue-gray-600">
+          {description}
+        </Typography>
+      </CardBody>
+      {footer && (
+        <CardFooter className=" border-blue-gray-50 p-4">{footer}</CardFooter>
+      )}
+    </Card>
+  );
+}

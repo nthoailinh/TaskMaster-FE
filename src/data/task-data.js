@@ -2,33 +2,58 @@ export const CardData = [
   {
     color: "blue",
     title: "Vẽ nguyên mẫu giao diện",
-    tag: 'UIUX',
+    tag: "UIUX",
+    time: {
+      hour: "15:00 AM",
+      day: "02/06/2023",
+    },
+    description:
+      "Nguyên mẫu giao diện cho ứng dụng quản lý công việc TaskMaster",
     footer: {
-      value: "15:00 AM 02/06/2023",
+      piority: "Khẩn cấp",
+      status: "Chưa hoàn thành",
     },
   },
   {
     color: "pink",
     title: "Code dự án ACR",
-    tag: 'ACR',
+    tag: "ACR",
+    time: {
+      hour: "16:00 AM",
+      day: "02/06/2023",
+    },
+    description: "Làm phần công việc được giao trong buổi họp lúc sáng",
     footer: {
-      value: "16:00 AM 05/06/2023",
+      piority: "Quan trọng",
+      status: "Chưa hoàn thành",
     },
   },
   {
     color: "green",
     title: "AWS Spot Instance",
-    tag: 'AWS',
+    tag: "AWS",
+    time: {
+      hour: "17:00 AM",
+      day: "02/06/2023",
+    },
+    description: "Hoàn thiện slide để trình bày tại Vbee",
     footer: {
-      value: "17:00 AM 10/06/2023",
+      piority: "Không quan trọng",
+      status: "Sắp hoàn thành",
     },
   },
   {
     color: "orange",
     title: "Họp dự án ACR",
-    tag: 'ACR',
+    tag: "ACR",
+    time: {
+      hour: "18:00 AM",
+      day: "02/06/2023",
+    },
+    description: "Thống nhất nguyên mẫu giao diện dự án ACR",
     footer: {
-      value: "11:00 AM 08/06/2023",
+      piority: "Quan trọng",
+      status: "Chưa hoàn thành",
     },
   },
 ];
