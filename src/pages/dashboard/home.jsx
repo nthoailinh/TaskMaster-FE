@@ -1,37 +1,13 @@
 import React from "react";
-import {
-  Typography,
-  Card,
-  CardHeader,
-  CardBody,
-  IconButton,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
-  Tooltip,
-  Progress,
-} from "@material-tailwind/react";
-import {
-  ClockIcon,
-  CheckIcon,
-  EllipsisVerticalIcon,
-  ArrowUpIcon,
-} from "@heroicons/react/24/outline";
+import { Typography, Card, CardHeader, Button } from "@material-tailwind/react";
 import { TaskCard } from "@/widgets/cards";
-import { StatisticsChart } from "@/widgets/charts";
-import {
-  CardData,
-  statisticsChartsData,
-  projectsTableData,
-  ordersOverviewData,
-} from "@/data";
+import { DoughnutChart } from "@/widgets/charts";
+import { CardData, statisticsChartsData } from "@/data";
 
 export function Home() {
   return (
     <div className="mt-4">
-      <div className="mb-10 grid grid-cols-1 gap-6">
+      <div className="mb-4 grid grid-cols-1 gap-6">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
@@ -53,7 +29,7 @@ export function Home() {
           </CardHeader>
         </Card>
       </div>
-      <div className="mb-10 grid grid-cols-1 gap-6">
+      <div className="mb-12 grid grid-cols-1 gap-6">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
@@ -63,7 +39,7 @@ export function Home() {
           >
             <div>
               <Typography variant="h5" color="blue-gray" className="mb-1">
-              Các công việc <br className="hidden sm:inline" /> sắp hết hạn
+                Các công việc <br className="hidden sm:inline" /> sắp hết hạn
               </Typography>
             </div>
             <div className="p-5">
@@ -90,22 +66,19 @@ export function Home() {
           </CardHeader>
         </Card>
       </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
         {statisticsChartsData.map((props) => (
-          <StatisticsChart
-            key={props.title}
-            {...props}
-            footer={
-              <Typography
-                variant="small"
-                className="flex items-center font-normal text-blue-gray-600"
-              >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-inherit" />
-                &nbsp;{props.footer}
-              </Typography>
-            }
-          />
+          <DoughnutChart data={props} {...props} />
         ))}
+      </div>
+      <div className="mb-4 grid grid-cols-1 gap-6">
+        <Button
+          variant="text"
+          className="d-flex justify-content-center align-items-center h-20 gap-2 text-2xl"
+          color="green"
+        >
+          Xem chi tiết báo cáo công việc
+        </Button>
       </div>
     </div>
   );

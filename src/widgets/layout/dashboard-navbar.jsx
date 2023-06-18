@@ -42,7 +42,7 @@ function NavList() {
           key={label}
           as="a"
           href="#"
-          variant="small"
+          variant="big"
           color="blue-gray"
           className="font-normal"
         >
@@ -78,7 +78,7 @@ export function DashboardNavbar() {
             <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
             <Typography
               as="li"
-              variant="small"
+              variant="big"
               color="white"
               className="p-1 font-normal"
             >
@@ -89,7 +89,7 @@ export function DashboardNavbar() {
             <PlusIcon className="text-500 mr-1 h-5 w-5" />
             <Typography
               as="li"
-              variant="small"
+              variant="big"
               color="white"
               className="p-1 font-normal"
             >
