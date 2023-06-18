@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Card, CardHeader, Button } from "@material-tailwind/react";
-import { TaskCard } from "@/widgets/cards";
+import { TaskCardShort } from "@/widgets/cards";
 import { DoughnutChart } from "@/widgets/charts";
 import { CardData, statisticsChartsData } from "@/data";
 
@@ -44,18 +44,21 @@ export function Home() {
             </div>
             <div className="p-5">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
-                {CardData.map(({ tag, title, footer, ...rest }) => {
+                {CardData.map(({ tag, title, time, ...rest }) => {
                   return (
-                    <TaskCard
+                    <TaskCardShort
                       key={title}
                       {...rest}
                       title={title}
                       tag={tag}
-                      footer={
+                      time={
                         <Typography className="font-normal text-blue-gray-600">
-                          <div>Deadline</div>
-                          <strong className="font-bold">{footer.value}</strong>
-                          &nbsp;{footer.label}
+                          <span>Deadline</span>
+                          <br />
+                          <strong className="font-bold">
+                            {time.hour + " " + time.day}
+                          </strong>
+                          &nbsp;
                         </Typography>
                       }
                     />
@@ -68,7 +71,7 @@ export function Home() {
       </div>
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
         {statisticsChartsData.map((props) => (
-          <DoughnutChart data={props} {...props} />
+          <DoughnutChart key={props.key} data={props} {...props} />
         ))}
       </div>
       <div className="mb-4 grid grid-cols-1 gap-6">

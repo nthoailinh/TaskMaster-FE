@@ -62,6 +62,7 @@ const dailySalesChart = {
 
 export const statisticsChartsData = [
   {
+    key: "personal",
     datasets: [
       {
         data: [80, 20],
@@ -78,6 +79,7 @@ export const statisticsChartsData = [
     description: "Số liệu trong 7 ngày gần nhất",
   },
   {
+    key: "group",
     datasets: [
       {
         data: [60, 40],
