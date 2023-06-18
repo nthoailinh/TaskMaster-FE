@@ -1,37 +1,35 @@
 import React from "react";
-import {
-  Typography,
-  Card,
-  CardHeader,
-  CardBody,
-  IconButton,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
-  Tooltip,
-  Progress,
-} from "@material-tailwind/react";
-import {
-  ClockIcon,
-  CheckIcon,
-  EllipsisVerticalIcon,
-  ArrowUpIcon,
-} from "@heroicons/react/24/outline";
+import { Typography, Card, CardHeader, Button } from "@material-tailwind/react";
 import { TaskCard } from "@/widgets/cards";
 import { DoughnutChart } from "@/widgets/charts";
-import {
-  CardData,
-  statisticsChartsData,
-  projectsTableData,
-  ordersOverviewData,
-} from "@/data";
+import { CardData, statisticsChartsData } from "@/data";
 
 export function Home() {
   return (
     <div className="mt-4">
-      <div className="mb-10 grid grid-cols-1 gap-6">
+      <div className="mb-4 grid grid-cols-1 gap-6">
+        <Card className="overflow-hidden">
+          <CardHeader
+            floated={false}
+            shadow={false}
+            color="transparent"
+            className="m-0 flex items-center justify-between p-6"
+          >
+            <div>
+              <Typography variant="h5" color="blue-gray" className="mb-1">
+                Xin chào Hoài Linh
+              </Typography>
+              <Typography
+                variant="small"
+                className="flex items-center gap-1 font-normal text-blue-gray-600"
+              >
+                Chúc bạn một ngày làm việc hiệu quả
+              </Typography>
+            </div>
+          </CardHeader>
+        </Card>
+      </div>
+      <div className="mb-12 grid grid-cols-1 gap-6">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
@@ -72,6 +70,15 @@ export function Home() {
         {statisticsChartsData.map((props) => (
           <DoughnutChart data={props} {...props} />
         ))}
+      </div>
+      <div className="mb-4 grid grid-cols-1 gap-6">
+        <Button
+          variant="text"
+          className="d-flex justify-content-center align-items-center h-20 gap-2 text-2xl"
+          color="green"
+        >
+          Xem chi tiết báo cáo công việc
+        </Button>
       </div>
     </div>
   );

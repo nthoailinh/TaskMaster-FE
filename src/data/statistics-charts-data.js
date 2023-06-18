@@ -66,7 +66,7 @@ export const statisticsChartsData = [
       {
         data: [80, 20],
         backgroundColor: [
-          "#7DC27C",
+          "#03C66A",
           "#E5EAFC"
         ],
         display: true,
@@ -80,9 +80,9 @@ export const statisticsChartsData = [
   {
     datasets: [
       {
-        data: [80, 20],
+        data: [60, 40],
         backgroundColor: [
-          "#7DC27C",
+          "#03C66A",
           "#E5EAFC"
         ],
         display: true,
