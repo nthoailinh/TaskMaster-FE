@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -18,7 +19,7 @@ export function DoughnutChart({ data, title, description }) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position: "relative", 
+            position: "relative",
           }}
         >
           <Doughnut
@@ -46,7 +47,12 @@ export function DoughnutChart({ data, title, description }) {
               textAlign: "center",
             }}
           >
-            <Typography variant="h1" color="blue-gray" className="mt-28" style={{ fontSize: "40px" }}>
+            <Typography
+              variant="h1"
+              color="blue-gray"
+              className="mt-28"
+              style={{ fontSize: "40px" }}
+            >
               {data.datasets[0].data[0]}%
             </Typography>
           </div>
@@ -56,7 +62,11 @@ export function DoughnutChart({ data, title, description }) {
         <Typography variant="h5" color="blue-gray" style={{ fontSize: "24px" }}>
           {title}
         </Typography>
-        <Typography variant="small" className="font-normal text-blue-gray-600" style={{ fontSize: "16px" }}>
+        <Typography
+          variant="small"
+          className="font-normal text-blue-gray-600"
+          style={{ fontSize: "16px" }}
+        >
           {description}
         </Typography>
       </CardBody>

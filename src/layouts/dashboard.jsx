@@ -20,7 +20,7 @@ export function Dashboard() {
         }
         brandName="Nguyễn Thị Hoài Linh"
       />
-      <div className="p-4 xl:ml-80">
+      <div className="p-4 xl:ml-96 pl-8">
         <DashboardNavbar />
         <Routes>
           {routes.map(

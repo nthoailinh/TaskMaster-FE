@@ -53,7 +53,8 @@ export function Home() {
                       tag={tag}
                       footer={
                         <Typography className="font-normal text-blue-gray-600">
-                          <div>Deadline</div>
+                          <span>Deadline</span>
+                          <br />
                           <strong className="font-bold">{footer.value}</strong>
                           &nbsp;{footer.label}
                         </Typography>
@@ -68,7 +69,7 @@ export function Home() {
       </div>
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
         {statisticsChartsData.map((props) => (
-          <DoughnutChart data={props} {...props} />
+          <DoughnutChart key={props.key} data={props} {...props} />
         ))}
       </div>
       <div className="mb-4 grid grid-cols-1 gap-6">
