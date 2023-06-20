@@ -5,10 +5,15 @@ import { Avatar, Button, Typography } from "@material-tailwind/react";
 import { upcomingTask } from "@/data";
 import { TaskCard } from "@/widgets/cards";
 import { useMaterialTailwindController } from "@/context";
+import { format, isToday } from "date-fns";
 
 const Stepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [tasks, setTasks] = useState(upcomingTask);
+  const currentDate = new Date();
+  const formattedDate = isToday(currentDate)
+    ? `Hôm nay, ${format(currentDate, "dd/MM/yyyy")}`
+    : format(currentDate, "'Ngày' dd/MM/yyyy");
 
   useEffect(() => {
     setTasks(upcomingTask);
@@ -21,13 +26,17 @@ const Stepper = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between pl-4 pr-1">
+          <Typography className="font-bold">To do list</Typography>
+          <Typography>{formattedDate}</Typography>
+        </div>
         {tasks
           .slice(0, 3)
           .map(({ title, tag, description, color, footer, time }, index) => (
             <div
               key={index}
-              className={`my-3 flex items-center pl-4 pt-5 pb-1 pr-1 ${
-                index === 0 ? "rounded-xl bg-red-50 " : ""
+              className={`my-3 flex items-center pl-4 pb-1 pr-1 ${
+                index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-2 "
               }`}
             >
               <div className="mr-4">{time.hour}</div>

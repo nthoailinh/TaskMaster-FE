@@ -8,7 +8,6 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import {
-  CubeTransparentIcon,
   UserIcon,
   UserGroupIcon,
   CodeBracketSquareIcon,
@@ -42,12 +41,12 @@ function NavList() {
           key={label}
           as="a"
           href="#"
-          variant="h6"
+          variant="h5"
           color="blue-gray"
           className="font-normal"
         >
           <MenuItem className="flex items-center gap-2 lg:rounded-full">
-            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
+            {React.createElement(icon, { className: "h-[24px] w-[24px]" })}{" "}
             {label}
           </MenuItem>
         </Typography>
