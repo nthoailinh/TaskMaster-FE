@@ -1,4 +1,4 @@
-export const statisticsChartsData = [
+export const halfDoughnutChartsData = [
   {
     key: "personal",
     datasets: [
@@ -35,4 +35,4 @@ export const statisticsChartsData = [
   },
 ];
 
-export default statisticsChartsData;
+export default halfDoughnutChartsData;

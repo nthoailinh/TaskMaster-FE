@@ -1,4 +1,4 @@
-export const CardData = [
+export const upcomingTask = [
   {
     color: "blue",
     title: "Vẽ nguyên mẫu giao diện",
@@ -58,4 +58,4 @@ export const CardData = [
   },
 ];
 
-export default CardData;
+export default upcomingTask;
