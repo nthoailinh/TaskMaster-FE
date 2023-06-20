@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Avatar, Button, Typography } from "@material-tailwind/react";
-import { useMaterialTailwindController, setOpenSidenav } from "@/context";
-import { CardData, statisticsChartsData } from "@/data";
+import { upcomingTask } from "@/data";
 import { TaskCard } from "@/widgets/cards";
+import { useMaterialTailwindController } from "@/context";
 
 const Stepper = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [cardData, setCardData] = useState(CardData);
+  const [tasks, setTasks] = useState(upcomingTask);
 
   useEffect(() => {
-    setCardData(CardData);
-  }, [CardData]);
+    setTasks(upcomingTask);
+  }, [upcomingTask]);
 
   const handleStepClick = (stepIndex) => {
     setActiveStep(stepIndex);
@@ -21,7 +21,7 @@ const Stepper = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col gap-2">
-        {cardData
+        {tasks
           .slice(0, 3)
           .map(({ title, tag, description, color, footer, time }, index) => (
             <div
@@ -49,8 +49,7 @@ const Stepper = () => {
                   <Typography className="font-normal text-blue-gray-600">
                     <span>{footer.piority}</span>
                     <br />
-                    <span>{footer.status}</span>
-                    &nbsp;
+                    <span>{footer.status}</span>&nbsp;
                   </Typography>
                 }
                 cardColor={`${index === 0 ? "bg-red-50" : ""}`}
@@ -63,7 +62,7 @@ const Stepper = () => {
 };
 
 export function Sidenav({ brandImg, brandName, routes }) {
-  const [controller, dispatch] = useMaterialTailwindController();
+  const [controller] = useMaterialTailwindController();
   const { sidenavType, openSidenav } = controller;
 
   const sidenavTypes = {

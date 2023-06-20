@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Typography, Card, CardHeader, Button } from "@material-tailwind/react";
 import { TaskCardShort } from "@/widgets/cards";
 import { DoughnutChart } from "@/widgets/charts";
-import { CardData, statisticsChartsData } from "@/data";
+import { upcomingTask, halfDoughnutChartsData } from "@/data";
 
 export function Home() {
+  const [tasks, setTasks] = useState([]);
+  const [chartsData, setChartsData] = useState([]);
+
+  useEffect(() => {
+    setTasks(upcomingTask);
+    setChartsData(halfDoughnutChartsData);
+  }, []);
+
   return (
     <div className="mt-4">
       <div className="mb-4 grid grid-cols-1 gap-6">
@@ -44,7 +52,7 @@ export function Home() {
             </div>
             <div className="p-5">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
-                {CardData.map(({ tag, title, time, ...rest }) => {
+                {tasks.map(({ tag, title, time, ...rest }) => {
                   return (
                     <TaskCardShort
                       key={title}
@@ -70,7 +78,7 @@ export function Home() {
         </Card>
       </div>
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
-        {statisticsChartsData.map((props) => (
+        {chartsData.map((props) => (
           <DoughnutChart key={props.key} data={props} {...props} />
         ))}
       </div>
