@@ -8,7 +8,6 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import {
-  CubeTransparentIcon,
   UserIcon,
   UserGroupIcon,
   CodeBracketSquareIcon,
@@ -16,6 +15,7 @@ import {
   PlusIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
+import AddTaskPopup from "../popup/AddTaskPopup";
 
 import { Link } from "react-router-dom";
 
@@ -42,12 +42,12 @@ function NavList() {
           key={label}
           as="a"
           href="#"
-          variant="h6"
+          variant="h5"
           color="blue-gray"
           className="font-normal"
         >
           <MenuItem className="flex items-center gap-2 lg:rounded-full">
-            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
+            {React.createElement(icon, { className: "h-[24px] w-[24px]" })}{" "}
             {label}
           </MenuItem>
         </Typography>
@@ -59,6 +59,11 @@ function NavList() {
 export function DashboardNavbar() {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+
+  const handleAddTask = (taskName, taskDescription) => {
+    console.log("Tên công việc:", taskName);
+    console.log("Mô tả công việc:", taskDescription);
+  };
 
   React.useEffect(() => {
     window.addEventListener(
@@ -85,17 +90,7 @@ export function DashboardNavbar() {
               Tích hợp
             </Typography>
           </Button>
-          <Button className="mr-2 flex items-center normal-case">
-            <PlusIcon className="text-500 mr-1 h-5 w-5" />
-            <Typography
-              as="li"
-              variant="h6"
-              color="white"
-              className="p-1 font-normal"
-            >
-              Thêm việc
-            </Typography>
-          </Button>
+          <AddTaskPopup onAddTask={handleAddTask} />
         </div>
         <IconButton
           size="sm"
@@ -120,17 +115,7 @@ export function DashboardNavbar() {
               Tích hợp
             </Typography>
           </Button>
-          <Button className="mr-2 flex items-center normal-case">
-            <PlusIcon className="text-500 mr-1 h-5 w-5" />
-            <Typography
-              as="li"
-              variant="small"
-              color="white"
-              className="p-1 font-normal"
-            >
-              Thêm việc
-            </Typography>
-          </Button>
+          <AddTaskPopup onAddTask={handleAddTask} />
         </div>
       </MobileNav>
     </Navbar>

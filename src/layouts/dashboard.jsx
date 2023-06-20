@@ -7,7 +7,7 @@ import routes from "@/routes";
 import { useMaterialTailwindController } from "@/context";
 
 export function Dashboard() {
-  const [controller, dispatch] = useMaterialTailwindController();
+  const [controller ] = useMaterialTailwindController();
   const { sidenavType } = controller;
 
   return (
