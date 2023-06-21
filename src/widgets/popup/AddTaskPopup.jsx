@@ -1,12 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
-import {
-  Typography,
-  Button,
-} from "@material-tailwind/react";
-import {
-  PlusIcon,
-} from "@heroicons/react/24/outline";
+import { Typography, Button } from "@material-tailwind/react";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 function AddTaskPopup({ onAddTask }) {
   const showAddTaskPopup = () => {
