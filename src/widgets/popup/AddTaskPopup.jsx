@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { Button, Typography } from "@material-tailwind/react";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { Button, Typography, Input } from "@material-tailwind/react";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function AddTaskPopup() {
   let [isOpen, setIsOpen] = useState(false);
@@ -17,23 +17,23 @@ export function AddTaskPopup() {
   return (
     <>
       <Button
-          onClick={openModal}
-          color="blue"
-          className="mr-5 flex items-center normal-case"
+        onClick={openModal}
+        color="blue"
+        className="mr-5 flex items-center normal-case"
+      >
+        <PlusIcon className="text-500 mr-1 h-5 w-5" />
+        <Typography
+          as="li"
+          variant="h6"
+          color="white"
+          className="p-1 font-normal"
         >
-          <PlusIcon className="text-500 mr-1 h-5 w-5" />
-          <Typography
-            as="li"
-            variant="h6"
-            color="white"
-            className="p-1 font-normal"
-          >
-            Thêm việc
-          </Typography>
-        </Button>
+          Thêm việc
+        </Typography>
+      </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-20" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -43,7 +43,7 @@ export function AddTaskPopup() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -58,27 +58,29 @@ export function AddTaskPopup() {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Payment successful
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
-
-                  <div className="mt-4">
+                  <div className="flex justify-end">
                     <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="text-gray-500 hover:text-gray-600"
                       onClick={closeModal}
                     >
-                      Got it, thanks!
+                      <XMarkIcon className="h-5 w-5" />
                     </button>
+                  </div>
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl font-medium leading-6 text-gray-900 pt-8"
+                  >
+                    Thêm công việc cá nhân
+                  </Dialog.Title>
+                  <div className="mt-12">
+                    <div className="w-96">
+                      <Input label="Tên công việc" />
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <div className="w-96">
+                      <Input label="Mô tả công việc" />
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
