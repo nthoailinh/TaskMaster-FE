@@ -11,6 +11,13 @@ function AddTaskPopup({ onAddTask }) {
         '<input id="swal-input1" class="swal2-input" placeholder="Tên công việc">' +
         '<textarea id="swal-input2" class="swal2-textarea" placeholder="Mô tả công việc"></textarea>',
       focusConfirm: false,
+      showClass: {
+        popup: "", // disable popup animation
+        icon: "", // disable icon animation
+      },
+      hideClass: {
+        popup: "", // disable popup fade-out animation
+      },
       preConfirm: () => {
         const taskName = document.getElementById("swal-input1").value;
         const taskDescription = document.getElementById("swal-input2").value;
