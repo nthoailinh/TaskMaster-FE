@@ -1,13 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import {
-  Sidenav,
-  DashboardNavbar,
-} from "@/widgets/layout";
+import { Sidenav, DashboardNavbar } from "@/widgets/layout";
 import routes from "@/routes";
 import { useMaterialTailwindController } from "@/context";
 
 export function Dashboard() {
-  const [controller ] = useMaterialTailwindController();
+  const [controller] = useMaterialTailwindController();
   const { sidenavType } = controller;
 
   return (
@@ -30,8 +27,7 @@ export function Dashboard() {
               ))
           )}
         </Routes>
-        <div className="text-blue-gray-600">
-        </div>
+        <div className="text-blue-gray-600"></div>
       </div>
     </div>
   );
