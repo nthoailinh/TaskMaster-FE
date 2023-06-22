@@ -15,8 +15,7 @@ import {
   PlusIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
-import AddPersonalTask from "../popup/AddPersonalTask";
-import AddGroupTask from "../popup/AddGroupTask";
+import AddTask from "../popup/AddTask";
 
 import { Link } from "react-router-dom";
 
@@ -86,7 +85,7 @@ export function DashboardNavbar() {
               Tích hợp
             </Typography>
           </Button>
-          <AddGroupTask />
+          <AddTask />
         </div>
         <IconButton
           size="sm"
@@ -111,7 +110,7 @@ export function DashboardNavbar() {
               Tích hợp
             </Typography>
           </Button>
-          <AddPersonalTask />
+          <AddTask />
         </div>
       </Collapse>
     </Navbar>
