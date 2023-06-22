@@ -76,9 +76,9 @@ export function DashboardNavbar() {
   }, []);
 
   return (
-    <div className="min-w-full py-2 px-4 lg:px-3 lg:py-4">
+    <div className="min-w-full py-0.5">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
-        <div className="ml-2">
+        <div>
           <NavList />
         </div>
         <div className="ml-auto flex items-center">

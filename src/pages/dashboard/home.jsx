@@ -15,7 +15,7 @@ export function Home() {
 
   return (
     <div className="mt-4">
-      <div className="mb-4 grid grid-cols-1 gap-6">
+      <div className="mb-6 grid grid-cols-1 gap-6">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
@@ -37,7 +37,7 @@ export function Home() {
           </CardHeader>
         </Card>
       </div>
-      <div className="mb-12 grid grid-cols-1 gap-6">
+      <div className="mb-14 grid grid-cols-1 gap-6">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
