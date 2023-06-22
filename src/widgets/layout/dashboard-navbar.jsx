@@ -42,12 +42,19 @@ const navListItems = [
 
 function NavList() {
   return (
-    <div className="w-96">
-      <Tabs value="app">
-        <TabsHeader>
+    <div>
+      <Tabs value="app" className="w-96">
+        <TabsHeader
+          className="bg-white"
+          indicatorProps={{
+            className: "bg-blue-50 shadow-none text-blue-500 ",
+          }}
+        >
           {navListItems.map(({ label, icon }, key) => (
-            <Tab value={key}>
-              {React.createElement(icon, { className: "h-[24px] w-[24px]" })}{" "}
+            <Tab key={key} value={key} className="py-4 px-2">
+              {React.createElement(icon, {
+                className: "-mt-0.5 mr-2 inline-block h-5 w-5",
+              })}{" "}
               {label}
             </Tab>
           ))}
@@ -71,7 +78,7 @@ export function DashboardNavbar() {
   return (
     <div className="min-w-full py-2 px-4 lg:px-3 lg:py-4">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
-        <div>
+        <div className="ml-2">
           <NavList />
         </div>
         <div className="ml-auto flex items-center">
