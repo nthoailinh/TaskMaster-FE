@@ -6,6 +6,9 @@ import {
   Button,
   MenuItem,
   IconButton,
+  Tabs,
+  TabsHeader,
+  Tab,
 } from "@material-tailwind/react";
 import {
   UserIcon,
@@ -13,6 +16,9 @@ import {
   CodeBracketSquareIcon,
   ArrowsRightLeftIcon,
   PlusIcon,
+  HomeIcon,
+  ChatBubbleLeftEllipsisIcon,
+  Cog6ToothIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
 import AddTask from "../popup/AddTask";
@@ -36,23 +42,25 @@ const navListItems = [
 
 function NavList() {
   return (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      {navListItems.map(({ label, icon }, key) => (
-        <Typography
-          key={label}
-          as="a"
-          href="#"
-          variant="h5"
-          color="blue-gray"
-          className="font-normal"
+    <div>
+      <Tabs value="app" className="w-96">
+        <TabsHeader
+          className="bg-white"
+          indicatorProps={{
+            className: "bg-blue-50 shadow-none text-blue-500 ",
+          }}
         >
-          <MenuItem className="flex items-center gap-2 lg:rounded-full">
-            {React.createElement(icon, { className: "h-[24px] w-[24px]" })}{" "}
-            {label}
-          </MenuItem>
-        </Typography>
-      ))}
-    </ul>
+          {navListItems.map(({ label, icon }, key) => (
+            <Tab key={key} value={key} className="py-4 px-2">
+              {React.createElement(icon, {
+                className: "-mt-0.5 mr-2 inline-block h-5 w-5",
+              })}{" "}
+              {label}
+            </Tab>
+          ))}
+        </TabsHeader>
+      </Tabs>
+    </div>
   );
 }
 
@@ -68,7 +76,7 @@ export function DashboardNavbar() {
   }, []);
 
   return (
-    <Navbar className="min-w-full py-2 px-4 lg:px-3 lg:py-4">
+    <div className="min-w-full py-0.5">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
         <div>
           <NavList />
@@ -113,7 +121,7 @@ export function DashboardNavbar() {
           <AddTask />
         </div>
       </Collapse>
-    </Navbar>
+    </div>
   );
 }
 
