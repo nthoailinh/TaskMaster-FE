@@ -93,6 +93,8 @@ function AddGroupTask() {
   function handleSave() {
     console.log(taskName);
     console.log(description);
+    console.log(group);
+    console.log(member);
     console.log(startTimeDay);
     console.log(startTimeHour);
     console.log(endTimeHour);
