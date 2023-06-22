@@ -171,8 +171,8 @@ function AddPersonalTask() {
                   <div className="mt-8 flex space-x-10">
                     <PrioritySelect
                       piorityOptions={piorityOptions}
-                      selected={selected}
-                      handlePriorityChange={handlePriorityChange}
+                      value={selected}
+                      onChange={handlePriorityChange}
                     />
                     <TagInput value={tag} onChange={handleTagChange} />
                   </div>
