@@ -16,10 +16,16 @@ const piorityOptions = [
 ];
 
 export function AddTaskPopup() {
-  let [isOpen, setIsOpen] = useState(false);
-  let [startTime, setStartTime] = useState("");
-  let [endTime, setEndTime] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [taskName, setTaskName] = useState("");
+  const [description, setDescription] = useState("");
+  const [startTimeDay, setStartTimeDay] = useState("");
+  const [startTimeHour, setStartTimeHour] = useState("");
+  const [endTimeHour, setEndTimeHour] = useState("");
+  const [deadlineDay, setDeadlineDay] = useState("");
+  const [deadlineHour, setDeadlineHour] = useState("");
   const [selected, setSelected] = useState(piorityOptions[0]);
+  const [tag, setTag] = useState("");
 
   function closeModal() {
     setIsOpen(false);
@@ -29,36 +35,52 @@ export function AddTaskPopup() {
     setIsOpen(true);
   }
 
-  function handleStartTimeChange(event) {
-    setStartTime(event.target.value);
+  function handleTaskNameChange(event) {
+    setTaskName(event.target.value);
   }
 
-  function handleEndTimeChange(event) {
-    setEndTime(event.target.value);
+  function handleDescriptionChange(event) {
+    setDescription(event.target.value);
+  }
+
+  function handleStartTimeDayChange(event) {
+    setStartTimeDay(event.target.value);
+  }
+
+  function handleStartTimeHourChange(event) {
+    setStartTimeHour(event.target.value);
+  }
+
+  function handleEndTimeHourChange(event) {
+    setEndTimeHour(event.target.value);
+  }
+
+  function handleDeadlineDayChange(event) {
+    setDeadlineDay(event.target.value);
+  }
+
+  function handleDeadlineHourChange(event) {
+    setDeadlineHour(event.target.value);
   }
 
   function handlePriorityChange(value) {
     setSelected(value);
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function handleStartTimeChange(event) {
-    setStartTime(event.target.value);
-  }
-
-  function handleEndTimeChange(event) {
-    setEndTime(event.target.value);
+  function handleTagChange(event) {
+    setTag(event.target.value);
   }
 
   function handleSave() {
-    // TODO: Handle save logic here
+    console.log(taskName);
+    console.log(description);
+    console.log(startTimeDay);
+    console.log(startTimeHour);
+    console.log(endTimeHour);
+    console.log(deadlineDay);
+    console.log(deadlineHour);
+    console.log(selected);
+    console.log(tag);
     closeModal();
   }
 
@@ -129,6 +151,8 @@ export function AddTaskPopup() {
                       labelProps={{
                         className: "hidden",
                       }}
+                      value={taskName}
+                      onChange={handleTaskNameChange}
                     />
                   </div>
                   <div className="mt-3">
@@ -140,6 +164,8 @@ export function AddTaskPopup() {
                       labelProps={{
                         className: "hidden",
                       }}
+                      value={description}
+                      onChange={handleDescriptionChange}
                     />
                   </div>
                   <div className="mt-8">
@@ -152,6 +178,8 @@ export function AddTaskPopup() {
                             className: "hidden",
                           }}
                           type="date"
+                          value={startTimeDay}
+                          onChange={handleStartTimeDayChange}
                         />
                       </div>
                       <div className="w-32">
@@ -161,8 +189,8 @@ export function AddTaskPopup() {
                             className: "hidden",
                           }}
                           type="time"
-                          value={startTime}
-                          onChange={handleStartTimeChange}
+                          value={startTimeHour}
+                          onChange={handleStartTimeHourChange}
                         />
                       </div>
                       <div className="w-32">
@@ -172,8 +200,8 @@ export function AddTaskPopup() {
                             className: "hidden",
                           }}
                           type="time"
-                          value={endTime}
-                          onChange={handleEndTimeChange}
+                          value={endTimeHour}
+                          onChange={handleEndTimeHourChange}
                         />
                       </div>
                     </div>
@@ -188,6 +216,8 @@ export function AddTaskPopup() {
                             className: "hidden",
                           }}
                           type="date"
+                          value={deadlineDay}
+                          onChange={handleDeadlineDayChange}
                         />
                       </div>
                       <div className="w-32">
@@ -197,8 +227,8 @@ export function AddTaskPopup() {
                             className: "hidden",
                           }}
                           type="time"
-                          value={endTime}
-                          onChange={handleEndTimeChange}
+                          value={deadlineHour}
+                          onChange={handleDeadlineHourChange}
                         />
                       </div>
                     </div>
@@ -286,6 +316,8 @@ export function AddTaskPopup() {
                         labelProps={{
                           className: "hidden",
                         }}
+                        value={tag}
+                        onChange={handleTagChange}
                       />
                     </div>
                   </div>
