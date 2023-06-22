@@ -3,16 +3,12 @@ import { Fragment } from "react";
 import { Typography } from "@material-tailwind/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
-export function PrioritySelect({
-  piorityOptions,
-  value,
-  onChange,
-}) {
+export function GroupSelect({ groupOptions, value, onChange }) {
   return (
-    <div className="w-96">
+    <div className="mt-8">
       <Listbox value={value} onChange={onChange}>
         <Listbox.Label>
-          <Typography className="font-normal">Độ ưu tiên</Typography>
+          <Typography className="font-normal">Chọn nhóm</Typography>
         </Listbox.Label>
         <div className="mt-1 relative">
           <Listbox.Button className="w-full bg-white opacity-100 border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
@@ -32,7 +28,7 @@ export function PrioritySelect({
             leaveTo="opacity-0"
           >
             <Listbox.Options className="z-50 absolute mt-1 w-full bg-white opacity-100 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-              {piorityOptions.map((option) => (
+              {groupOptions.map((option) => (
                 <Listbox.Option
                   key={option}
                   value={option}
@@ -73,4 +69,4 @@ export function PrioritySelect({
   );
 }
 
-export default PrioritySelect;
+export default GroupSelect;

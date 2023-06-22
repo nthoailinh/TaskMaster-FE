@@ -15,7 +15,8 @@ import {
   PlusIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
-import AddTaskPopup from "../popup/AddTaskPopup";
+import AddPersonalTask from "../popup/AddPersonalTask";
+import AddGroupTask from "../popup/AddGroupTask";
 
 import { Link } from "react-router-dom";
 
@@ -60,11 +61,6 @@ export function DashboardNavbar() {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
 
-  const handleAddTask = (taskName, taskDescription) => {
-    console.log("Tên công việc:", taskName);
-    console.log("Mô tả công việc:", taskDescription);
-  };
-
   React.useEffect(() => {
     window.addEventListener(
       "resize",
@@ -90,7 +86,7 @@ export function DashboardNavbar() {
               Tích hợp
             </Typography>
           </Button>
-          <AddTaskPopup onAddTask={handleAddTask} />
+          <AddGroupTask />
         </div>
         <IconButton
           size="sm"
@@ -115,7 +111,7 @@ export function DashboardNavbar() {
               Tích hợp
             </Typography>
           </Button>
-          <AddTaskPopup onAddTask={handleAddTask} />
+          <AddPersonalTask />
         </div>
       </Collapse>
     </Navbar>
