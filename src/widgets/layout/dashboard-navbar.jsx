@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Navbar,
-  MobileNav,
+  Collapse,
   Typography,
   Button,
   MenuItem,
@@ -102,7 +102,7 @@ export function DashboardNavbar() {
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
       </div>
-      <MobileNav open={isNavOpen} className="overflow-scroll">
+      <Collapse open={isNavOpen} className="overflow-scroll">
         <div className="ml-auto flex items-center">
           <Button color="purple" className="mr-5 flex items-center normal-case">
             <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
@@ -117,7 +117,7 @@ export function DashboardNavbar() {
           </Button>
           <AddTaskPopup onAddTask={handleAddTask} />
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }
