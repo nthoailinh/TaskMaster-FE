@@ -9,6 +9,8 @@ import {
   TagInput,
   TaskNameInput,
   ToggleNotification,
+  GroupSelect,
+  MemberSelect,
 } from "./components";
 
 const piorityOptions = [
@@ -18,10 +20,15 @@ const piorityOptions = [
   "Không quan trọng - Không khẩn cấp",
 ];
 
-function AddTaskPopup() {
+const groupOptions = ["Nhóm 1", "Nhóm 2"];
+const memberOptions = ["Phan Minh Anh Tuấn", "Nguyễn Thị Hoài Linh"];
+
+function AddGroupTask() {
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
+  const [group, setGroup] = useState(groupOptions[0]);
+  const [member, setMember] = useState(memberOptions[0]);
   const [startTimeDay, setStartTimeDay] = useState("");
   const [startTimeHour, setStartTimeHour] = useState("");
   const [endTimeHour, setEndTimeHour] = useState("");
@@ -45,6 +52,14 @@ function AddTaskPopup() {
 
   function handleDescriptionChange(event) {
     setDescription(event.target.value);
+  }
+
+  function handleGroupChange(value) {
+    setGroup(value);
+  }
+
+  function handleMemberChange(value) {
+    setMember(value);
   }
 
   function handleStartTimeDayChange(event) {
@@ -135,7 +150,7 @@ function AddTaskPopup() {
                 <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Typography variant="h3" color="gray" className="pt-12">
-                      Thêm công việc cá nhân
+                      Thêm công việc nhóm
                     </Typography>
                     <XMarkIcon
                       onClick={closeModal}
@@ -150,6 +165,16 @@ function AddTaskPopup() {
                   <DescriptionInput
                     value={description}
                     onChange={handleDescriptionChange}
+                  />
+                  <GroupSelect
+                    groupOptions={groupOptions}
+                    value={group}
+                    onChange={handleGroupChange}
+                  />
+                  <MemberSelect
+                    memberOptions={memberOptions}
+                    value={member}
+                    onChange={handleMemberChange}
                   />
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
@@ -166,8 +191,8 @@ function AddTaskPopup() {
                   <div className="mt-8 flex space-x-10">
                     <PrioritySelect
                       piorityOptions={piorityOptions}
-                      selected={selected}
-                      handlePriorityChange={handlePriorityChange}
+                      value={selected}
+                      onChange={handlePriorityChange}
                     />
                     <TagInput value={tag} onChange={handleTagChange} />
                   </div>
@@ -203,4 +228,4 @@ function AddTaskPopup() {
   );
 }
 
-export default AddTaskPopup;
+export default AddGroupTask;
