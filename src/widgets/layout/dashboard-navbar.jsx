@@ -14,9 +14,15 @@ import routes from "@/routes";
 import { NavLink } from "react-router-dom";
 
 function NavList() {
+  const [activeTab, setActiveTab] = React.useState(0);
+
+  const handleTabChange = (index) => {
+    setActiveTab(index);
+  };
+
   return (
     <div>
-      <Tabs value="app" className="w-96">
+      <Tabs value={activeTab} className="w-96">
         <TabsHeader
           className="bg-white"
           indicatorProps={{
@@ -27,8 +33,12 @@ function NavList() {
             ({ layout, pages }) =>
               layout === "dashboard" &&
               pages.map(({ label, icon, path, element }, key) => (
-                <NavLink to={`/${layout}${path}`} className="px-2">
-                  <Tab key={key} value={key} className="py-4 px-2">
+                <NavLink to={`/${layout}${path}`} className="px-2" key={key}>
+                  <Tab
+                    value={key}
+                    className="py-4 px-2"
+                    onClick={() => handleTabChange(key)}
+                  >
                     {React.createElement(icon, {
                       className: "-mt-0.5 mr-2 inline-block h-5 w-5",
                     })}{" "}
