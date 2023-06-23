@@ -38,7 +38,7 @@ export function TaskCard({
   cardColor,
 }) {
   return (
-    <Card className={`w-64 ${cardColor}`}>
+    <Card className={`w-64 ${cardColor}`} style={{ width: "100%" }}>
       <CardHeader
         color={color}
         className="relative -mt-4 grid h-7 w-16 place-items-center"
