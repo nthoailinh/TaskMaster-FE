@@ -11,6 +11,7 @@ import {
 import { ArrowsRightLeftIcon, Bars2Icon } from "@heroicons/react/24/outline";
 import AddTask from "../popup/AddTask";
 import routes from "@/routes";
+import { NavLink } from "react-router-dom";
 
 function NavList() {
   return (
@@ -27,10 +28,12 @@ function NavList() {
               layout === "dashboard" &&
               pages.map(({ label, icon, path, element }, key) => (
                 <Tab key={key} value={key} className="py-4 px-2">
-                  {React.createElement(icon, {
-                    className: "-mt-0.5 mr-2 inline-block h-5 w-5",
-                  })}{" "}
-                  {label}
+                  <NavLink to={`/${layout}${path}`}>
+                    {React.createElement(icon, {
+                      className: "-mt-0.5 mr-2 inline-block h-5 w-5",
+                    })}{" "}
+                    {label}
+                  </NavLink>
                 </Tab>
               ))
           )}
