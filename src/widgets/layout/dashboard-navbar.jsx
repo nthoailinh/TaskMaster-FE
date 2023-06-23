@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Collapse,
   Typography,
@@ -11,10 +11,24 @@ import {
 import { ArrowsRightLeftIcon, Bars2Icon } from "@heroicons/react/24/outline";
 import AddTask from "../popup/AddTask";
 import routes from "@/routes";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function NavList() {
-  const [activeTab, setActiveTab] = React.useState(0);
+  const location = useLocation();
+
+  const [activeTab, setActiveTab] = useState(() => {
+    let activeTabKey = null;
+    routes.forEach(({ layout, pages }) => {
+      if (layout === "dashboard") {
+        pages.forEach(({ path }, key) => {
+          if (location.pathname === `/${layout}${path}`) {
+            activeTabKey = key;
+          }
+        });
+      }
+    });
+    return activeTabKey;
+  });
 
   const handleTabChange = (index) => {
     setActiveTab(index);
