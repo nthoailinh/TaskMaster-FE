@@ -46,20 +46,27 @@ function NavList() {
           {routes.map(
             ({ layout, pages }) =>
               layout === "dashboard" &&
-              pages.map(({ label, icon, path, element }, key) => (
-                <NavLink to={`/${layout}${path}`} className="px-2" key={key}>
-                  <Tab
-                    value={key}
-                    className="py-4 px-2"
-                    onClick={() => handleTabChange(key)}
-                  >
-                    {React.createElement(icon, {
-                      className: "-mt-0.5 mr-2 inline-block h-5 w-5",
-                    })}{" "}
-                    {label}
-                  </Tab>
-                </NavLink>
-              ))
+              pages.map(
+                ({ label, icon, path, element }, key) =>
+                  path !== "/detail" && (
+                    <NavLink
+                      to={`/${layout}${path}`}
+                      className="px-2"
+                      key={key}
+                    >
+                      <Tab
+                        value={key}
+                        className="py-4 px-2"
+                        onClick={() => handleTabChange(key)}
+                      >
+                        {React.createElement(icon, {
+                          className: "-mt-0.5 mr-2 inline-block h-5 w-5",
+                        })}{" "}
+                        {label}
+                      </Tab>
+                    </NavLink>
+                  )
+              )
           )}
         </TabsHeader>
       </Tabs>

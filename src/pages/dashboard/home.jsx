@@ -3,10 +3,15 @@ import { Typography, Card, CardHeader, Button } from "@material-tailwind/react";
 import { TaskCardShort } from "@/widgets/cards";
 import { DoughnutChart } from "@/widgets/charts";
 import { upcomingTask, halfDoughnutChartsData } from "@/data";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const [tasks, setTasks] = useState([]);
   const [chartsData, setChartsData] = useState([]);
+  const navigate = useNavigate();
+  function handleClickDetail() {
+    navigate("/dashboard/detail");
+  }
 
   useEffect(() => {
     setTasks(upcomingTask);
@@ -82,11 +87,12 @@ export function Home() {
           <DoughnutChart key={props.key} data={props} {...props} />
         ))}
       </div>
-      <div className="mb-4 grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1">
         <Button
           variant="text"
-          className="d-flex justify-content-center align-items-center h-20 gap-2 text-2xl"
+          className="h-20 text-2xl"
           color="green"
+          onClick={handleClickDetail}
         >
           Xem chi tiết báo cáo công việc
         </Button>
