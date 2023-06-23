@@ -1,44 +1,17 @@
 import React from "react";
 import {
-  Navbar,
   Collapse,
   Typography,
   Button,
-  MenuItem,
   IconButton,
   Tabs,
   TabsHeader,
   Tab,
 } from "@material-tailwind/react";
-import {
-  UserIcon,
-  UserGroupIcon,
-  CodeBracketSquareIcon,
-  ArrowsRightLeftIcon,
-  PlusIcon,
-  HomeIcon,
-  ChatBubbleLeftEllipsisIcon,
-  Cog6ToothIcon,
-  Bars2Icon,
-} from "@heroicons/react/24/outline";
+import { ArrowsRightLeftIcon, Bars2Icon } from "@heroicons/react/24/outline";
 import AddTask from "../popup/AddTask";
-
-import { Link } from "react-router-dom";
-
-const navListItems = [
-  {
-    label: "Tổng quan",
-    icon: CodeBracketSquareIcon,
-  },
-  {
-    label: "Cá nhân",
-    icon: UserIcon,
-  },
-  {
-    label: "Nhóm",
-    icon: UserGroupIcon,
-  },
-];
+import routes from "@/routes";
+import { NavLink } from "react-router-dom";
 
 function NavList() {
   return (
@@ -50,14 +23,20 @@ function NavList() {
             className: "bg-blue-50 shadow-none text-blue-500 ",
           }}
         >
-          {navListItems.map(({ label, icon }, key) => (
-            <Tab key={key} value={key} className="py-4 px-2">
-              {React.createElement(icon, {
-                className: "-mt-0.5 mr-2 inline-block h-5 w-5",
-              })}{" "}
-              {label}
-            </Tab>
-          ))}
+          {routes.map(
+            ({ layout, pages }) =>
+              layout === "dashboard" &&
+              pages.map(({ label, icon, path, element }, key) => (
+                <Tab key={key} value={key} className="py-4 px-2">
+                  <NavLink to={`/${layout}${path}`}>
+                    {React.createElement(icon, {
+                      className: "-mt-0.5 mr-2 inline-block h-5 w-5",
+                    })}{" "}
+                    {label}
+                  </NavLink>
+                </Tab>
+              ))
+          )}
         </TabsHeader>
       </Tabs>
     </div>
