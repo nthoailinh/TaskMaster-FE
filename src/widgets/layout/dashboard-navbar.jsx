@@ -28,6 +28,7 @@ function NavList() {
               layout === "dashboard" &&
               pages.map(({ label, icon, path, element }, key) => (
                 <Tab key={key} value={key} className="py-4 px-2">
+                  {/* Bug: ấn vào chữ mới chuyển đc, chứ chưa phải bấm cả nút */}
                   <NavLink to={`/${layout}${path}`}>
                     {React.createElement(icon, {
                       className: "-mt-0.5 mr-2 inline-block h-5 w-5",
