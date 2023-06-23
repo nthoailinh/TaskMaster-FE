@@ -27,14 +27,14 @@ function NavList() {
             ({ layout, pages }) =>
               layout === "dashboard" &&
               pages.map(({ label, icon, path, element }, key) => (
-                <Tab key={key} value={key} className="py-4 px-2">
-                  <NavLink to={`/${layout}${path}`}>
+                <NavLink to={`/${layout}${path}`} className="px-2">
+                  <Tab key={key} value={key} className="py-4 px-2">
                     {React.createElement(icon, {
                       className: "-mt-0.5 mr-2 inline-block h-5 w-5",
                     })}{" "}
                     {label}
-                  </NavLink>
-                </Tab>
+                  </Tab>
+                </NavLink>
               ))
           )}
         </TabsHeader>
