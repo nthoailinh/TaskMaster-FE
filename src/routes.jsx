@@ -1,9 +1,11 @@
 import {
-  HomeIcon,
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
+  CodeBracketSquareIcon,
+  UserIcon,
+  UserGroupIcon
 } from "@heroicons/react/24/solid";
-import { Home } from "@/pages/dashboard";
+import { Group, Home, Personal } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
@@ -15,10 +17,25 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
+        label: "Tổng quan",
+        icon: CodeBracketSquareIcon,
         name: "dashboard",
         path: "/home",
         element: <Home />,
+      },
+      {
+        label: "Cá nhân",
+        icon: UserIcon,
+        name: "dashboard",
+        path: "/personal",
+        element: <Personal />,
+      },
+      {
+        label: "Nhóm",
+        icon: UserGroupIcon,
+        name: "dashboard",
+        path: "/group",
+        element: <Group />,
       },
     ],
   },
