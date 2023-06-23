@@ -36,9 +36,13 @@ export function TaskCard({
   color,
   footer,
   cardColor,
+  fullWidth,
 }) {
   return (
-    <Card className={`w-64 ${cardColor}`}>
+    <Card
+      className={`w-64 ${cardColor}`}
+      style={{ width: fullWidth ? "100%" : undefined }}
+    >
       <CardHeader
         color={color}
         className="relative -mt-4 grid h-7 w-16 place-items-center"
@@ -54,7 +58,7 @@ export function TaskCard({
         </Typography>
       </CardBody>
       {footer && (
-        <CardFooter className=" border-blue-gray-50 p-4">{footer}</CardFooter>
+        <CardFooter className="border-blue-gray-50 p-4">{footer}</CardFooter>
       )}
     </Card>
   );
