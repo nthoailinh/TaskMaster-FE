@@ -12,7 +12,7 @@ export const KanbanBoard = () => {
 
   return (
     <div className="flex space-x-7">
-      <div className="w-1/3 space-y-8 shadow-lg p-6 rounded-[12px]">
+      <div className="w-1/3 space-y-8 shadow-lg p-6 rounded-[12px] bg-white">
         <h2 className="text-lg font-bold mb-4 py-0.5">To Do</h2>
         <hr className="my-2" />
         {tasks
@@ -34,7 +34,7 @@ export const KanbanBoard = () => {
             />
           ))}
       </div>
-      <div className="w-1/3 space-y-8 shadow-lg p-6 rounded-[12px]">
+      <div className="w-1/3 space-y-8 shadow-lg p-6 rounded-[12px] bg-white">
         <h2 className="text-lg font-bold mb-4 py-0.5">In Progress</h2>
         <hr className="my-2" />
         {tasks
@@ -56,7 +56,7 @@ export const KanbanBoard = () => {
             />
           ))}
       </div>
-      <div className="w-1/3 space-y-8 shadow-lg p-6 rounded-[12px]">
+      <div className="w-1/3 space-y-8 shadow-lg p-6 rounded-[12px] bg-white">
         <h2 className="text-lg font-bold mb-4 py-0.5">Done</h2>
         <hr className="my-2" />
         {tasks
