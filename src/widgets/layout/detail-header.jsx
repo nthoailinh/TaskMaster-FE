@@ -31,8 +31,10 @@ export function DetailHeader({ completedTask, newTask }) {
                     ({ label, path }, key) =>
                       path.includes("/detail") && (
                         <Button
-                          variant="text"
+                          variant="outlined"
+                          color="blue-gray"
                           value={key}
+                          className="mr-2"
                           onClick={() => handleClick(`/${layout}${path}`)}
                         >
                           {label}
@@ -44,16 +46,16 @@ export function DetailHeader({ completedTask, newTask }) {
             <div className="col-span-1 flex items-center justify-center">
               <Typography className="text-lg">
                 <StarIcon className="h-6 w-6 inline-block mr-2" />
-                Nhiệm vụ đã hoàn thành
+                Công việc đã hoàn thành
                 <span className="font-bold ml-8">
                   {completedTask.toString().padStart(2, "0")}
                 </span>
               </Typography>
             </div>
-            <div className="col-span-1 flex items-center justify-center mr-8">
+            <div className="col-span-1 flex items-center justify-center mr-12">
               <Typography className="text-lg">
                 <NewspaperIcon className="h-6 w-6 inline-block mr-2" />
-                Nhiệm vụ mới
+                Công việc mới
                 <span className="font-bold ml-8">
                   {newTask.toString().padStart(2, "0")}
                 </span>
