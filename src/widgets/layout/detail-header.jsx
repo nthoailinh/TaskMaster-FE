@@ -5,22 +5,22 @@ import {
   Tabs,
   TabsHeader,
   Tab,
+  Typography,
 } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
 import routes from "@/routes";
+import { StarIcon, NewspaperIcon } from "@heroicons/react/24/outline";
 
-export function DetailHeader() {
+export function DetailHeader({ completedTask, newTask }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (index) => {
-    console.log(activeTab);
     setActiveTab(index);
-    console.log(activeTab);
   };
 
   return (
     <div className="mt-4">
-      <div className="mb-6 grid grid-cols-1 gap-6">
+      <div className="mb-6 grid grid-cols-1">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
@@ -28,11 +28,11 @@ export function DetailHeader() {
             color="transparent"
             className="m-0 flex items-center justify-between p-6"
           >
-            <div className="col-span-1 flex items-center justify-center">
+            <div className="col-span-1 flex items-center justify-center ml-4">
               <Tabs value={activeTab}>
                 <TabsHeader
                   indicatorProps={{
-                    className: "bg-blue-50 shadow-none text-blue-500 ",
+                    className: "bg-blue-50 shadow-none text-blue-500",
                   }}
                 >
                   {routes.map(
@@ -61,10 +61,18 @@ export function DetailHeader() {
               </Tabs>
             </div>
             <div className="col-span-1 flex items-center justify-center">
-              Nhiệm vụ đã hoàn thành
+              <Typography className="text-lg">
+                <StarIcon className="h-6 w-6 inline-block mr-2" />
+                Nhiệm vụ đã hoàn thành
+                <span className="font-bold ml-8">{completedTask.toString().padStart(2, '0')}</span>
+              </Typography>
             </div>
-            <div className="col-span-1 flex items-center justify-center">
-              Nhiệm vụ mới
+            <div className="col-span-1 flex items-center justify-center mr-8">
+              <Typography className="text-lg">
+                <NewspaperIcon className="h-6 w-6 inline-block mr-2" />
+                Nhiệm vụ mới
+                <span className="font-bold ml-8">{newTask.toString().padStart(2, '0')}</span>
+              </Typography>
             </div>
           </CardHeader>
         </Card>
