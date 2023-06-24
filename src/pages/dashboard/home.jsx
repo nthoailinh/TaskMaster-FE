@@ -10,7 +10,7 @@ export function Home() {
   const [chartsData, setChartsData] = useState([]);
   const navigate = useNavigate();
   function handleClickDetail() {
-    navigate("/dashboard/detail/personal");
+    navigate("/dashboard/home/detail/personal");
   }
 
   useEffect(() => {
