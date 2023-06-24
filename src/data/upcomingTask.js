@@ -13,6 +13,7 @@ export const upcomingTask = [
       status: "Đang thực hiện",
     },
     type: "Personal",
+    rating: 1,
   },
   {
     color: "blue",
@@ -29,6 +30,7 @@ export const upcomingTask = [
       status: "Chưa hoàn thành",
     },
     type: "Group",
+    rating: 2,
   },
   {
     color: "green",
@@ -44,6 +46,7 @@ export const upcomingTask = [
       status: "Chưa hoàn thành",
     },
     type: "Personal",
+    rating: 5,
   },
   {
     color: "orange",
@@ -59,6 +62,7 @@ export const upcomingTask = [
       status: "Đang thực hiện",
     },
     type: "Group",
+    rating: 4,
   },
   {
     color: "blue",
@@ -74,6 +78,7 @@ export const upcomingTask = [
       status: "Chưa hoàn thành",
     },
     type: "Group",
+    rating: 1,
   },
   {
     color: "blue",
@@ -89,6 +94,7 @@ export const upcomingTask = [
       status: "Đã hoàn thành",
     },
     type: "Group",
+    rating: 2,
   },
   {
     color: "red",
@@ -104,6 +110,7 @@ export const upcomingTask = [
       status: "Đang thực hiện",
     },
     type: "Personal",
+    rating: 5,
   },
   {
     color: "yellow",
@@ -120,6 +127,7 @@ export const upcomingTask = [
       status: "Đang thực hiện",
     },
     type: "Personal",
+    rating: 4,
   },
   {
     color: "yellow",
@@ -135,6 +143,7 @@ export const upcomingTask = [
       status: "Chưa hoàn thành",
     },
     type: "Personal",
+    rating: 5,
   },
 ];
 
