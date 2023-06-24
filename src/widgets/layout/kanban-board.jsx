@@ -18,7 +18,7 @@ const kanbanColumns = [
   },
 ];
 
-export const KanbanBoard = () => {
+export const KanbanBoard = ({ type }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -35,7 +35,10 @@ export const KanbanBoard = () => {
           <h2 className="text-lg font-bold mb-4 py-0.5">{element.title}</h2>
           <hr className="my-2" />
           {tasks
-            .filter((task) => task.footer.status === element.status)
+            .filter(
+              (task) =>
+                task.footer.status === element.status && task.type === type
+            )
             .map((task) => (
               <TaskCard
                 key={task.title}
@@ -46,8 +49,6 @@ export const KanbanBoard = () => {
                 footer={
                   <Typography className="font-normal text-blue-gray-600">
                     <span>{task.footer.priority}</span>
-                    <br />
-                    <span>{task.footer.status}</span>&nbsp;
                   </Typography>
                 }
                 fullWidth={true}

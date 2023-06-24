@@ -9,9 +9,10 @@ export const upcomingTask = [
     },
     description: "Áp dụng Machine Learning vào dự đoán lưu lượng mạng SDN",
     footer: {
-      piority: "Không khẩn cấp",
+      priority: "Không khẩn cấp",
       status: "Đang thực hiện",
     },
+    type: "Personal",
   },
   {
     color: "blue",
@@ -24,9 +25,10 @@ export const upcomingTask = [
     description:
       "Nguyên mẫu giao diện cho ứng dụng quản lý công việc TaskMaster",
     footer: {
-      piority: "Khẩn cấp",
+      priority: "Khẩn cấp",
       status: "Chưa hoàn thành",
     },
+    type: "Group",
   },
   {
     color: "green",
@@ -38,9 +40,10 @@ export const upcomingTask = [
     },
     description: "Hoàn thiện slide để trình bày tại Clevai",
     footer: {
-      piority: "Không quan trọng",
+      priority: "Không quan trọng",
       status: "Chưa hoàn thành",
     },
+    type: "Personal",
   },
   {
     color: "orange",
@@ -52,9 +55,10 @@ export const upcomingTask = [
     },
     description: "Thống nhất nguyên mẫu giao diện dự án ACR",
     footer: {
-      piority: "Quan trọng",
+      priority: "Quan trọng",
       status: "Đang thực hiện",
     },
+    type: "Group",
   },
   {
     color: "blue",
@@ -66,9 +70,10 @@ export const upcomingTask = [
     },
     description: "Thêm biểu đồ lớp",
     footer: {
-      piority: "Khẩn cấp",
+      priority: "Khẩn cấp",
       status: "Chưa hoàn thành",
     },
+    type: "Group",
   },
   {
     color: "blue",
@@ -80,9 +85,10 @@ export const upcomingTask = [
     },
     description: "Bài tập lớn tìm đường đi trên bản đồ",
     footer: {
-      piority: "Khẩn cấp",
+      priority: "Khẩn cấp",
       status: "Đã hoàn thành",
     },
+    type: "Group",
   },
   {
     color: "red",
@@ -94,9 +100,10 @@ export const upcomingTask = [
     },
     description: "Học flutter để làm các dự án mobile của công ty",
     footer: {
-      piority: "Không khẩn cấp",
+      priority: "Không khẩn cấp",
       status: "Đang thực hiện",
     },
+    type: "Personal",
   },
   {
     color: "yellow",
@@ -109,9 +116,10 @@ export const upcomingTask = [
     description:
       "Phát triển mô hình ML mới để phục vụ nhân diện khuôn mặt dưới trời mưa",
     footer: {
-      piority: "Không khẩn cấp",
+      priority: "Không khẩn cấp",
       status: "Đang thực hiện",
     },
+    type: "Personal",
   },
   {
     color: "yellow",
@@ -123,9 +131,10 @@ export const upcomingTask = [
     },
     description: "Học keras để implement các mô hình sau quá trình nghiên cứu",
     footer: {
-      piority: "Không khẩn cấp",
+      priority: "Không khẩn cấp",
       status: "Chưa hoàn thành",
     },
+    type: "Personal",
   },
 ];
 

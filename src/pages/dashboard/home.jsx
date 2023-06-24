@@ -58,9 +58,7 @@ export function Home() {
             <div className="p-5">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
                 {tasks
-                  .filter(({ footer }) => {
-                    return footer.status === "Chưa hoàn thành";
-                  })
+                  .filter(({ footer }) => footer.status === "Chưa hoàn thành")
                   .map(({ tag, title, time, ...rest }) => {
                     return (
                       <TaskCardShort

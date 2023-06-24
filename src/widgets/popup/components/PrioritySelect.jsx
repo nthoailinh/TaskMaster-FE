@@ -3,11 +3,7 @@ import { Fragment } from "react";
 import { Typography } from "@material-tailwind/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
-export function PrioritySelect({
-  piorityOptions,
-  value,
-  onChange,
-}) {
+export function PrioritySelect({ priorityOptions, value, onChange }) {
   return (
     <div className="w-96">
       <Listbox value={value} onChange={onChange}>
@@ -32,7 +28,7 @@ export function PrioritySelect({
             leaveTo="opacity-0"
           >
             <Listbox.Options className="z-50 absolute mt-1 w-full bg-white opacity-100 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-              {piorityOptions.map((option) => (
+              {priorityOptions.map((option) => (
                 <Listbox.Option
                   key={option}
                   value={option}

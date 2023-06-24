@@ -4,7 +4,7 @@ import { KanbanBoard } from "@/widgets/layout";
 export function Personal() {
   return (
     <div className="pt-4">
-      <KanbanBoard />
+      <KanbanBoard type="Personal" />
     </div>
   );
 }
