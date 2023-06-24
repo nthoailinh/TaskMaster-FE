@@ -48,7 +48,7 @@ function NavList() {
               layout === "dashboard" &&
               pages.map(
                 ({ label, icon, path, element }, key) =>
-                  path !== "/detail" && (
+                  !path.includes("/detail") && (
                     <NavLink
                       to={`/${layout}${path}`}
                       className="px-2"
