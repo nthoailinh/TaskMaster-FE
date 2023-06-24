@@ -15,20 +15,20 @@ import { NavLink, useLocation } from "react-router-dom";
 
 function NavList() {
   const location = useLocation();
-
-  const [activeTab, setActiveTab] = useState(() => {
-    let activeTabKey = null;
-    routes.forEach(({ layout, pages }) => {
+  const getActiveTabKey = () => {
+    for (const { layout, pages } of routes) {
       if (layout === "dashboard") {
-        pages.forEach(({ path }, key) => {
-          if (location.pathname === `/${layout}${path}`) {
-            activeTabKey = key;
+        for (const [key, { path }] of pages.entries()) {
+          if (location.pathname.includes(`/${layout}${path}`)) {
+            return key;
           }
-        });
+        }
       }
-    });
-    return activeTabKey;
-  });
+    }
+    return 0;
+  };
+
+  const [activeTab, setActiveTab] = useState(getActiveTabKey());
 
   const handleTabChange = (index) => {
     setActiveTab(index);

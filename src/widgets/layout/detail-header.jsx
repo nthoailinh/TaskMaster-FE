@@ -7,12 +7,15 @@ import { StarIcon, NewspaperIcon } from "@heroicons/react/24/outline";
 export function DetailHeader({ completedTask, newTask }) {
   const [selectedTab, setSelectedTab] = useState("personal");
   const navigate = useNavigate();
+
   function handleClick(path) {
     navigate(path);
   }
+
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
   };
+
   return (
     <div className="mt-4">
       <div className="mb-6 grid grid-cols-1">
@@ -24,13 +27,13 @@ export function DetailHeader({ completedTask, newTask }) {
             className="m-0 flex items-center justify-between p-6"
           >
             <div className="col-span-1 flex items-center justify-center ml-4">
-              {routes.map(
-                ({ layout, pages }) =>
-                  layout === "dashboard" &&
-                  pages.map(
-                    ({ label, path }, key) =>
-                      path.includes("/detail") && (
+              {routes.map(({ layout, pages }) => {
+                if (layout === "dashboard") {
+                  return pages.map(({ label, path }, key) => {
+                    if (path.includes("/detail")) {
+                      return (
                         <Button
+                          key={key}
                           variant="outlined"
                           color="blue-gray"
                           value={key}
@@ -39,9 +42,13 @@ export function DetailHeader({ completedTask, newTask }) {
                         >
                           {label}
                         </Button>
-                      )
-                  )
-              )}
+                      );
+                    }
+                    return null;
+                  });
+                }
+                return null;
+              })}
             </div>
             <div className="col-span-1 flex items-center justify-center">
               <Typography className="text-lg">
