@@ -8,10 +8,6 @@ import { useNavigate } from "react-router-dom";
 export function Detail() {
   const [tasks, setTasks] = useState([]);
   const [chartsData, setChartsData] = useState([]);
-  const navigate = useNavigate();
-  function handleClickDetail() {
-    navigate("/dashboard/detail");
-  }
 
   useEffect(() => {
     setTasks(upcomingTask);

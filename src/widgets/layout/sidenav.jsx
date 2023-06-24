@@ -31,6 +31,9 @@ const Stepper = () => {
           <Typography>{formattedDate}</Typography>
         </div>
         {tasks
+          .filter(({ footer }) => {
+            return footer.status === "Chưa hoàn thành";
+          })
           .slice(0, 3)
           .map(({ title, tag, description, color, footer, time }, index) => (
             <div
