@@ -3,7 +3,13 @@ import {
   UserIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
-import { Detail, Group, Home, Personal } from "@/pages/dashboard";
+import {
+  DetailPersonal,
+  DetailGroup,
+  Group,
+  Home,
+  Personal,
+} from "@/pages/dashboard";
 
 export const routes = [
   {
@@ -31,11 +37,18 @@ export const routes = [
         element: <Group />,
       },
       {
-        label: "Chi tiết",
+        label: "Cá nhân",
         icon: UserGroupIcon,
-        name: "dashboard",
-        path: "/detail",
-        element: <Detail />,
+        name: "dashboard/detail",
+        path: "/detail/personal",
+        element: <DetailPersonal />,
+      },
+      {
+        label: "Nhóm",
+        icon: UserGroupIcon,
+        name: "dashboard/detail",
+        path: "/detail/group",
+        element: <DetailGroup />,
       },
     ],
   },

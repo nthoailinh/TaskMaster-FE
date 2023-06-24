@@ -13,7 +13,7 @@ import {
   MemberSelect,
 } from "./components";
 
-const piorityOptions = [
+const priorityOptions = [
   "Quan trọng - Khẩn cấp",
   "Quan trọng - Không khẩn cấp",
   "Không quan trọng - Khẩn cấp",
@@ -34,7 +34,7 @@ function AddGroupTask() {
   const [endTimeHour, setEndTimeHour] = useState("");
   const [deadlineDay, setDeadlineDay] = useState("");
   const [deadlineHour, setDeadlineHour] = useState("");
-  const [selected, setSelected] = useState(piorityOptions[0]);
+  const [selected, setSelected] = useState(priorityOptions[0]);
   const [tag, setTag] = useState("");
   const [notification, setNotification] = useState(false);
 
@@ -192,7 +192,7 @@ function AddGroupTask() {
                   />
                   <div className="mt-8 flex space-x-10">
                     <PrioritySelect
-                      piorityOptions={piorityOptions}
+                      priorityOptions={priorityOptions}
                       value={selected}
                       onChange={handlePriorityChange}
                     />
