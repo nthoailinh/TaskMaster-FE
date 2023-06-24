@@ -1,2 +1,3 @@
 export * from "@/data/upcomingTask";
-export * from "@/data/half-doughnut-charts-data";
+export * from "@/data/doughnut-charts-data";
+export * from "@/data/horizontal-bar-charts-data";

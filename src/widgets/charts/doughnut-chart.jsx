@@ -6,9 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Doughnut } from "react-chartjs-2";
-import { Chart, ArcElement } from "chart.js";
-
-Chart.register(ArcElement);
+import Chart from "chart.js/auto";
 
 export function DoughnutChart({ data, title, description }) {
   return (
