@@ -19,7 +19,7 @@ export function DetailPersonal() {
       <div className="mb-14">
         <DetailHeader completedTask={completedTask} newTask={newTask} />
       </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
+      <div className="mb-6 grid">
         {chartsData.map((props) => (
           <HorizontalBarChart key={props.key} data={props} {...props} />
         ))}

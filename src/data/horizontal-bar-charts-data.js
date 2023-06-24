@@ -9,7 +9,13 @@ export const horizontalBarChartsData = [
       {
         label: "Rating",
         data: [75, 12, 8, 3, 2],
-        backgroundColor: ["purple", "gray", "gray", "gray", "gray"],
+        backgroundColor: [
+          "#653aff",
+          "#9291a5",
+          "#9291a5",
+          "#9291a5",
+          "#9291a5",
+        ],
       },
     ],
   },

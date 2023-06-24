@@ -31,10 +31,31 @@ export function HorizontalBarChart({ data, title }) {
                 },
               },
               scales: {
+                y: {
+                  grid: {
+                    display: false, // Tắt grid theo chiều ngang
+                  },
+                },
                 x: {
                   max: 100,
+                  ticks: {
+                    stepSize: 25,
+                    callback: (value) => {
+                      if (
+                        value === 0 ||
+                        value === 25 ||
+                        value === 50 ||
+                        value === 75 ||
+                        value === 100
+                      ) {
+                        return value;
+                      }
+                      return null;
+                    },
+                  },
                 },
               },
+              barThickness: 20,
             }}
             className="my-12"
           />
