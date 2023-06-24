@@ -57,26 +57,30 @@ export function Home() {
             </div>
             <div className="p-5">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
-                {tasks.map(({ tag, title, time, ...rest }) => {
-                  return (
-                    <TaskCardShort
-                      key={title}
-                      {...rest}
-                      title={title}
-                      tag={tag}
-                      time={
-                        <Typography className="font-normal text-blue-gray-600">
-                          <span>Deadline</span>
-                          <br />
-                          <strong className="font-bold">
-                            {time.hour + " " + time.day}
-                          </strong>
-                          &nbsp;
-                        </Typography>
-                      }
-                    />
-                  );
-                })}
+                {tasks
+                  .filter(({ footer }) => {
+                    return footer.status === "Chưa hoàn thành";
+                  })
+                  .map(({ tag, title, time, ...rest }) => {
+                    return (
+                      <TaskCardShort
+                        key={title}
+                        {...rest}
+                        title={title}
+                        tag={tag}
+                        time={
+                          <Typography className="font-normal text-blue-gray-600">
+                            <span>Deadline</span>
+                            <br />
+                            <strong className="font-bold">
+                              {time.hour + " " + time.day}
+                            </strong>
+                            &nbsp;
+                          </Typography>
+                        }
+                      />
+                    );
+                  })}
               </div>
             </div>
           </CardHeader>
