@@ -1,13 +1,15 @@
+import { Rating } from "@material-tailwind/react";
+
 export const horizontalBarChartsData = [
   {
-    key: "tmp",
+    key: "evaluationPersonal",
     title: "Đánh giá công việc cá nhân đã thực hiện",
-    labels: ["A", "B", "C", "D", "E"],
+    labels: ["5", "4", "3", "2", "1"],
     datasets: [
       {
         label: "Rating",
-        data: [70, 80, 60, 90, 75],
-        backgroundColor: ["gray", "gray", "gray", "purple", "gray"],
+        data: [75, 12, 8, 3, 2],
+        backgroundColor: ["purple", "gray", "gray", "gray", "gray"],
       },
     ],
   },

@@ -30,6 +30,11 @@ export function HorizontalBarChart({ data, title }) {
                   display: false,
                 },
               },
+              scales: {
+                x: {
+                  max: 100,
+                },
+              },
             }}
             className="my-12"
           />
