@@ -1,16 +1,16 @@
 export const workspaces = [
   {
     name: "Vbee",
-    color: "red",
+    color: "#f34336",
   },
   {
     name: "HUST",
-    color: "blue"
+    color: "#2196f3",
   },
   {
-    name: "BKCLab",
-    color: "green"
-  }
+    name: "BKC",
+    color: "#ffeb3a",
+  },
 ];
 
 export default workspaces;

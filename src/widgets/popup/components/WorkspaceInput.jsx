@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Typography } from "@material-tailwind/react";
+import { Button, Typography } from "@material-tailwind/react";
 import CreatableSelect from "react-select/creatable";
+import { SketchPicker } from "react-color";
 import { workspaces } from "@/data";
 
 const createOption = (label) => ({
@@ -14,6 +15,9 @@ export function WorkspaceInput({ values, onChange }) {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
   const [value, setValue] = useState(null);
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("#2296f4");
+  const colorPickerRef = useRef();
 
   const handleCreate = (inputValue) => {
     setIsLoading(true);
@@ -23,8 +27,32 @@ export function WorkspaceInput({ values, onChange }) {
     setValue(newOption);
   };
 
+  const handleColorChange = (color) => {
+    setSelectedColor(color.hex);
+  };
+
+  const toggleColorPicker = () => {
+    setShowColorPicker((prev) => !prev);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        colorPickerRef.current &&
+        !colorPickerRef.current.contains(event.target)
+      ) {
+        setShowColorPicker(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="mt-1 w-48">
+    <div className="grid grid-cols-2 gap-8">
       <div>
         <Typography className="font-normal">Nơi làm việc</Typography>
         <CreatableSelect
@@ -36,7 +64,28 @@ export function WorkspaceInput({ values, onChange }) {
           options={options}
           value={value}
           placeholder=""
+          className="mt-1 w-56"
         />
+      </div>
+
+      <div className={`ml-16 relative ${showColorPicker ? "z-50" : ""}`}>
+        <Typography className="font-normal">Màu sắc</Typography>
+        <Button
+          onClick={toggleColorPicker}
+          className="mt-2 mb-1 rounded-lg"
+          style={{ backgroundColor: selectedColor }}
+          size="lg"
+          fullWidth
+        ></Button>
+        {showColorPicker && (
+          <div ref={colorPickerRef}>
+            <SketchPicker
+              color={selectedColor}
+              onChange={handleColorChange}
+              className="absolute top-0 left-0"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ import {
   DescriptionInput,
   PrioritySelect,
   WorkspaceInput,
-  WorkspaceColor,
   TaskNameInput,
 } from "./components";
 
@@ -167,7 +166,6 @@ function AddPersonalTask() {
                       onChange={handlePriorityChange}
                     />
                     <WorkspaceInput value={tag} onChange={handleTagChange} />
-                    <WorkspaceColor />
                   </div>
 
                   <DateTimeInputs
