@@ -6,7 +6,7 @@ import {
   DateTimeInputs,
   DescriptionInput,
   PrioritySelect,
-  TagInput,
+  WorkspaceInput,
   TaskNameInput,
 } from "./components";
 
@@ -18,6 +18,7 @@ function AddPersonalTask() {
   const [description, setDescription] = useState("");
   const [startTimeDay, setStartTimeDay] = useState("");
   const [startTimeHour, setStartTimeHour] = useState("");
+  const [endTimeDay, setEndTimeDay] = useState("");
   const [endTimeHour, setEndTimeHour] = useState("");
   const [deadlineDay, setDeadlineDay] = useState("");
   const [deadlineHour, setDeadlineHour] = useState("");
@@ -31,6 +32,7 @@ function AddPersonalTask() {
     setDescription("");
     setStartTimeDay("");
     setStartTimeHour("");
+    setEndTimeDay("");
     setEndTimeHour("");
     setDeadlineDay("");
     setDeadlineHour("");
@@ -58,6 +60,10 @@ function AddPersonalTask() {
     setStartTimeHour(event.target.value);
   }
 
+  function handleEndTimeDayChange(event) {
+    setEndTimeDay(event.target.value);
+  }
+
   function handleEndTimeHourChange(event) {
     setEndTimeHour(event.target.value);
   }
@@ -83,6 +89,7 @@ function AddPersonalTask() {
     console.log(description);
     console.log(startTimeDay);
     console.log(startTimeHour);
+    console.log(endTimeDay);
     console.log(endTimeHour);
     console.log(deadlineDay);
     console.log(deadlineHour);
@@ -131,7 +138,7 @@ function AddPersonalTask() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Typography variant="h3" color="gray" className="pt-12">
                       Thêm công việc cá nhân
@@ -146,29 +153,31 @@ function AddPersonalTask() {
                     value={taskName}
                     onChange={handleTaskNameChange}
                   />
-                  
+
                   <DescriptionInput
                     value={description}
                     onChange={handleDescriptionChange}
                   />
 
-                  <div className="mt-8 flex space-x-10">
+                  <div className="mt-8 flex">
                     <PrioritySelect
                       priorityOptions={priorityOptions}
                       value={selected}
                       onChange={handlePriorityChange}
                     />
-                    <TagInput value={tag} onChange={handleTagChange} />
+                    <WorkspaceInput value={tag} onChange={handleTagChange} />
                   </div>
 
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
                     startTimeHour={startTimeHour}
+                    endTimeDay={endTimeDay}
                     endTimeHour={endTimeHour}
                     deadlineDay={deadlineDay}
                     deadlineHour={deadlineHour}
                     handleStartTimeDayChange={handleStartTimeDayChange}
                     handleStartTimeHourChange={handleStartTimeHourChange}
+                    handleEndTimeDayChange={handleEndTimeDayChange}
                     handleEndTimeHourChange={handleEndTimeHourChange}
                     handleDeadlineDayChange={handleDeadlineDayChange}
                     handleDeadlineHourChange={handleDeadlineHourChange}

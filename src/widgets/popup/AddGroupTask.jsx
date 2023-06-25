@@ -6,7 +6,7 @@ import {
   DateTimeInputs,
   DescriptionInput,
   PrioritySelect,
-  TagInput,
+  WorkspaceInput,
   TaskNameInput,
   GroupSelect,
   MemberSelect,
@@ -178,7 +178,7 @@ function AddGroupTask() {
                       value={selected}
                       onChange={handlePriorityChange}
                     />
-                    <TagInput value={tag} onChange={handleTagChange} />
+                    <WorkspaceInput value={tag} onChange={handleTagChange} />
                   </div>
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
