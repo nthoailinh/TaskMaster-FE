@@ -23,7 +23,8 @@ function AddPersonalTask() {
   const [deadlineDay, setDeadlineDay] = useState("");
   const [deadlineHour, setDeadlineHour] = useState("");
   const [selected, setSelected] = useState(priorityOptions[0]);
-  const [tag, setTag] = useState("");
+  const [workspace, setWorkspace] = useState("");
+  const [color, setColor] = useState("#2296f4");
   const [notification, setNotification] = useState(false);
 
   function closeModal() {
@@ -36,7 +37,7 @@ function AddPersonalTask() {
     setEndTimeHour("");
     setDeadlineDay("");
     setDeadlineHour("");
-    setTag("");
+    setWorkspace("");
     setNotification(false);
   }
 
@@ -80,8 +81,12 @@ function AddPersonalTask() {
     setSelected(value);
   }
 
-  function handleTagChange(event) {
-    setTag(event.target.value);
+  function handleWorkspaceChange(event) {
+    setWorkspace(event.target.value);
+  }
+
+  function handleColorChange(color) {
+    setColor(color.hex);
   }
 
   function handleSave() {
@@ -94,7 +99,7 @@ function AddPersonalTask() {
     console.log(deadlineDay);
     console.log(deadlineHour);
     console.log(selected);
-    console.log(tag);
+    console.log(workspace);
     console.log(notification);
     closeModal();
   }
@@ -165,7 +170,10 @@ function AddPersonalTask() {
                       value={selected}
                       onChange={handlePriorityChange}
                     />
-                    <WorkspaceInput value={tag} onChange={handleTagChange} />
+                    <WorkspaceInput
+                      values={{ workspace, color }}
+                      onChanges={{ handleWorkspaceChange, handleColorChange }}
+                    />
                   </div>
 
                   <DateTimeInputs
