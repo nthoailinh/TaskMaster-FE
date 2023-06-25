@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Typography } from "@material-tailwind/react";
 import CreatableSelect from "react-select/creatable";
 import { workspaces } from "@/data";
@@ -22,19 +22,22 @@ export function WorkspaceInput({ values, onChange }) {
     setOptions((prev) => [...prev, newOption]);
     setValue(newOption);
   };
+
   return (
     <div className="mt-1 w-48">
-      <Typography className="font-normal ">Nơi làm việc</Typography>
-      <CreatableSelect
-        isClearable
-        isDisabled={isLoading}
-        isLoading={isLoading}
-        onChange={(newValue) => setValue(newValue)}
-        onCreateOption={handleCreate}
-        options={options}
-        value={value}
-        placeholder=""
-      />
+      <div>
+        <Typography className="font-normal">Nơi làm việc</Typography>
+        <CreatableSelect
+          isClearable
+          isDisabled={isLoading}
+          isLoading={isLoading}
+          onChange={(newValue) => setValue(newValue)}
+          onCreateOption={handleCreate}
+          options={options}
+          value={value}
+          placeholder=""
+        />
+      </div>
     </div>
   );
 }
