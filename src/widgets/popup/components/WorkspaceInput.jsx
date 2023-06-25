@@ -92,7 +92,7 @@ export function WorkspaceInput({ values, onChanges }) {
           fullWidth
         ></Button>
         {showColorPicker && (
-          <div ref={colorPickerRef}>
+          <div ref={colorPickerRef} className="transform -translate-x-32 translate-y-2">
             <SketchPicker
               color={selectedColor}
               onChange={handleColorChange}
