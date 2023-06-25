@@ -1,8 +1,8 @@
 export const upcomingTask = [
   {
     color: "blue",
-    title: "GR1",
-    tag: "Hust",
+    taskName: "GR1",
+    workspace: "Hust",
     time: {
       hour: "15:00 PM",
       day: "02/08/2023",
@@ -17,8 +17,8 @@ export const upcomingTask = [
   },
   {
     color: "blue",
-    title: "Vẽ nguyên mẫu giao diện",
-    tag: "Hust",
+    taskName: "Vẽ nguyên mẫu giao diện",
+    workspace: "Hust",
     time: {
       hour: "15:00 PM",
       day: "02/06/2023",
@@ -34,8 +34,8 @@ export const upcomingTask = [
   },
   {
     color: "green",
-    title: "AWS Spot Instance",
-    tag: "Clevai",
+    taskName: "AWS Spot Instance",
+    workspace: "Clevai",
     time: {
       hour: "17:00 PM",
       day: "02/06/2023",
@@ -50,8 +50,8 @@ export const upcomingTask = [
   },
   {
     color: "orange",
-    title: "Họp dự án ACR",
-    tag: "Vbee",
+    taskName: "Họp dự án ACR",
+    workspace: "Vbee",
     time: {
       hour: "18:00 PM",
       day: "02/06/2023",
@@ -66,8 +66,8 @@ export const upcomingTask = [
   },
   {
     color: "blue",
-    title: "Viết báo cáo PTTKHT",
-    tag: "Hust",
+    taskName: "Viết báo cáo PTTKHT",
+    workspace: "Hust",
     time: {
       hour: "07:00 AM",
       day: "02/06/2023",
@@ -82,8 +82,8 @@ export const upcomingTask = [
   },
   {
     color: "blue",
-    title: "Làm bài tập lớn IntroAI",
-    tag: "Hust",
+    taskName: "Làm bài tập lớn IntroAI",
+    workspace: "Hust",
     time: {
       hour: "15:00 PM",
       day: "02/05/2023",
@@ -98,8 +98,8 @@ export const upcomingTask = [
   },
   {
     color: "red",
-    title: "Học flutter",
-    tag: "Vbee",
+    taskName: "Học flutter",
+    workspace: "Vbee",
     time: {
       hour: "00:00 PM",
       day: "15/07/2023",
@@ -114,8 +114,8 @@ export const upcomingTask = [
   },
   {
     color: "yellow",
-    title: "Phát triển mô hình ML mới",
-    tag: "BKC",
+    taskName: "Phát triển mô hình ML mới",
+    workspace: "BKC",
     time: {
       hour: "00:00 PM",
       day: "15/08/2023",
@@ -131,8 +131,8 @@ export const upcomingTask = [
   },
   {
     color: "yellow",
-    title: "Học keras",
-    tag: "BKC",
+    taskName: "Học keras",
+    workspace: "BKC",
     time: {
       hour: "00:00 PM",
       day: "23/10/2023",

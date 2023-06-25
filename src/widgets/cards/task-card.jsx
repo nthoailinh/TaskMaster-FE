@@ -6,18 +6,18 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export function TaskCardShort({ color, tag, title, time }) {
+export function TaskCardShort({ color, workspace, taskName, time }) {
   return (
     <Card>
       <CardHeader
         color={color}
         className="relative -mt-4 grid h-7 w-16 place-items-center"
       >
-        {tag}
+        {workspace}
       </CardHeader>
       <CardBody className="p-4 text-right">
         <Typography className="text-left text-xl font-normal font-bold text-blue-gray-600">
-          {title}
+          {taskName}
         </Typography>
       </CardBody>
       {time && (
@@ -30,8 +30,8 @@ export function TaskCardShort({ color, tag, title, time }) {
 }
 
 export function TaskCard({
-  title,
-  tag,
+  taskName,
+  workspace,
   description,
   color,
   footer,
@@ -47,11 +47,11 @@ export function TaskCard({
         color={color}
         className="relative -mt-4 grid h-7 w-16 place-items-center"
       >
-        {tag}
+        {workspace}
       </CardHeader>
       <CardBody className="p-4 text-right">
         <Typography className="text-left text-xl font-normal font-bold text-blue-gray-600">
-          {title}
+          {taskName}
         </Typography>
         <Typography className="text-left text-base font-normal text-blue-gray-600">
           {description}

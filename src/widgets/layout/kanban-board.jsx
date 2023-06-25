@@ -41,9 +41,9 @@ export const KanbanBoard = ({ type }) => {
             )
             .map((task) => (
               <TaskCard
-                key={task.title}
-                title={task.title}
-                tag={task.tag}
+                key={task.taskName}
+                taskName={task.taskName}
+                workspace={task.workspace}
                 description={task.description}
                 color={task.color}
                 footer={

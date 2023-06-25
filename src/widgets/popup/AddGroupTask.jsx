@@ -29,7 +29,7 @@ function AddGroupTask() {
   const [deadlineDay, setDeadlineDay] = useState("");
   const [deadlineHour, setDeadlineHour] = useState("");
   const [selected, setSelected] = useState(priorityOptions[0]);
-  const [tag, setTag] = useState("");
+  const [workspace, setworkspace] = useState("");
   const [notification, setNotification] = useState(false);
 
   function closeModal() {
@@ -41,7 +41,7 @@ function AddGroupTask() {
     setEndTimeHour("");
     setDeadlineDay("");
     setDeadlineHour("");
-    setTag("");
+    setworkspace("");
     setNotification(false);
   }
 
@@ -89,8 +89,8 @@ function AddGroupTask() {
     setSelected(value);
   }
 
-  function handleTagChange(event) {
-    setTag(event.target.value);
+  function handleworkspaceChange(event) {
+    setworkspace(event.target.value);
   }
 
   function handleSave() {
@@ -104,7 +104,7 @@ function AddGroupTask() {
     console.log(deadlineDay);
     console.log(deadlineHour);
     console.log(selected);
-    console.log(tag);
+    console.log(workspace);
     console.log(notification);
     closeModal();
   }
@@ -178,7 +178,10 @@ function AddGroupTask() {
                       value={selected}
                       onChange={handlePriorityChange}
                     />
-                    <WorkspaceInput value={tag} onChange={handleTagChange} />
+                    <WorkspaceInput
+                      value={workspace}
+                      onChange={handleworkspaceChange}
+                    />
                   </div>
                   <DateTimeInputs
                     startTimeDay={startTimeDay}

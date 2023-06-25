@@ -33,39 +33,46 @@ const Stepper = () => {
         {tasks
           .filter(({ footer }) => footer.status === "Chưa hoàn thành")
           .slice(0, 3)
-          .map(({ title, tag, description, color, footer, time }, index) => (
-            <div
-              key={index}
-              className={`my-3 flex items-center pl-4 pb-1 pr-1 ${
-                index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-2 "
-              }`}
-            >
-              <div className="mr-4">{time.hour}</div>
-              <Button
-                className={`mr-4 rounded-full p-2 ${
-                  activeStep === index ? "bg-red-400 text-white" : "bg-gray-400"
+          .map(
+            (
+              { taskName, workspace, description, color, footer, time },
+              index
+            ) => (
+              <div
+                key={index}
+                className={`my-3 flex items-center pl-4 pb-1 pr-1 ${
+                  index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-2 "
                 }`}
-                onClick={() => handleStepClick(index)}
               >
-                {index + 1}
-              </Button>
-              <TaskCard
-                key={title}
-                title={title}
-                tag={tag}
-                description={description}
-                color={color}
-                footer={
-                  <Typography className="font-normal text-blue-gray-600">
-                    <span>{footer.priority}</span>
-                    <br />
-                    <span>{footer.status}</span>&nbsp;
-                  </Typography>
-                }
-                cardColor={`${index === 0 ? "bg-red-50" : ""}`}
-              />
-            </div>
-          ))}
+                <div className="mr-4">{time.hour}</div>
+                <Button
+                  className={`mr-4 rounded-full p-2 ${
+                    activeStep === index
+                      ? "bg-red-400 text-white"
+                      : "bg-gray-400"
+                  }`}
+                  onClick={() => handleStepClick(index)}
+                >
+                  {index + 1}
+                </Button>
+                <TaskCard
+                  key={taskName}
+                  taskName={taskName}
+                  workspace={workspace}
+                  description={description}
+                  color={color}
+                  footer={
+                    <Typography className="font-normal text-blue-gray-600">
+                      <span>{footer.priority}</span>
+                      <br />
+                      <span>{footer.status}</span>&nbsp;
+                    </Typography>
+                  }
+                  cardColor={`${index === 0 ? "bg-red-50" : ""}`}
+                />
+              </div>
+            )
+          )}
       </div>
     </div>
   );

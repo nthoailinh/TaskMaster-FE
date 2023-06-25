@@ -9,6 +9,8 @@ import {
   WorkspaceInput,
   TaskNameInput,
 } from "./components";
+import fs from "fs";
+import { upcomingTask } from "@/data";
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
@@ -25,7 +27,6 @@ function AddPersonalTask() {
   const [selected, setSelected] = useState(priorityOptions[0]);
   const [workspace, setWorkspace] = useState("");
   const [color, setColor] = useState("#2296f4");
-  const [notification, setNotification] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -38,7 +39,6 @@ function AddPersonalTask() {
     setDeadlineDay("");
     setDeadlineHour("");
     setWorkspace("");
-    setNotification(false);
   }
 
   function openModal() {
@@ -90,18 +90,14 @@ function AddPersonalTask() {
   }
 
   function handleSave() {
-    console.log(taskName);
-    console.log(description);
-    console.log(startTimeDay);
-    console.log(startTimeHour);
-    console.log(endTimeDay);
-    console.log(endTimeHour);
-    console.log(deadlineDay);
-    console.log(deadlineHour);
-    console.log(selected);
-    console.log(workspace);
-    console.log(color);
-    console.log(notification);
+    const newTask = {
+      color: color,
+      taskName: taskName,
+      workspace: workspace,
+      time: {
+        
+      }
+    }
     closeModal();
   }
 

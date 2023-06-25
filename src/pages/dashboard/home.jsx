@@ -59,13 +59,13 @@ export function Home() {
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
                 {tasks
                   .filter(({ footer }) => footer.status === "Chưa hoàn thành")
-                  .map(({ tag, title, time, ...rest }) => {
+                  .map(({ workspace, taskName, time, ...rest }) => {
                     return (
                       <TaskCardShort
-                        key={title}
+                        key={taskName}
                         {...rest}
-                        title={title}
-                        tag={tag}
+                        taskName={taskName}
+                        workspace={workspace}
                         time={
                           <Typography className="font-normal text-blue-gray-600">
                             <span>Deadline</span>
