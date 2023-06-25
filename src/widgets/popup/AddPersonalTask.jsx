@@ -81,12 +81,12 @@ function AddPersonalTask() {
     setSelected(value);
   }
 
-  function handleWorkspaceChange(event) {
-    setWorkspace(event.target.value);
+  function handleWorkspaceChange(value) {
+    setWorkspace(value);
   }
 
   function handleColorChange(color) {
-    setColor(color.hex);
+    setColor(color);
   }
 
   function handleSave() {
@@ -100,6 +100,7 @@ function AddPersonalTask() {
     console.log(deadlineHour);
     console.log(selected);
     console.log(workspace);
+    console.log(color);
     console.log(notification);
     closeModal();
   }

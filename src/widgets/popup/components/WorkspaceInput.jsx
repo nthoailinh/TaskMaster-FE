@@ -14,12 +14,13 @@ const defaultOptions = workspaces.map(({ name, color }) =>
   createOption(name, color)
 );
 
-export function WorkspaceInput({ values, onChange }) {
+export function WorkspaceInput({ values, onChanges }) {
+  const { workspace, color } = values;
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(workspace);
   const [showColorPicker, setShowColorPicker] = useState(false);
-  const [selectedColor, setSelectedColor] = useState("#2296f4");
+  const [selectedColor, setSelectedColor] = useState(color);
   const colorPickerRef = useRef();
 
   const handleCreate = (inputValue) => {
@@ -32,13 +33,16 @@ export function WorkspaceInput({ values, onChange }) {
 
   const handleValueChange = (newValue) => {
     setValue(newValue);
+    onChanges.handleWorkspaceChange(newValue.label);
     if (newValue && newValue.color) {
       setSelectedColor(newValue.color);
+      onChanges.handleColorChange(newValue.color);
     }
   };
 
   const handleColorChange = (color) => {
     setSelectedColor(color.hex);
+    onChanges.handleColorChange(color.hex);
   };
 
   const toggleColorPicker = () => {
