@@ -4,12 +4,15 @@ import CreatableSelect from "react-select/creatable";
 import { SketchPicker } from "react-color";
 import { workspaces } from "@/data";
 
-const createOption = (label) => ({
+const createOption = (label, color) => ({
   label,
   value: label.toLowerCase().replace(/\W/g, ""),
+  color,
 });
 
-const defaultOptions = workspaces.map(({ name }) => createOption(name));
+const defaultOptions = workspaces.map(({ name, color }) =>
+  createOption(name, color)
+);
 
 export function WorkspaceInput({ values, onChange }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +28,13 @@ export function WorkspaceInput({ values, onChange }) {
     setIsLoading(false);
     setOptions((prev) => [...prev, newOption]);
     setValue(newOption);
+  };
+
+  const handleValueChange = (newValue) => {
+    setValue(newValue);
+    if (newValue && newValue.color) {
+      setSelectedColor(newValue.color);
+    }
   };
 
   const handleColorChange = (color) => {
@@ -59,7 +69,7 @@ export function WorkspaceInput({ values, onChange }) {
           isClearable
           isDisabled={isLoading}
           isLoading={isLoading}
-          onChange={(newValue) => setValue(newValue)}
+          onChange={handleValueChange}
           onCreateOption={handleCreate}
           options={options}
           value={value}
