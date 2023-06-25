@@ -8,17 +8,11 @@ import {
   PrioritySelect,
   TagInput,
   TaskNameInput,
-  ToggleNotification,
   GroupSelect,
   MemberSelect,
 } from "./components";
 
-const priorityOptions = [
-  "Quan trọng - Khẩn cấp",
-  "Quan trọng - Không khẩn cấp",
-  "Không quan trọng - Khẩn cấp",
-  "Không quan trọng - Không khẩn cấp",
-];
+const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
 const groupOptions = ["Nhóm 1", "Nhóm 2"];
 const memberOptions = ["Phan Minh Anh Tuấn", "Nguyễn Thị Hoài Linh"];
@@ -178,6 +172,14 @@ function AddGroupTask() {
                     value={member}
                     onChange={handleMemberChange}
                   />
+                  <div className="mt-8 flex space-x-10">
+                    <PrioritySelect
+                      priorityOptions={priorityOptions}
+                      value={selected}
+                      onChange={handlePriorityChange}
+                    />
+                    <TagInput value={tag} onChange={handleTagChange} />
+                  </div>
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
                     startTimeHour={startTimeHour}
@@ -189,19 +191,6 @@ function AddGroupTask() {
                     handleEndTimeHourChange={handleEndTimeHourChange}
                     handleDeadlineDayChange={handleDeadlineDayChange}
                     handleDeadlineHourChange={handleDeadlineHourChange}
-                  />
-                  <div className="mt-8 flex space-x-10">
-                    <PrioritySelect
-                      priorityOptions={priorityOptions}
-                      value={selected}
-                      onChange={handlePriorityChange}
-                    />
-                    <TagInput value={tag} onChange={handleTagChange} />
-                  </div>
-
-                  <ToggleNotification
-                    value={notification}
-                    onChange={setNotification}
                   />
 
                   <div className="flex justify-center mt-8 pt-8">

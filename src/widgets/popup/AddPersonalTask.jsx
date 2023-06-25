@@ -8,15 +8,9 @@ import {
   PrioritySelect,
   TagInput,
   TaskNameInput,
-  ToggleNotification,
 } from "./components";
 
-const priorityOptions = [
-  "Quan trọng - Khẩn cấp",
-  "Quan trọng - Không khẩn cấp",
-  "Không quan trọng - Khẩn cấp",
-  "Không quan trọng - Không khẩn cấp",
-];
+const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
 function AddPersonalTask() {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,10 +98,10 @@ function AddPersonalTask() {
         <img
           src="/public/img/user.png"
           alt="Cá nhân"
-          width="175"
-          height="210"
+          width="166"
+          height="200"
         />
-        <figcaption className="text-center font-medium pt-5 text-xl">
+        <figcaption className="text-center font-medium pt-6 text-xl">
           Cá nhân
         </figcaption>
       </figure>
@@ -152,10 +146,21 @@ function AddPersonalTask() {
                     value={taskName}
                     onChange={handleTaskNameChange}
                   />
+                  
                   <DescriptionInput
                     value={description}
                     onChange={handleDescriptionChange}
                   />
+
+                  <div className="mt-8 flex space-x-10">
+                    <PrioritySelect
+                      priorityOptions={priorityOptions}
+                      value={selected}
+                      onChange={handlePriorityChange}
+                    />
+                    <TagInput value={tag} onChange={handleTagChange} />
+                  </div>
+
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
                     startTimeHour={startTimeHour}
@@ -167,19 +172,6 @@ function AddPersonalTask() {
                     handleEndTimeHourChange={handleEndTimeHourChange}
                     handleDeadlineDayChange={handleDeadlineDayChange}
                     handleDeadlineHourChange={handleDeadlineHourChange}
-                  />
-                  <div className="mt-8 flex space-x-10">
-                    <PrioritySelect
-                      priorityOptions={priorityOptions}
-                      value={selected}
-                      onChange={handlePriorityChange}
-                    />
-                    <TagInput value={tag} onChange={handleTagChange} />
-                  </div>
-
-                  <ToggleNotification
-                    value={notification}
-                    onChange={setNotification}
                   />
 
                   <div className="flex justify-center mt-8 pt-8">
