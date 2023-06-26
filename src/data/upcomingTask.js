@@ -1,6 +1,6 @@
 export const upcomingTask = [
   {
-    color: "blue",
+    color: "#2196f3",
     taskName: "GR1",
     workspace: "Hust",
     time: {
@@ -16,7 +16,7 @@ export const upcomingTask = [
     rating: 1,
   },
   {
-    color: "blue",
+    color: "#2196f3",
     taskName: "Vẽ nguyên mẫu giao diện",
     workspace: "Hust",
     time: {
@@ -33,7 +33,7 @@ export const upcomingTask = [
     rating: 2,
   },
   {
-    color: "green",
+    color: "#ffeb3a",
     taskName: "AWS Spot Instance",
     workspace: "Clevai",
     time: {
@@ -49,7 +49,7 @@ export const upcomingTask = [
     rating: 5,
   },
   {
-    color: "orange",
+    color: "#f34336",
     taskName: "Họp dự án ACR",
     workspace: "Vbee",
     time: {
@@ -65,7 +65,7 @@ export const upcomingTask = [
     rating: 4,
   },
   {
-    color: "blue",
+    color: "#2196f3",
     taskName: "Viết báo cáo PTTKHT",
     workspace: "Hust",
     time: {
@@ -81,7 +81,7 @@ export const upcomingTask = [
     rating: 1,
   },
   {
-    color: "blue",
+    color: "#2196f3",
     taskName: "Làm bài tập lớn IntroAI",
     workspace: "Hust",
     time: {
@@ -97,7 +97,7 @@ export const upcomingTask = [
     rating: 2,
   },
   {
-    color: "red",
+    color: "#f34336",
     taskName: "Học flutter",
     workspace: "Vbee",
     time: {
@@ -113,7 +113,7 @@ export const upcomingTask = [
     rating: 5,
   },
   {
-    color: "yellow",
+    color: "#ffeb3a",
     taskName: "Phát triển mô hình ML mới",
     workspace: "BKC",
     time: {
@@ -130,7 +130,7 @@ export const upcomingTask = [
     rating: 4,
   },
   {
-    color: "yellow",
+    color: "#ffeb3a",
     taskName: "Học keras",
     workspace: "BKC",
     time: {

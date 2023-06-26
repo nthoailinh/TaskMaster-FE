@@ -9,8 +9,6 @@ import {
   WorkspaceInput,
   TaskNameInput,
 } from "./components";
-import fs from "fs";
-import { upcomingTask } from "@/data";
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
@@ -90,14 +88,32 @@ function AddPersonalTask() {
   }
 
   function handleSave() {
-    const newTask = {
+    const newPersonalTask = {
       color: color,
       taskName: taskName,
       workspace: workspace,
       time: {
-        
-      }
-    }
+        startTime: {
+          hour: startTimeHour,
+          day: startTimeDay,
+        },
+        endTime: {
+          hour: endTimeHour,
+          day: endTimeDay,
+        },
+        deadline: {
+          hour: deadlineHour,
+          day: deadlineDay,
+        },
+      },
+      description: description,
+      footer: {
+        priority: selected,
+        status: "Chưa hoàn thành",
+      },
+      type: "Personal",
+      rating: 0,
+    };
     closeModal();
   }
 
