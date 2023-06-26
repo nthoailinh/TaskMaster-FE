@@ -5,7 +5,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function GroupSelect({ groupOptions, value, onChange }) {
   return (
-    <div className="mt-8">
+    <div className="mt-6">
       <Listbox value={value} onChange={onChange}>
         <Listbox.Label>
           <Typography className="font-normal">Chọn nhóm</Typography>
