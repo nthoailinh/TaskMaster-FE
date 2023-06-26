@@ -90,7 +90,6 @@ function AddPersonalTask() {
   }
 
   function handleSave() {
-    console.log(workspace);
     const newPersonalTask = {
       color: color,
       taskName: taskName,

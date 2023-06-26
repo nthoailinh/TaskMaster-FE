@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { TaskContext } from "@/context/TaskContext";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -18,6 +19,7 @@ const groupOptions = ["Nhóm 1", "Nhóm 2"];
 const memberOptions = ["Phan Minh Anh Tuấn", "Nguyễn Thị Hoài Linh"];
 
 function AddGroupTask() {
+  const { addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
@@ -25,12 +27,13 @@ function AddGroupTask() {
   const [member, setMember] = useState(memberOptions[0]);
   const [startTimeDay, setStartTimeDay] = useState("");
   const [startTimeHour, setStartTimeHour] = useState("");
+  const [endTimeDay, setEndTimeDay] = useState("");
   const [endTimeHour, setEndTimeHour] = useState("");
   const [deadlineDay, setDeadlineDay] = useState("");
   const [deadlineHour, setDeadlineHour] = useState("");
   const [selected, setSelected] = useState(priorityOptions[0]);
-  const [workspace, setworkspace] = useState("");
-  const [notification, setNotification] = useState(false);
+  const [workspace, setWorkspace] = useState("");
+  const [color, setColor] = useState("#2296f4");
 
   function closeModal() {
     setIsOpen(false);
@@ -38,11 +41,11 @@ function AddGroupTask() {
     setDescription("");
     setStartTimeDay("");
     setStartTimeHour("");
+    setEndTimeDay("");
     setEndTimeHour("");
     setDeadlineDay("");
     setDeadlineHour("");
-    setworkspace("");
-    setNotification(false);
+    setWorkspace("");
   }
 
   function openModal() {
@@ -73,6 +76,10 @@ function AddGroupTask() {
     setStartTimeHour(event.target.value);
   }
 
+  function handleEndTimeDayChange(event) {
+    setEndTimeDay(event.target.value);
+  }
+
   function handleEndTimeHourChange(event) {
     setEndTimeHour(event.target.value);
   }
@@ -89,23 +96,44 @@ function AddGroupTask() {
     setSelected(value);
   }
 
-  function handleworkspaceChange(event) {
-    setworkspace(event.target.value);
+  function handleWorkspaceChange(value) {
+    setWorkspace(value);
+  }
+
+  function handleColorChange(color) {
+    setColor(color);
   }
 
   function handleSave() {
-    console.log(taskName);
-    console.log(description);
-    console.log(group);
-    console.log(member);
-    console.log(startTimeDay);
-    console.log(startTimeHour);
-    console.log(endTimeHour);
-    console.log(deadlineDay);
-    console.log(deadlineHour);
-    console.log(selected);
-    console.log(workspace);
-    console.log(notification);
+    const newGroupTask = {
+      color: color,
+      taskName: taskName,
+      workspace: workspace,
+      time: {
+        startTime: {
+          hour: startTimeHour,
+          day: startTimeDay,
+        },
+        endTime: {
+          hour: endTimeHour,
+          day: endTimeDay,
+        },
+        deadline: {
+          hour: deadlineHour,
+          day: deadlineDay,
+        },
+      },
+      description: description,
+      footer: {
+        priority: selected,
+        status: "Chưa hoàn thành",
+      },
+      type: "Group",
+      group: group,
+      member: member,
+      rating: 0,
+    };
+    addTask(newGroupTask);
     closeModal();
   }
 
@@ -143,7 +171,7 @@ function AddGroupTask() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Typography variant="h3" color="gray" className="pt-12">
                       Thêm công việc nhóm
@@ -158,45 +186,52 @@ function AddGroupTask() {
                     value={taskName}
                     onChange={handleTaskNameChange}
                   />
+
                   <DescriptionInput
                     value={description}
                     onChange={handleDescriptionChange}
                   />
+
                   <GroupSelect
                     groupOptions={groupOptions}
                     value={group}
                     onChange={handleGroupChange}
                   />
+
                   <MemberSelect
                     memberOptions={memberOptions}
                     value={member}
                     onChange={handleMemberChange}
                   />
-                  <div className="mt-8 flex space-x-10">
+
+                  <div className="mt-6 flex">
                     <PrioritySelect
                       priorityOptions={priorityOptions}
                       value={selected}
                       onChange={handlePriorityChange}
                     />
                     <WorkspaceInput
-                      value={workspace}
-                      onChange={handleworkspaceChange}
+                      values={{ workspace, color }}
+                      onChanges={{ handleWorkspaceChange, handleColorChange }}
                     />
                   </div>
+
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
                     startTimeHour={startTimeHour}
+                    endTimeDay={endTimeDay}
                     endTimeHour={endTimeHour}
                     deadlineDay={deadlineDay}
                     deadlineHour={deadlineHour}
                     handleStartTimeDayChange={handleStartTimeDayChange}
                     handleStartTimeHourChange={handleStartTimeHourChange}
+                    handleEndTimeDayChange={handleEndTimeDayChange}
                     handleEndTimeHourChange={handleEndTimeHourChange}
                     handleDeadlineDayChange={handleDeadlineDayChange}
                     handleDeadlineHourChange={handleDeadlineHourChange}
                   />
 
-                  <div className="flex justify-center mt-8 pt-8">
+                  <div className="flex justify-center mt-8 pt-6">
                     <Button
                       onClick={handleSave}
                       color="blue"
