@@ -1,23 +1,19 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Avatar, Button, Typography } from "@material-tailwind/react";
-import { upcomingTask } from "@/data";
 import { TaskCard } from "@/widgets/cards";
 import { useMaterialTailwindController } from "@/context";
 import { format, isToday } from "date-fns";
+import { TaskContext } from "@/context/TaskContext";
 
 const Stepper = () => {
+  const { upcomingTasks } = useContext(TaskContext);
   const [activeStep, setActiveStep] = useState(0);
-  const [tasks, setTasks] = useState(upcomingTask);
   const currentDate = new Date();
   const formattedDate = isToday(currentDate)
     ? `Hôm nay, ${format(currentDate, "dd/MM/yyyy")}`
     : format(currentDate, "'Ngày' dd/MM/yyyy");
-
-  useEffect(() => {
-    setTasks(upcomingTask);
-  }, [upcomingTask]);
 
   const handleStepClick = (stepIndex) => {
     setActiveStep(stepIndex);
@@ -30,7 +26,7 @@ const Stepper = () => {
           <Typography className="font-bold">To do list</Typography>
           <Typography>{formattedDate}</Typography>
         </div>
-        {tasks
+        {upcomingTasks
           .filter(({ footer }) => footer.status === "Chưa hoàn thành")
           .slice(0, 3)
           .map(

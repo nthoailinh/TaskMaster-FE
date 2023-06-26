@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { TaskContext } from "@/context/TaskContext";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -13,6 +14,7 @@ import {
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
 function AddPersonalTask() {
+  const { addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
@@ -114,6 +116,7 @@ function AddPersonalTask() {
       type: "Personal",
       rating: 0,
     };
+    addTask(newPersonalTask);
     closeModal();
   }
 

@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { DetailHeader } from "@/widgets/layout";
-import { upcomingTask, horizontalBarChartsData } from "@/data";
+import { horizontalBarChartsData } from "@/data";
+import { TaskContext } from "@/context/TaskContext";
 import { HorizontalBarChart } from "@/widgets/charts";
 
 export function DetailPersonal() {
+  const { upcomingTasks } = useContext(TaskContext);
   const [chartsData, setChartsData] = useState([]);
   useEffect(() => {
     setChartsData(horizontalBarChartsData);
   }, []);
-  const completedTask = upcomingTask.filter(
+  const completedTask = upcomingTasks.filter(
     (task) => task.footer.status === "Đã hoàn thành" && task.type === "Personal"
   ).length;
-  const newTask = upcomingTask.filter(
+  const newTask = upcomingTasks.filter(
     (task) => task.footer.status !== "Đã hoàn thành" && task.type === "Personal"
   ).length;
   return (
