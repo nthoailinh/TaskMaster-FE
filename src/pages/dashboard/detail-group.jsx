@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DetailHeader } from "@/widgets/layout";
-import { upcomingTask } from "@/data";
+import { TaskContext } from "@/context/TaskContext";
 
 export function DetailGroup() {
-  const completedTask = upcomingTask.filter(
+  const { upcomingTasks } = useContext(TaskContext);
+  const completedTask = upcomingTasks.filter(
     (task) => task.footer.status === "Đã hoàn thành" && task.type === "Group"
   ).length;
-  const newTask = upcomingTask.filter(
+  const newTask = upcomingTasks.filter(
     (task) => task.footer.status !== "Đã hoàn thành" && task.type === "Group"
   ).length;
   return (

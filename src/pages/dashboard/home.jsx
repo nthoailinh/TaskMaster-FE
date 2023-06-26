@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Typography,
   Card,
@@ -8,11 +8,12 @@ import {
 } from "@material-tailwind/react";
 import { TaskCardShort } from "@/widgets/cards";
 import { DoughnutChart } from "@/widgets/charts";
-import { upcomingTask, halfDoughnutChartsData } from "@/data";
+import { halfDoughnutChartsData } from "@/data";
 import { useNavigate } from "react-router-dom";
+import { TaskContext } from "@/context/TaskContext";
 
 export function Home() {
-  const [tasks, setTasks] = useState([]);
+  const { upcomingTasks } = useContext(TaskContext);
   const [chartsData, setChartsData] = useState([]);
   const navigate = useNavigate();
   function handleClickDetail() {
@@ -20,7 +21,6 @@ export function Home() {
   }
 
   useEffect(() => {
-    setTasks(upcomingTask);
     setChartsData(halfDoughnutChartsData);
   }, []);
 
@@ -66,7 +66,7 @@ export function Home() {
           <CardBody>
             <div className="p-5">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4">
-                {tasks
+                {upcomingTasks
                   .filter(({ footer }) => footer.status === "Chưa hoàn thành")
                   .map(({ workspace, taskName, time, ...rest }) => {
                     return (

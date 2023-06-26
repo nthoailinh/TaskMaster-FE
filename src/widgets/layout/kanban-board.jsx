@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Typography } from "@material-tailwind/react";
 import { TaskCard } from "@/widgets/cards";
-import { upcomingTask } from "@/data";
+import { TaskContext } from "@/context/TaskContext";
 
 const kanbanColumns = [
   {
@@ -19,11 +19,7 @@ const kanbanColumns = [
 ];
 
 export const KanbanBoard = ({ type }) => {
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    setTasks(upcomingTask);
-  }, []);
+  const { upcomingTasks } = useContext(TaskContext);
 
   return (
     <div className="flex space-x-7">
@@ -34,7 +30,7 @@ export const KanbanBoard = ({ type }) => {
         >
           <h2 className="text-lg font-bold mb-4 py-0.5">{element.title}</h2>
           <hr className="my-2" />
-          {tasks
+          {upcomingTasks
             .filter(
               (task) =>
                 task.footer.status === element.status && task.type === type
