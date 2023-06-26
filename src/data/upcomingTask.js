@@ -1,8 +1,8 @@
 export const upcomingTask = [
   {
-    color: "blue",
-    title: "GR1",
-    tag: "Hust",
+    color: "#2196f3",
+    taskName: "GR1",
+    workspace: "Hust",
     time: {
       hour: "15:00 PM",
       day: "02/08/2023",
@@ -16,9 +16,9 @@ export const upcomingTask = [
     rating: 1,
   },
   {
-    color: "blue",
-    title: "Vẽ nguyên mẫu giao diện",
-    tag: "Hust",
+    color: "#2196f3",
+    taskName: "Vẽ nguyên mẫu giao diện",
+    workspace: "Hust",
     time: {
       hour: "15:00 PM",
       day: "02/06/2023",
@@ -33,9 +33,9 @@ export const upcomingTask = [
     rating: 2,
   },
   {
-    color: "green",
-    title: "AWS Spot Instance",
-    tag: "Clevai",
+    color: "#ffeb3a",
+    taskName: "AWS Spot Instance",
+    workspace: "Clevai",
     time: {
       hour: "17:00 PM",
       day: "02/06/2023",
@@ -49,9 +49,9 @@ export const upcomingTask = [
     rating: 5,
   },
   {
-    color: "orange",
-    title: "Họp dự án ACR",
-    tag: "Vbee",
+    color: "#f34336",
+    taskName: "Họp dự án ACR",
+    workspace: "Vbee",
     time: {
       hour: "18:00 PM",
       day: "02/06/2023",
@@ -65,9 +65,9 @@ export const upcomingTask = [
     rating: 4,
   },
   {
-    color: "blue",
-    title: "Viết báo cáo PTTKHT",
-    tag: "Hust",
+    color: "#2196f3",
+    taskName: "Viết báo cáo PTTKHT",
+    workspace: "Hust",
     time: {
       hour: "07:00 AM",
       day: "02/06/2023",
@@ -81,9 +81,9 @@ export const upcomingTask = [
     rating: 1,
   },
   {
-    color: "blue",
-    title: "Làm bài tập lớn IntroAI",
-    tag: "Hust",
+    color: "#2196f3",
+    taskName: "Làm bài tập lớn IntroAI",
+    workspace: "Hust",
     time: {
       hour: "15:00 PM",
       day: "02/05/2023",
@@ -97,9 +97,9 @@ export const upcomingTask = [
     rating: 2,
   },
   {
-    color: "red",
-    title: "Học flutter",
-    tag: "Vbee",
+    color: "#f34336",
+    taskName: "Học flutter",
+    workspace: "Vbee",
     time: {
       hour: "00:00 PM",
       day: "15/07/2023",
@@ -113,9 +113,9 @@ export const upcomingTask = [
     rating: 5,
   },
   {
-    color: "yellow",
-    title: "Phát triển mô hình ML mới",
-    tag: "BKC",
+    color: "#ffeb3a",
+    taskName: "Phát triển mô hình ML mới",
+    workspace: "BKC",
     time: {
       hour: "00:00 PM",
       day: "15/08/2023",
@@ -130,9 +130,9 @@ export const upcomingTask = [
     rating: 4,
   },
   {
-    color: "yellow",
-    title: "Học keras",
-    tag: "BKC",
+    color: "#ffeb3a",
+    taskName: "Học keras",
+    workspace: "BKC",
     time: {
       hour: "00:00 PM",
       day: "23/10/2023",

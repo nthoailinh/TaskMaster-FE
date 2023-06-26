@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Card, CardHeader, Button } from "@material-tailwind/react";
+import {
+  Typography,
+  Card,
+  CardHeader,
+  Button,
+  CardBody,
+} from "@material-tailwind/react";
 import { TaskCardShort } from "@/widgets/cards";
 import { DoughnutChart } from "@/widgets/charts";
 import { upcomingTask, halfDoughnutChartsData } from "@/data";
@@ -20,7 +26,7 @@ export function Home() {
 
   return (
     <div className="mt-4">
-      <div className="mb-6 grid grid-cols-1 gap-6">
+      <div className="mb-3 grid grid-cols-1 gap-6">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
@@ -42,30 +48,33 @@ export function Home() {
           </CardHeader>
         </Card>
       </div>
-      <div className="mb-14 grid grid-cols-1 gap-6">
+      <div className="mb-10">
         <Card className="overflow-hidden">
           <CardHeader
             floated={false}
             shadow={false}
             color="transparent"
-            className="m-0 flex items-center justify-between p-6"
+            className="m-0 flex items-center justify-between pt-6 pl-6 pb-2"
           >
             <div>
               <Typography variant="h5" color="blue-gray" className="mb-1">
-                Các công việc <br className="hidden sm:inline" /> sắp hết hạn
+                Các công việc sắp hết hạn
               </Typography>
             </div>
+          </CardHeader>
+          <hr />
+          <CardBody>
             <div className="p-5">
-              <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4 ">
+              <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4">
                 {tasks
                   .filter(({ footer }) => footer.status === "Chưa hoàn thành")
-                  .map(({ tag, title, time, ...rest }) => {
+                  .map(({ workspace, taskName, time, ...rest }) => {
                     return (
                       <TaskCardShort
-                        key={title}
+                        key={taskName}
                         {...rest}
-                        title={title}
-                        tag={tag}
+                        taskName={taskName}
+                        workspace={workspace}
                         time={
                           <Typography className="font-normal text-blue-gray-600">
                             <span>Deadline</span>
@@ -81,10 +90,11 @@ export function Home() {
                   })}
               </div>
             </div>
-          </CardHeader>
+          </CardBody>
         </Card>
       </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
+
+      <div className="mb-1 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
         {chartsData.map((props) => (
           <DoughnutChart key={props.key} data={props} {...props} />
         ))}

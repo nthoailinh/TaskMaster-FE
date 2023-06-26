@@ -6,19 +6,13 @@ import {
   DateTimeInputs,
   DescriptionInput,
   PrioritySelect,
-  TagInput,
+  WorkspaceInput,
   TaskNameInput,
-  ToggleNotification,
   GroupSelect,
   MemberSelect,
 } from "./components";
 
-const priorityOptions = [
-  "Quan trọng - Khẩn cấp",
-  "Quan trọng - Không khẩn cấp",
-  "Không quan trọng - Khẩn cấp",
-  "Không quan trọng - Không khẩn cấp",
-];
+const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
 const groupOptions = ["Nhóm 1", "Nhóm 2"];
 const memberOptions = ["Phan Minh Anh Tuấn", "Nguyễn Thị Hoài Linh"];
@@ -35,7 +29,7 @@ function AddGroupTask() {
   const [deadlineDay, setDeadlineDay] = useState("");
   const [deadlineHour, setDeadlineHour] = useState("");
   const [selected, setSelected] = useState(priorityOptions[0]);
-  const [tag, setTag] = useState("");
+  const [workspace, setworkspace] = useState("");
   const [notification, setNotification] = useState(false);
 
   function closeModal() {
@@ -47,7 +41,7 @@ function AddGroupTask() {
     setEndTimeHour("");
     setDeadlineDay("");
     setDeadlineHour("");
-    setTag("");
+    setworkspace("");
     setNotification(false);
   }
 
@@ -95,8 +89,8 @@ function AddGroupTask() {
     setSelected(value);
   }
 
-  function handleTagChange(event) {
-    setTag(event.target.value);
+  function handleworkspaceChange(event) {
+    setworkspace(event.target.value);
   }
 
   function handleSave() {
@@ -110,7 +104,7 @@ function AddGroupTask() {
     console.log(deadlineDay);
     console.log(deadlineHour);
     console.log(selected);
-    console.log(tag);
+    console.log(workspace);
     console.log(notification);
     closeModal();
   }
@@ -178,6 +172,17 @@ function AddGroupTask() {
                     value={member}
                     onChange={handleMemberChange}
                   />
+                  <div className="mt-8 flex space-x-10">
+                    <PrioritySelect
+                      priorityOptions={priorityOptions}
+                      value={selected}
+                      onChange={handlePriorityChange}
+                    />
+                    <WorkspaceInput
+                      value={workspace}
+                      onChange={handleworkspaceChange}
+                    />
+                  </div>
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
                     startTimeHour={startTimeHour}
@@ -189,19 +194,6 @@ function AddGroupTask() {
                     handleEndTimeHourChange={handleEndTimeHourChange}
                     handleDeadlineDayChange={handleDeadlineDayChange}
                     handleDeadlineHourChange={handleDeadlineHourChange}
-                  />
-                  <div className="mt-8 flex space-x-10">
-                    <PrioritySelect
-                      priorityOptions={priorityOptions}
-                      value={selected}
-                      onChange={handlePriorityChange}
-                    />
-                    <TagInput value={tag} onChange={handleTagChange} />
-                  </div>
-
-                  <ToggleNotification
-                    value={notification}
-                    onChange={setNotification}
                   />
 
                   <div className="flex justify-center mt-8 pt-8">

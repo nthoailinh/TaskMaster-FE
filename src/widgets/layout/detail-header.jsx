@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardHeader, Button, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import routes from "@/routes";
-import { StarIcon, NewspaperIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 
 export function DetailHeader({ completedTask, newTask }) {
   const [selectedTab, setSelectedTab] = useState("personal");
@@ -51,8 +51,8 @@ export function DetailHeader({ completedTask, newTask }) {
               })}
             </div>
             <div className="col-span-1 flex items-center justify-center">
-              <Typography className="text-lg">
-                <StarIcon className="h-6 w-6 inline-block mr-2" />
+              <Typography className="text-lg font-normal text-blue-gray-600">
+                <CheckCircleIcon className="h-6 w-6 inline-block mr-2" />
                 Công việc đã hoàn thành
                 <span className="font-bold ml-8">
                   {completedTask.toString().padStart(2, "0")}
@@ -60,8 +60,8 @@ export function DetailHeader({ completedTask, newTask }) {
               </Typography>
             </div>
             <div className="col-span-1 flex items-center justify-center mr-12">
-              <Typography className="text-lg">
-                <NewspaperIcon className="h-6 w-6 inline-block mr-2" />
+              <Typography className="text-lg font-normal text-blue-gray-600">
+                <PlusCircleIcon className="h-6 w-6 inline-block mr-2" />
                 Công việc mới
                 <span className="font-bold ml-8">
                   {newTask.toString().padStart(2, "0")}

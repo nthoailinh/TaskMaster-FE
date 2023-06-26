@@ -5,7 +5,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function PrioritySelect({ priorityOptions, value, onChange }) {
   return (
-    <div className="w-96">
+    <div className="w-72 pr-4">
       <Listbox value={value} onChange={onChange}>
         <Listbox.Label>
           <Typography className="font-normal">Độ ưu tiên</Typography>
