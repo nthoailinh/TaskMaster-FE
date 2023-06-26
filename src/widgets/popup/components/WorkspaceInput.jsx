@@ -29,6 +29,7 @@ export function WorkspaceInput({ values, onChanges }) {
     setIsLoading(false);
     setOptions((prev) => [...prev, newOption]);
     setValue(newOption);
+    onChanges.handleWorkspaceChange(newOption.label);
   };
 
   const handleValueChange = (newValue) => {
@@ -92,7 +93,10 @@ export function WorkspaceInput({ values, onChanges }) {
           fullWidth
         ></Button>
         {showColorPicker && (
-          <div ref={colorPickerRef} className="transform -translate-x-32 translate-y-2">
+          <div
+            ref={colorPickerRef}
+            className="transform -translate-x-32 translate-y-2"
+          >
             <SketchPicker
               color={selectedColor}
               onChange={handleColorChange}
