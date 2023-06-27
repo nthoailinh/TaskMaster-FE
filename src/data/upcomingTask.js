@@ -20,7 +20,7 @@ export const upcomingTask = [
     description: "Áp dụng Machine Learning vào dự đoán lưu lượng mạng SDN",
     footer: {
       priority: "Không khẩn cấp",
-      status: "Đã hoàn thành",
+      status: "Đang thực hiện",
     },
     type: "Personal",
     rating: 1,
@@ -32,15 +32,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "15:00",
-        day: "02/06/2023",
+        day: "22/06/2023",
       },
       endTime: {
         hour: "16:00",
-        day: "03/06/2023",
+        day: "23/06/2023",
       },
       deadlineTime: {
         hour: "18:00",
-        day: "04/06/2023",
+        day: "24/06/2023",
       },
     },
     description:
@@ -59,15 +59,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "17:00",
-        day: "02/06/2023",
+        day: "22/06/2023",
       },
       endTime: {
         hour: "18:00",
-        day: "03/06/2023",
+        day: "23/06/2023",
       },
       deadlineTime: {
         hour: "19:00",
-        day: "05/06/2023",
+        day: "25/06/2023",
       },
     },
     description: "Hoàn thiện slide để trình bày tại Clevai",
@@ -85,15 +85,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "18:00",
-        day: "06/06/2023",
+        day: "26/06/2023",
       },
       endTime: {
         hour: "18:00",
-        day: "08/06/2023",
+        day: "28/06/2023",
       },
       deadlineTime: {
         hour: "18:00",
-        day: "09/06/2023",
+        day: "29/06/2023",
       },
     },
     description: "Thống nhất nguyên mẫu giao diện dự án ACR",
@@ -111,15 +111,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "07:00",
-        day: "18/06/2023",
+        day: "28/06/2023",
       },
       endTime: {
         hour: "08:00",
-        day: "19/06/2023",
+        day: "29/06/2023",
       },
       deadlineTime: {
         hour: "07:00",
-        day: "20/06/2023",
+        day: "30/06/2023",
       },
     },
     description: "Thêm biểu đồ lớp",
@@ -137,15 +137,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "15:00",
-        day: "02/05/2023",
+        day: "22/06/2023",
       },
       endTime: {
         hour: "17:00",
-        day: "07/05/2023",
+        day: "27/06/2023",
       },
       deadlineTime: {
         hour: "19:00",
-        day: "09/05/2023",
+        day: "29/06/2023",
       },
     },
     description: "Bài tập lớn tìm đường đi trên bản đồ",
@@ -163,15 +163,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "00:00",
-        day: "15/07/2023",
+        day: "25/06/2023",
       },
       endTime: {
         hour: "00:00",
-        day: "19/07/2023",
+        day: "29/06/2023",
       },
       deadlineTime: {
         hour: "00:00",
-        day: "20/07/2023",
+        day: "30/06/2023",
       },
     },
     description: "Học flutter để làm các dự án mobile của công ty",
@@ -189,15 +189,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "00:00",
-        day: "15/06/2023",
+        day: "25/06/2023",
       },
       endTime: {
         hour: "00:00",
-        day: "21/06/2023",
+        day: "01/07/2023",
       },
       deadlineTime: {
         hour: "00:00",
-        day: "25/06/2023",
+        day: "04/07/2023",
       },
     },
     description:
