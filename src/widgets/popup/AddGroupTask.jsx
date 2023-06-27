@@ -3,6 +3,7 @@ import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
+import { groups } from "@/data";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -14,9 +15,7 @@ import {
 } from "./components";
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
-
-const groupOptions = ["Nhóm 1", "Nhóm 2"];
-const memberOptions = ["Phan Minh Anh Tuấn", "Nguyễn Thị Hoài Linh"];
+const groupOptions = groups.map((group) => group.name); // Thay groupOptions bằng list các name trong groups
 
 function formatDate(dateString) {
   const dateParts = dateString.split("-");
@@ -33,6 +32,8 @@ function AddGroupTask() {
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
   const [group, setGroup] = useState(groupOptions[0]);
+  const selectedGroup = groups.find((grp) => grp.name === group);
+  const memberOptions = selectedGroup ? selectedGroup.members : [];
   const [member, setMember] = useState(memberOptions[0]);
   const [startTimeDay, setStartTimeDay] = useState("");
   const [startTimeHour, setStartTimeHour] = useState("");
@@ -71,6 +72,9 @@ function AddGroupTask() {
 
   function handleGroupChange(value) {
     setGroup(value);
+    const selectedGroup = groups.find((grp) => grp.name === value);
+    const memberOptions = selectedGroup ? selectedGroup.members : [];
+    setMember(memberOptions[0]);
   }
 
   function handleMemberChange(value) {
