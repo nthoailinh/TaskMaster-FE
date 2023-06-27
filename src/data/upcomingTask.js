@@ -6,15 +6,15 @@ export const upcomingTask = [
     time: {
       startTime: {
         hour: "15:00",
-        day: "02/08/2023",
+        day: "02/07/2023",
       },
       endTime: {
         hour: "18:00",
-        day: "03/08/2023",
+        day: "03/07/2023",
       },
       deadlineTime: {
         hour: "21:00",
-        day: "04/08/2023",
+        day: "04/07/2023",
       },
     },
     description: "Áp dụng Machine Learning vào dự đoán lưu lượng mạng SDN",

@@ -69,6 +69,7 @@ export const KanbanBoard = ({ type }) => {
                     <span>{task.footer.priority}</span>
                   </Typography>
                 }
+                enableRating={task.footer.status === "Đã hoàn thành"}
                 cardColor={`${
                   compareDates(task.time.endTime.day) ? "bg-red-100" : ""
                 }`}
