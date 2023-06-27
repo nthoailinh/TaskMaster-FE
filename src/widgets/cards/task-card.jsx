@@ -4,6 +4,7 @@ import {
   CardBody,
   CardFooter,
   Typography,
+  Rating,
 } from "@material-tailwind/react";
 
 function getBrightness(hexColor) {
@@ -56,10 +57,12 @@ export function TaskCard({
   description,
   color,
   footer,
+  enableRating,
   cardColor,
   fullWidth,
 }) {
   const isDarkBackground = getBrightness(color);
+
   return (
     <Card
       className={`w-64 ${cardColor}`}
@@ -82,7 +85,12 @@ export function TaskCard({
           {description}
         </Typography>
       </CardBody>
-      {footer && (
+      {enableRating ? (
+        <CardFooter className="border-blue-gray-50 p-4 flex items-center justify-between">
+          {footer}
+          <Rating unratedColor="amber" ratedColor="amber" />
+        </CardFooter>
+      ) : (
         <CardFooter className="border-blue-gray-50 p-4">{footer}</CardFooter>
       )}
     </Card>
