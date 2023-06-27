@@ -20,7 +20,7 @@ export const upcomingTask = [
     description: "Áp dụng Machine Learning vào dự đoán lưu lượng mạng SDN",
     footer: {
       priority: "Không khẩn cấp",
-      status: "Đang thực hiện",
+      status: "Đã hoàn thành",
     },
     type: "Personal",
     rating: 1,
