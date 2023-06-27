@@ -15,10 +15,6 @@ const Stepper = () => {
     ? `Hôm nay, ${format(currentDate, "dd/MM/yyyy")}`
     : format(currentDate, "'Ngày' dd/MM/yyyy");
 
-  const handleStepClick = (stepIndex) => {
-    setActiveStep(stepIndex);
-  };
-
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col gap-2">
@@ -40,14 +36,13 @@ const Stepper = () => {
                   index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-2 "
                 }`}
               >
-                <div className="mr-4">{time.hour}</div>
+                <div className="mr-4">{time.startTime.hour}</div>
                 <Button
                   className={`mr-4 rounded-full p-2 ${
                     activeStep === index
                       ? "bg-red-400 text-white"
                       : "bg-gray-400"
                   }`}
-                  onClick={() => handleStepClick(index)}
                 >
                   {index + 1}
                 </Button>

@@ -2,10 +2,20 @@ export const upcomingTask = [
   {
     color: "#2196f3",
     taskName: "GR1",
-    workspace: "Hust",
+    workspace: "HUST",
     time: {
-      hour: "15:00 PM",
-      day: "02/08/2023",
+      startTime: {
+        hour: "15:00",
+        day: "02/08/2023",
+      },
+      endTime: {
+        hour: "18:00",
+        day: "03/08/2023",
+      },
+      deadlineTime: {
+        hour: "21:00",
+        day: "04/08/2023",
+      },
     },
     description: "Áp dụng Machine Learning vào dự đoán lưu lượng mạng SDN",
     footer: {
@@ -18,10 +28,20 @@ export const upcomingTask = [
   {
     color: "#2196f3",
     taskName: "Vẽ nguyên mẫu giao diện",
-    workspace: "Hust",
+    workspace: "HUST",
     time: {
-      hour: "15:00 PM",
-      day: "02/06/2023",
+      startTime: {
+        hour: "15:00",
+        day: "02/06/2023",
+      },
+      endTime: {
+        hour: "16:00",
+        day: "03/06/2023",
+      },
+      deadlineTime: {
+        hour: "18:00",
+        day: "04/06/2023",
+      },
     },
     description:
       "Nguyên mẫu giao diện cho ứng dụng quản lý công việc TaskMaster",
@@ -37,8 +57,18 @@ export const upcomingTask = [
     taskName: "AWS Spot Instance",
     workspace: "Clevai",
     time: {
-      hour: "17:00 PM",
-      day: "02/06/2023",
+      startTime: {
+        hour: "17:00",
+        day: "02/06/2023",
+      },
+      endTime: {
+        hour: "18:00",
+        day: "03/06/2023",
+      },
+      deadlineTime: {
+        hour: "19:00",
+        day: "05/06/2023",
+      },
     },
     description: "Hoàn thiện slide để trình bày tại Clevai",
     footer: {
@@ -53,8 +83,18 @@ export const upcomingTask = [
     taskName: "Họp dự án ACR",
     workspace: "Vbee",
     time: {
-      hour: "18:00 PM",
-      day: "02/06/2023",
+      startTime: {
+        hour: "18:00",
+        day: "06/06/2023",
+      },
+      endTime: {
+        hour: "18:00",
+        day: "08/06/2023",
+      },
+      deadlineTime: {
+        hour: "18:00",
+        day: "09/06/2023",
+      },
     },
     description: "Thống nhất nguyên mẫu giao diện dự án ACR",
     footer: {
@@ -67,10 +107,20 @@ export const upcomingTask = [
   {
     color: "#2196f3",
     taskName: "Viết báo cáo PTTKHT",
-    workspace: "Hust",
+    workspace: "HUST",
     time: {
-      hour: "07:00 AM",
-      day: "02/06/2023",
+      startTime: {
+        hour: "07:00",
+        day: "18/06/2023",
+      },
+      endTime: {
+        hour: "08:00",
+        day: "19/06/2023",
+      },
+      deadlineTime: {
+        hour: "07:00",
+        day: "20/06/2023",
+      },
     },
     description: "Thêm biểu đồ lớp",
     footer: {
@@ -83,10 +133,20 @@ export const upcomingTask = [
   {
     color: "#2196f3",
     taskName: "Làm bài tập lớn IntroAI",
-    workspace: "Hust",
+    workspace: "HUST",
     time: {
-      hour: "15:00 PM",
-      day: "02/05/2023",
+      startTime: {
+        hour: "15:00",
+        day: "02/05/2023",
+      },
+      endTime: {
+        hour: "17:00",
+        day: "07/05/2023",
+      },
+      deadlineTime: {
+        hour: "19:00",
+        day: "09/05/2023",
+      },
     },
     description: "Bài tập lớn tìm đường đi trên bản đồ",
     footer: {
@@ -101,8 +161,18 @@ export const upcomingTask = [
     taskName: "Học flutter",
     workspace: "Vbee",
     time: {
-      hour: "00:00 PM",
-      day: "15/07/2023",
+      startTime: {
+        hour: "00:00",
+        day: "15/07/2023",
+      },
+      endTime: {
+        hour: "00:00",
+        day: "19/07/2023",
+      },
+      deadlineTime: {
+        hour: "00:00",
+        day: "20/07/2023",
+      },
     },
     description: "Học flutter để làm các dự án mobile của công ty",
     footer: {
@@ -117,8 +187,18 @@ export const upcomingTask = [
     taskName: "Phát triển mô hình ML mới",
     workspace: "BKC",
     time: {
-      hour: "00:00 PM",
-      day: "15/08/2023",
+      startTime: {
+        hour: "00:00",
+        day: "15/06/2023",
+      },
+      endTime: {
+        hour: "00:00",
+        day: "21/06/2023",
+      },
+      deadlineTime: {
+        hour: "00:00",
+        day: "25/06/2023",
+      },
     },
     description:
       "Phát triển mô hình ML mới để phục vụ nhân diện khuôn mặt dưới trời mưa",
@@ -134,8 +214,18 @@ export const upcomingTask = [
     taskName: "Học keras",
     workspace: "BKC",
     time: {
-      hour: "00:00 PM",
-      day: "23/10/2023",
+      startTime: {
+        hour: "00:00",
+        day: "23/06/2023",
+      },
+      endTime: {
+        hour: "00:00",
+        day: "26/06/2023",
+      },
+      deadlineTime: {
+        hour: "00:00",
+        day: "28/06/2023",
+      },
     },
     description: "Học keras để implement các mô hình sau quá trình nghiên cứu",
     footer: {

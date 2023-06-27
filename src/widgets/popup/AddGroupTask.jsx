@@ -18,6 +18,15 @@ const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 const groupOptions = ["Nhóm 1", "Nhóm 2"];
 const memberOptions = ["Phan Minh Anh Tuấn", "Nguyễn Thị Hoài Linh"];
 
+function formatDate(dateString) {
+  const dateParts = dateString.split("-");
+  const year = dateParts[0];
+  const month = dateParts[1];
+  const day = dateParts[2].trim();
+
+  return `${day}/${month}/${year}`;
+}
+
 function AddGroupTask() {
   const { addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -112,15 +121,15 @@ function AddGroupTask() {
       time: {
         startTime: {
           hour: startTimeHour,
-          day: startTimeDay,
+          day: formatDate(startTimeDay),
         },
         endTime: {
           hour: endTimeHour,
-          day: endTimeDay,
+          day: formatDate(endTimeDay),
         },
-        deadline: {
+        deadlineTime: {
           hour: deadlineHour,
-          day: deadlineDay,
+          day: formatDate(deadlineDay),
         },
       },
       description: description,

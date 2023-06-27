@@ -13,6 +13,15 @@ import {
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
+function formatDate(dateString) {
+  const dateParts = dateString.split("-");
+  const year = dateParts[0];
+  const month = dateParts[1];
+  const day = dateParts[2].trim();
+
+  return `${day}/${month}/${year}`;
+}
+
 function AddPersonalTask() {
   const { addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -90,6 +99,8 @@ function AddPersonalTask() {
   }
 
   function handleSave() {
+    console.log(deadlineDay);
+    console.log(deadlineHour);
     const newPersonalTask = {
       color: color,
       taskName: taskName,
@@ -97,15 +108,15 @@ function AddPersonalTask() {
       time: {
         startTime: {
           hour: startTimeHour,
-          day: startTimeDay,
+          day: formatDate(startTimeDay),
         },
         endTime: {
           hour: endTimeHour,
-          day: endTimeDay,
+          day: formatDate(endTimeDay),
         },
-        deadline: {
+        deadlineTime: {
           hour: deadlineHour,
-          day: deadlineDay,
+          day: formatDate(deadlineDay),
         },
       },
       description: description,

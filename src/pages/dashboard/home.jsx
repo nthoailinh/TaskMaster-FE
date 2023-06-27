@@ -80,7 +80,7 @@ export function Home() {
                             <span>Deadline</span>
                             <br />
                             <strong className="font-bold">
-                              {time.hour + " " + time.day}
+                              {time.deadlineTime.hour + " " + time.deadlineTime.day}
                             </strong>
                             &nbsp;
                           </Typography>
