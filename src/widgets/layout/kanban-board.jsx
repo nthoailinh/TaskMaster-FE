@@ -71,7 +71,7 @@ export const KanbanBoard = ({ type }) => {
                 }
                 enableRating={task.footer.status === "Đã hoàn thành"}
                 cardColor={`${
-                  compareDates(task.time.endTime.day) ? "bg-red-100" : ""
+                  compareDates(task.time.endTime.day) && task.footer.status !== "Đã hoàn thành" ? "bg-red-100" : ""
                 }`}
                 fullWidth={true}
               />
