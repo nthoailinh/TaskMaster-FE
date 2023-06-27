@@ -22,11 +22,11 @@ function getBrightness(hexColor) {
   return brightness < 0.5;
 }
 
-export function TaskCardShort({ color, workspace, taskName, time }) {
+export function TaskCardShort({ color, workspace, taskName, time, cardColor }) {
   const isDarkBackground = getBrightness(color);
 
   return (
-    <Card>
+    <Card className={`${cardColor}`}>
       <CardHeader
         style={{
           backgroundColor: color,

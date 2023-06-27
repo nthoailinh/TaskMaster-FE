@@ -220,11 +220,11 @@ export const upcomingTask = [
       },
       endTime: {
         hour: "00:00",
-        day: "26/06/2023",
+        day: "29/06/2023",
       },
       deadlineTime: {
         hour: "00:00",
-        day: "28/06/2023",
+        day: "30/06/2023",
       },
     },
     description: "Học keras để implement các mô hình sau quá trình nghiên cứu",
