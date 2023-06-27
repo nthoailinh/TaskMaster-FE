@@ -12,6 +12,28 @@ import { halfDoughnutChartsData } from "@/data";
 import { useNavigate } from "react-router-dom";
 import { TaskContext } from "@/context/TaskContext";
 
+function compareDates(dateString) {
+  const currentDate = new Date(); // Ngày hiện tại
+  const dateParts = dateString.split("/");
+
+  // Trích xuất ngày, tháng, năm từ chuỗi đầu vào
+  const day = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // Trừ 1 vì tháng trong đối tượng Date bắt đầu từ 0
+  const year = parseInt(dateParts[2], 10);
+
+  // Tạo đối tượng Date từ ngày trong chuỗi đầu vào
+  const inputDate = new Date(year, month, day);
+
+  // So sánh ngày đầu vào với ngày hiện tại
+  if (inputDate < currentDate) {
+    console.log("input:" + inputDate);
+    console.log(currentDate);
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export function Home() {
   const { upcomingTasks } = useContext(TaskContext);
   const [chartsData, setChartsData] = useState([]);
@@ -80,11 +102,16 @@ export function Home() {
                             <span>Deadline</span>
                             <br />
                             <strong className="font-bold">
-                              {time.deadlineTime.hour + " " + time.deadlineTime.day}
+                              {time.deadlineTime.hour +
+                                " " +
+                                time.deadlineTime.day}
                             </strong>
                             &nbsp;
                           </Typography>
                         }
+                        cardColor={`${
+                          compareDates(time.endTime.day) ? "bg-red-100" : ""
+                        }`}
                       />
                     );
                   })}

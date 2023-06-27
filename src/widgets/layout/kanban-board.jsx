@@ -18,6 +18,28 @@ const kanbanColumns = [
   },
 ];
 
+function compareDates(dateString) {
+  const currentDate = new Date(); // Ngày hiện tại
+  const dateParts = dateString.split("/");
+
+  // Trích xuất ngày, tháng, năm từ chuỗi đầu vào
+  const day = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // Trừ 1 vì tháng trong đối tượng Date bắt đầu từ 0
+  const year = parseInt(dateParts[2], 10);
+
+  // Tạo đối tượng Date từ ngày trong chuỗi đầu vào
+  const inputDate = new Date(year, month, day);
+
+  // So sánh ngày đầu vào với ngày hiện tại
+  if (inputDate < currentDate) {
+    console.log("input:" + inputDate);
+    console.log(currentDate);
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export const KanbanBoard = ({ type }) => {
   const { upcomingTasks } = useContext(TaskContext);
 
@@ -47,6 +69,9 @@ export const KanbanBoard = ({ type }) => {
                     <span>{task.footer.priority}</span>
                   </Typography>
                 }
+                cardColor={`${
+                  compareDates(task.time.endTime.day) ? "bg-red-100" : ""
+                }`}
                 fullWidth={true}
               />
             ))}
