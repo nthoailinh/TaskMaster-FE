@@ -4,6 +4,7 @@ import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
 import { workspaces } from "@/data";
+import API_URL from "@/constants";
 import axios from "axios";
 import {
   DateTimeInputs,
@@ -129,7 +130,7 @@ function AddPersonalTask() {
     };
     addTask(newPersonalTask);
     axios
-      .post("http://localhost:3000/tasks", newPersonalTask)
+      .post(`${API_URL}/tasks`, newPersonalTask)
       .then((response) => {
         console.log(response.data);
       })

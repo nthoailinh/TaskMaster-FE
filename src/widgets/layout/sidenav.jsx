@@ -33,7 +33,7 @@ const Stepper = () => {
               <div
                 key={index}
                 className={`my-3 flex items-center pl-4 pb-1 pr-1 ${
-                  index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-2 "
+                  index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-5 "
                 }`}
               >
                 <div className="mr-4">{time.startTime.hour}</div>
