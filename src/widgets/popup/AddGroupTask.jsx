@@ -59,6 +59,11 @@ function AddGroupTask() {
     setDeadlineDay("");
     setDeadlineHour("");
     setWorkspace("");
+    setGroup("");
+    setGroups([""]);
+    setSelectedGroup([""]);
+    setGroupOptions([""]);
+    setMemberOptions([""]);
   }
 
   function openModal() {
