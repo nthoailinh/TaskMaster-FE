@@ -26,8 +26,6 @@ function compareDates(dateString) {
 
   // So sánh ngày đầu vào với ngày hiện tại
   if (inputDate < currentDate) {
-    console.log("input:" + inputDate);
-    console.log(currentDate);
     return true;
   } else {
     return false;

@@ -3,6 +3,7 @@ import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
+import axios from "axios";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -99,8 +100,6 @@ function AddPersonalTask() {
   }
 
   function handleSave() {
-    console.log(deadlineDay);
-    console.log(deadlineHour);
     const newPersonalTask = {
       color: color,
       taskName: taskName,
@@ -128,6 +127,15 @@ function AddPersonalTask() {
       rating: 0,
     };
     addTask(newPersonalTask);
+    axios
+      .post("http://localhost:3000/tasks", newPersonalTask)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     closeModal();
   }
 

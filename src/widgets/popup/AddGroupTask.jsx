@@ -4,6 +4,7 @@ import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
 import { groups } from "@/data";
+import axios from "axios";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -147,6 +148,14 @@ function AddGroupTask() {
       rating: 0,
     };
     addTask(newGroupTask);
+    axios
+      .post("http://localhost:3000/tasks", newGroupTask)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     closeModal();
   }
 
