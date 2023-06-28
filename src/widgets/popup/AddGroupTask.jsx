@@ -5,6 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
 import { workspaces, users } from "@/data";
 import axios from "axios";
+import API_URL from "@/constants";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -216,7 +217,7 @@ function AddGroupTask() {
     };
     addTask(newGroupTask);
     axios
-      .post("http://localhost:3000/tasks", newGroupTask)
+      .post(`${API_URL}/tasks`, newGroupTask)
       .then((response) => {
         console.log(response.data);
       })

@@ -8,15 +8,17 @@ export function Dashboard() {
   const { sidenavType } = controller;
 
   return (
-    <div className="min-h-screen bg-blue-gray-50/50">
-      <Sidenav
-        routes={routes}
-        brandImg={
-          sidenavType === "white" ? "/img/girl.png" : "/img/logo-ct-dark.png"
-        }
-        brandName="Nguyễn Thị Hoài Linh"
-      />
-      <div className="p-4 xl:ml-96 pl-32">
+    <div className="min-h-screen bg-blue-gray-50/50 grid grid-cols-12">
+      <div className="col-span-3">
+        <Sidenav
+          routes={routes}
+          brandImg={
+            sidenavType === "white" ? "/img/girl.png" : "/img/logo-ct-dark.png"
+          }
+          brandName="Nguyễn Thị Hoài Linh"
+        />
+      </div>
+      <div className="col-span-9 p-4 pl-12">
         <DashboardNavbar />
         <Routes>
           {routes.map(

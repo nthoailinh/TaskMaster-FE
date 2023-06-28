@@ -378,7 +378,7 @@
         "status": "Đã hoàn thành"
       },
       "type": "Group",
-      "rating": 3
+      "rating": 4
     },
     {
       "id": 7,
@@ -463,52 +463,50 @@
     },
     {
       "color": "#f34336",
-      "taskName": "Hoàn thiện API",
+      "taskName": "Xin chào",
       "workspace": "Vbee",
       "time": {
         "startTime": {
-          "hour": "11:01",
-          "day": "30/06/2023"
+          "hour": "01:14",
+          "day": "11/06/2023"
         },
         "endTime": {
-          "hour": "11:06",
-          "day": "06/07/2023"
+          "hour": "03:12",
+          "day": "30/06/2023"
         },
         "deadlineTime": {
-          "hour": "16:01",
-          "day": "14/06/2023"
+          "hour": "01:12",
+          "day": "30/06/2023"
         }
       },
-      "description": "API đăng ký học phần tự động",
+      "description": "Hello",
       "footer": {
         "priority": "Khẩn cấp",
         "status": "Chưa hoàn thành"
       },
-      "type": "Group",
-      "group": "Nhóm ACR",
-      "member": "Phan Minh Anh Tuấn",
+      "type": "Personal",
       "rating": 0,
       "id": 10
     },
     {
       "color": "#2196f3",
-      "taskName": "ABC",
+      "taskName": "Việc nhóm",
       "workspace": "HUST",
       "time": {
         "startTime": {
-          "hour": "21:15",
-          "day": "28/06/2023"
+          "hour": "01:14",
+          "day": "10/06/2023"
         },
         "endTime": {
-          "hour": "02:13",
+          "hour": "06:13",
           "day": "30/06/2023"
         },
         "deadlineTime": {
-          "hour": "21:17",
+          "hour": "01:17",
           "day": "30/06/2023"
         }
       },
-      "description": "123",
+      "description": "absbjksadk",
       "footer": {
         "priority": "Khẩn cấp",
         "status": "Chưa hoàn thành"

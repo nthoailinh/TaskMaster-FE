@@ -64,7 +64,7 @@ export function TaskCard({
 
   return (
     <Card
-      className={`w-64 ${cardColor}`}
+      className={`w-3/4 ${cardColor}`}
       style={{ width: fullWidth ? "100%" : undefined }}
     >
       <CardHeader

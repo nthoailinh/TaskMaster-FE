@@ -1,10 +1,11 @@
 import axios from "axios";
+import API_URL from "@/constants";
 
 export let workspaces = null;
 
 const getWorkspaces = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/workspaces");
+    const response = await axios.get(`${API_URL}/workspaces`);
     workspaces = response.data;
   } catch (error) {
     console.error("Error retrieving upcoming tasks:", error);

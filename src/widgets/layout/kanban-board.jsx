@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Typography, Rating } from "@material-tailwind/react";
 import { TaskCard } from "@/widgets/cards";
 import { TaskContext } from "@/context/TaskContext";
+import API_URL from "@/constants";
 import axios from "axios";
 
 const kanbanColumns = [
@@ -75,7 +76,9 @@ export const KanbanBoard = ({ type }) => {
                         value={task.rating}
                         onChange={(value) => {
                           task.rating = value;
-                          axios.patch(`http://localhost:3000/tasks/${task.id}`, { rating: value });
+                          axios.patch(`${API_URL}/tasks/${task.id}`, {
+                            rating: value,
+                          });
                         }}
                       />
                     )}
