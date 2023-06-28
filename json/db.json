@@ -378,7 +378,7 @@
         "status": "Đã hoàn thành"
       },
       "type": "Group",
-      "rating": 5
+      "rating": 3
     },
     {
       "id": 7,
@@ -405,7 +405,7 @@
         "status": "Đã hoàn thành"
       },
       "type": "Personal",
-      "rating": 5
+      "rating": 2
     },
     {
       "id": 8,
@@ -489,6 +489,98 @@
       "member": "Phan Minh Anh Tuấn",
       "rating": 0,
       "id": 10
+    },
+    {
+      "color": "#2196f3",
+      "taskName": "ABC",
+      "workspace": "HUST",
+      "time": {
+        "startTime": {
+          "hour": "21:15",
+          "day": "28/06/2023"
+        },
+        "endTime": {
+          "hour": "02:13",
+          "day": "30/06/2023"
+        },
+        "deadlineTime": {
+          "hour": "21:17",
+          "day": "30/06/2023"
+        }
+      },
+      "description": "123",
+      "footer": {
+        "priority": "Khẩn cấp",
+        "status": "Chưa hoàn thành"
+      },
+      "type": "Group",
+      "group": "Nhóm ITSS",
+      "member": [
+        {
+          "value": "Nguyễn Hoàng Anh",
+          "label": "Nguyễn Hoàng Anh",
+          "id": 5,
+          "name": "Nguyễn Hoàng Anh",
+          "password": "123456789",
+          "email": "anh@gmail.com"
+        },
+        {
+          "value": "Nguyễn Thị Hoài Linh",
+          "label": "Nguyễn Thị Hoài Linh",
+          "id": 2,
+          "name": "Nguyễn Thị Hoài Linh",
+          "password": "123456789",
+          "email": "linh@gmail.com"
+        }
+      ],
+      "rating": 0,
+      "id": 11
+    },
+    {
+      "color": "#f34336",
+      "taskName": "Test",
+      "workspace": "Vbee",
+      "time": {
+        "startTime": {
+          "hour": "21:23",
+          "day": "29/06/2023"
+        },
+        "endTime": {
+          "hour": "01:20",
+          "day": "30/06/2023"
+        },
+        "deadlineTime": {
+          "hour": "21:22",
+          "day": "30/06/2023"
+        }
+      },
+      "description": "ABC",
+      "footer": {
+        "priority": "Khẩn cấp",
+        "status": "Chưa hoàn thành"
+      },
+      "type": "Group",
+      "group": "Nhóm Callbot",
+      "member": [
+        {
+          "value": "Phan Minh Anh Tuấn",
+          "label": "Phan Minh Anh Tuấn",
+          "id": 1,
+          "name": "Phan Minh Anh Tuấn",
+          "password": "123456789",
+          "email": "tuan@gmail.com"
+        },
+        {
+          "value": "Nguyễn Thị Hoài Linh",
+          "label": "Nguyễn Thị Hoài Linh",
+          "id": 2,
+          "name": "Nguyễn Thị Hoài Linh",
+          "password": "123456789",
+          "email": "linh@gmail.com"
+        }
+      ],
+      "rating": 0,
+      "id": 12
     }
   ]
 }
