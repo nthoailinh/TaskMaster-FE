@@ -3,6 +3,7 @@ import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
+import { workspaces } from "@/data";
 import axios from "axios";
 import {
   DateTimeInputs,
@@ -206,6 +207,7 @@ function AddPersonalTask() {
                       onChange={handlePriorityChange}
                     />
                     <WorkspaceInput
+                      workspaces={workspaces}
                       values={{ workspace, color }}
                       onChanges={{ handleWorkspaceChange, handleColorChange }}
                     />
