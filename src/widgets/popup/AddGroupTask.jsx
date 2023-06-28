@@ -3,7 +3,7 @@ import { Fragment, useState, useContext, useEffect } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
-import { workspaces } from "@/data";
+import { workspaces, users } from "@/data";
 import axios from "axios";
 import {
   DateTimeInputs,
@@ -34,7 +34,7 @@ function AddGroupTask() {
   const [groupOptions, setGroupOptions] = useState([""]);
   const [memberOptions, setMemberOptions] = useState([""]);
   const [group, setGroup] = useState(groupOptions[0]);
-  const [member, setMember] = useState(memberOptions[0]);
+  const [selectedMembers, setSelectedMembers] = useState([]);
   const [startTimeDay, setStartTimeDay] = useState("");
   const [startTimeHour, setStartTimeHour] = useState("");
   const [endTimeDay, setEndTimeDay] = useState("");
@@ -96,17 +96,36 @@ function AddGroupTask() {
           : []
       );
 
-      setMember(
+      setSelectedMembers(
         selectedGroup.members && selectedGroup.members.length > 0
-          ? selectedGroup.members[0].name
-          : ""
+          ? [selectedGroup.members[0].name]
+          : []
       );
     }
   }, [selectedGroup]);
 
   function handleMemberChange(value) {
-    setMember(value);
+    setSelectedMembers(value);
   }
+
+  useEffect(() => {
+    setSelectedMembers(
+      selectedMembers.map((item) => {
+        const user = users.find((u) => u.name === item.value);
+        if (user) {
+          return {
+            value: user.name,
+            label: user.name,
+            id: user.id,
+            name: user.name,
+            password: user.password,
+            email: user.email,
+          };
+        }
+        return item;
+      })
+    );
+  }, [selectedMembers]);
 
   function handleStartTimeDayChange(event) {
     setStartTimeDay(event.target.value);
@@ -192,7 +211,7 @@ function AddGroupTask() {
       },
       type: "Group",
       group: group,
-      member: member,
+      member: selectedMembers,
       rating: 0,
     };
     addTask(newGroupTask);
@@ -262,7 +281,7 @@ function AddGroupTask() {
                     onChange={handleDescriptionChange}
                   />
 
-                  <div className="mt-6 flex">
+                  <div className="mt-8 flex">
                     <PrioritySelect
                       priorityOptions={priorityOptions}
                       value={selected}
@@ -283,7 +302,7 @@ function AddGroupTask() {
 
                   <MemberSelect
                     memberOptions={memberOptions}
-                    value={member}
+                    value={selectedMembers}
                     onChange={handleMemberChange}
                   />
 

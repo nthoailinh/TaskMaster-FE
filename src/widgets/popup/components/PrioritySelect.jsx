@@ -1,7 +1,7 @@
 import { Transition, Listbox } from "@headlessui/react";
 import { Fragment } from "react";
 import { Typography } from "@material-tailwind/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export function PrioritySelect({ priorityOptions, value, onChange }) {
   return (
@@ -14,7 +14,7 @@ export function PrioritySelect({ priorityOptions, value, onChange }) {
           <Listbox.Button className="w-full bg-white opacity-100 border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             <span className="block truncate">{value}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <ChevronUpDownIcon
+              <ChevronDownIcon
                 className="h-4 w-4 text-gray-400"
                 aria-hidden="true"
               />
