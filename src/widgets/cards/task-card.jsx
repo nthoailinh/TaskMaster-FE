@@ -57,7 +57,6 @@ export function TaskCard({
   description,
   color,
   footer,
-  enableRating,
   cardColor,
   fullWidth,
 }) {
@@ -85,14 +84,7 @@ export function TaskCard({
           {description}
         </Typography>
       </CardBody>
-      {enableRating ? (
-        <CardFooter className="border-blue-gray-50 p-4 flex items-center justify-between">
-          {footer}
-          <Rating unratedColor="amber" ratedColor="amber" />
-        </CardFooter>
-      ) : (
-        <CardFooter className="border-blue-gray-50 p-4">{footer}</CardFooter>
-      )}
+      <CardFooter className="border-blue-gray-50 p-4">{footer}</CardFooter>
     </Card>
   );
 }
