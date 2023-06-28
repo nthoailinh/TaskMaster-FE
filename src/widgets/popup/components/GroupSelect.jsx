@@ -11,7 +11,7 @@ export function GroupSelect({ groupOptions, value, onChange }) {
           <Typography className="font-normal">Chọn nhóm</Typography>
         </Listbox.Label>
         <div className="mt-1 relative">
-          <Listbox.Button className="w-full bg-white opacity-100 border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+          <Listbox.Button className="h-9 w-full bg-white opacity-100 border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             <span className="block truncate">{value}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <ChevronDownIcon

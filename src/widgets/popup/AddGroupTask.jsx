@@ -281,7 +281,7 @@ function AddGroupTask() {
                     onChange={handleDescriptionChange}
                   />
 
-                  <div className="mt-6 flex">
+                  <div className="mt-8 flex">
                     <PrioritySelect
                       priorityOptions={priorityOptions}
                       value={selected}
