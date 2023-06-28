@@ -5,6 +5,7 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
+import { Draggable } from "react-beautiful-dnd";
 
 function getBrightness(hexColor) {
   // Remove the "#" symbol if present
@@ -58,33 +59,50 @@ export function TaskCard({
   footer,
   cardColor,
   fullWidth,
+  index,
 }) {
   const isDarkBackground = getBrightness(color);
   return (
-    <Card
-      className={`w-64 ${cardColor}`}
-      style={{ width: fullWidth ? "100%" : undefined }}
+    <Draggable
+      draggableId={`${task.taskName}`}
+      key={task.taskName}
+      index={index}
     >
-      <CardHeader
-        style={{
-          backgroundColor: color,
-          color: isDarkBackground ? "white" : "#696969",
-        }}
-        className="relative -mt-4 grid h-7 w-16 place-items-center"
-      >
-        {workspace}
-      </CardHeader>
-      <CardBody className="p-4 text-right">
-        <Typography className="text-left text-xl font-normal font-bold text-blue-gray-600">
-          {taskName}
-        </Typography>
-        <Typography className="text-left text-base font-normal text-blue-gray-600">
-          {description}
-        </Typography>
-      </CardBody>
-      {footer && (
-        <CardFooter className="border-blue-gray-50 p-4">{footer}</CardFooter>
+      {(provided, snapshot) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <Card
+            className={`w-64 ${cardColor}`}
+            style={{ width: fullWidth ? "100%" : undefined }}
+          >
+            <CardHeader
+              style={{
+                backgroundColor: color,
+                color: isDarkBackground ? "white" : "#696969",
+              }}
+              className="relative -mt-4 grid h-7 w-16 place-items-center"
+            >
+              {workspace}
+            </CardHeader>
+            <CardBody className="p-4 text-right">
+              <Typography className="text-left text-xl font-normal font-bold text-blue-gray-600">
+                {taskName}
+              </Typography>
+              <Typography className="text-left text-base font-normal text-blue-gray-600">
+                {description}
+              </Typography>
+            </CardBody>
+            {footer && (
+              <CardFooter className="border-blue-gray-50 p-4">
+                {footer}
+              </CardFooter>
+            )}
+          </Card>
+        </div>
       )}
-    </Card>
+    </Draggable>
   );
 }
