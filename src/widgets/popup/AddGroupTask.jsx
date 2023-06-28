@@ -1,9 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useContext } from "react";
+import { Fragment, useState, useContext, useEffect } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
-import { groups } from "@/data";
+import { workspaces } from "@/data";
 import axios from "axios";
 import {
   DateTimeInputs,
@@ -16,7 +16,6 @@ import {
 } from "./components";
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
-const groupOptions = groups.map((group) => group.name); // Thay groupOptions bằng list các name trong groups
 
 function formatDate(dateString) {
   const dateParts = dateString.split("-");
@@ -32,9 +31,9 @@ function AddGroupTask() {
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
+  const [groupOptions, setGroupOptions] = useState([""]);
+  const [memberOptions, setMemberOptions] = useState([""]);
   const [group, setGroup] = useState(groupOptions[0]);
-  const selectedGroup = groups.find((grp) => grp.name === group);
-  const memberOptions = selectedGroup ? selectedGroup.members : [];
   const [member, setMember] = useState(memberOptions[0]);
   const [startTimeDay, setStartTimeDay] = useState("");
   const [startTimeHour, setStartTimeHour] = useState("");
@@ -45,6 +44,9 @@ function AddGroupTask() {
   const [selected, setSelected] = useState(priorityOptions[0]);
   const [workspace, setWorkspace] = useState("");
   const [color, setColor] = useState("#2296f4");
+
+  const [groups, setGroups] = useState([""]);
+  const [selectedGroup, setSelectedGroup] = useState([""]);
 
   function closeModal() {
     setIsOpen(false);
@@ -57,6 +59,11 @@ function AddGroupTask() {
     setDeadlineDay("");
     setDeadlineHour("");
     setWorkspace("");
+    setGroup("");
+    setGroups([""]);
+    setSelectedGroup([""]);
+    setGroupOptions([""]);
+    setMemberOptions([""]);
   }
 
   function openModal() {
@@ -73,10 +80,29 @@ function AddGroupTask() {
 
   function handleGroupChange(value) {
     setGroup(value);
-    const selectedGroup = groups.find((grp) => grp.name === value);
-    const memberOptions = selectedGroup ? selectedGroup.members : [];
-    setMember(memberOptions[0]);
   }
+
+  useEffect(() => {
+    const newSelectedGroup = groups.find((grp) => grp.name === group);
+    setSelectedGroup(newSelectedGroup);
+  }, [group, groups]);
+
+  useEffect(() => {
+    if (selectedGroup) {
+      console.log(selectedGroup.members);
+      setMemberOptions(
+        selectedGroup.members
+          ? selectedGroup.members.map((member) => member.name)
+          : []
+      );
+
+      setMember(
+        selectedGroup.members && selectedGroup.members.length > 0
+          ? selectedGroup.members[0].name
+          : ""
+      );
+    }
+  }, [selectedGroup]);
 
   function handleMemberChange(value) {
     setMember(value);
@@ -110,9 +136,31 @@ function AddGroupTask() {
     setSelected(value);
   }
 
+  function updateGroupOptions(workspaceName) {
+    const selectedWorkspace = workspaces.find(
+      (ws) => ws.name === workspaceName
+    );
+    if (selectedWorkspace) {
+      setGroups(selectedWorkspace.groups);
+      setGroupOptions(selectedWorkspace.groups.map((group) => group.name));
+      setGroup(
+        selectedWorkspace.groups && selectedWorkspace.groups.length > 0
+          ? selectedWorkspace.groups[0].name
+          : ""
+      );
+    } else {
+      setGroups([]);
+      setGroupOptions([]);
+    }
+  }
+
   function handleWorkspaceChange(value) {
     setWorkspace(value);
   }
+
+  useEffect(() => {
+    updateGroupOptions(workspace);
+  }, [workspace]);
 
   function handleColorChange(color) {
     setColor(color);
@@ -214,6 +262,19 @@ function AddGroupTask() {
                     onChange={handleDescriptionChange}
                   />
 
+                  <div className="mt-6 flex">
+                    <PrioritySelect
+                      priorityOptions={priorityOptions}
+                      value={selected}
+                      onChange={handlePriorityChange}
+                    />
+                    <WorkspaceInput
+                      workspaces={workspaces}
+                      values={{ workspace, color }}
+                      onChanges={{ handleWorkspaceChange, handleColorChange }}
+                    />
+                  </div>
+
                   <GroupSelect
                     groupOptions={groupOptions}
                     value={group}
@@ -225,18 +286,6 @@ function AddGroupTask() {
                     value={member}
                     onChange={handleMemberChange}
                   />
-
-                  <div className="mt-6 flex">
-                    <PrioritySelect
-                      priorityOptions={priorityOptions}
-                      value={selected}
-                      onChange={handlePriorityChange}
-                    />
-                    <WorkspaceInput
-                      values={{ workspace, color }}
-                      onChanges={{ handleWorkspaceChange, handleColorChange }}
-                    />
-                  </div>
 
                   <DateTimeInputs
                     startTimeDay={startTimeDay}

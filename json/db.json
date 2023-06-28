@@ -378,7 +378,7 @@
         "status": "Đã hoàn thành"
       },
       "type": "Group",
-      "rating": 2
+      "rating": 5
     },
     {
       "id": 7,
@@ -402,7 +402,7 @@
       "description": "Học flutter để làm các dự án mobile của công ty",
       "footer": {
         "priority": "Không khẩn cấp",
-        "status": "Đang thực hiện"
+        "status": "Đã hoàn thành"
       },
       "type": "Personal",
       "rating": 5
@@ -460,6 +460,35 @@
       },
       "type": "Personal",
       "rating": 5
+    },
+    {
+      "color": "#f34336",
+      "taskName": "Hoàn thiện API",
+      "workspace": "Vbee",
+      "time": {
+        "startTime": {
+          "hour": "11:01",
+          "day": "30/06/2023"
+        },
+        "endTime": {
+          "hour": "11:06",
+          "day": "06/07/2023"
+        },
+        "deadlineTime": {
+          "hour": "16:01",
+          "day": "14/06/2023"
+        }
+      },
+      "description": "API đăng ký học phần tự động",
+      "footer": {
+        "priority": "Khẩn cấp",
+        "status": "Chưa hoàn thành"
+      },
+      "type": "Group",
+      "group": "Nhóm ACR",
+      "member": "Phan Minh Anh Tuấn",
+      "rating": 0,
+      "id": 10
     }
   ]
 }

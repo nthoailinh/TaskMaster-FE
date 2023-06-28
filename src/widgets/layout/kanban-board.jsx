@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Typography } from "@material-tailwind/react";
+import { Typography, Rating } from "@material-tailwind/react";
 import { TaskCard } from "@/widgets/cards";
 import { TaskContext } from "@/context/TaskContext";
+import axios from "axios";
 
 const kanbanColumns = [
   {
@@ -63,13 +64,28 @@ export const KanbanBoard = ({ type }) => {
                 description={task.description}
                 color={task.color}
                 footer={
-                  <Typography className="font-normal text-blue-gray-600">
-                    <span>{task.footer.priority}</span>
-                  </Typography>
+                  <div className="flex items-center justify-between">
+                    <Typography className="font-normal text-blue-gray-600">
+                      <span>{task.footer.priority}</span>
+                    </Typography>
+                    {task.footer.status === "Đã hoàn thành" && (
+                      <Rating
+                        unratedColor="amber"
+                        ratedColor="amber"
+                        value={task.rating}
+                        onChange={(value) => {
+                          task.rating = value;
+                          axios.patch(`http://localhost:3000/tasks/${task.id}`, { rating: value });
+                        }}
+                      />
+                    )}
+                  </div>
                 }
-                enableRating={task.footer.status === "Đã hoàn thành"}
                 cardColor={`${
-                  compareDates(task.time.endTime.day) && task.footer.status !== "Đã hoàn thành" ? "bg-red-100" : ""
+                  compareDates(task.time.endTime.day) &&
+                  task.footer.status !== "Đã hoàn thành"
+                    ? "bg-red-100"
+                    : ""
                 }`}
                 fullWidth={true}
               />

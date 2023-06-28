@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import CreatableSelect from "react-select/creatable";
 import { SketchPicker } from "react-color";
-import { workspaces } from "@/data";
 
 const createOption = (label, color) => ({
   label,
@@ -10,11 +9,11 @@ const createOption = (label, color) => ({
   color,
 });
 
-const defaultOptions = workspaces.map(({ name, color }) =>
-  createOption(name, color)
-);
+export function WorkspaceInput({ workspaces, values, onChanges }) {
+  const defaultOptions = workspaces.map(({ name, color }) =>
+    createOption(name, color)
+  );
 
-export function WorkspaceInput({ values, onChanges }) {
   const { workspace, color } = values;
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
