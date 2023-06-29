@@ -267,7 +267,7 @@
       "description": "Nguyên mẫu giao diện cho ứng dụng quản lý công việc TaskMaster",
       "footer": {
         "priority": "Khẩn cấp",
-        "status": "Chưa hoàn thành"
+        "status": "Chưa thực hiện"
       },
       "type": "Group",
       "rating": 2
@@ -294,7 +294,7 @@
       "description": "Hoàn thiện slide để trình bày tại Clevai",
       "footer": {
         "priority": "Không quan trọng",
-        "status": "Chưa hoàn thành"
+        "status": "Chưa thực hiện"
       },
       "type": "Personal",
       "rating": 5
@@ -348,7 +348,7 @@
       "description": "Thêm biểu đồ lớp",
       "footer": {
         "priority": "Khẩn cấp",
-        "status": "Chưa hoàn thành"
+        "status": "Chưa thực hiện"
       },
       "type": "Group",
       "rating": 1
@@ -456,83 +456,10 @@
       "description": "Học keras để implement các mô hình sau quá trình nghiên cứu",
       "footer": {
         "priority": "Không khẩn cấp",
-        "status": "Chưa hoàn thành"
+        "status": "Chưa thực hiện"
       },
       "type": "Personal",
       "rating": 5
-    },
-    {
-      "color": "#f34336",
-      "taskName": "Xin chào",
-      "workspace": "Vbee",
-      "time": {
-        "startTime": {
-          "hour": "01:14",
-          "day": "11/06/2023"
-        },
-        "endTime": {
-          "hour": "03:12",
-          "day": "30/06/2023"
-        },
-        "deadlineTime": {
-          "hour": "01:12",
-          "day": "30/06/2023"
-        }
-      },
-      "description": "Hello",
-      "footer": {
-        "priority": "Khẩn cấp",
-        "status": "Chưa hoàn thành"
-      },
-      "type": "Personal",
-      "rating": 0,
-      "id": 10
-    },
-    {
-      "color": "#2196f3",
-      "taskName": "Việc nhóm",
-      "workspace": "HUST",
-      "time": {
-        "startTime": {
-          "hour": "01:14",
-          "day": "10/06/2023"
-        },
-        "endTime": {
-          "hour": "06:13",
-          "day": "30/06/2023"
-        },
-        "deadlineTime": {
-          "hour": "01:17",
-          "day": "30/06/2023"
-        }
-      },
-      "description": "absbjksadk",
-      "footer": {
-        "priority": "Khẩn cấp",
-        "status": "Chưa hoàn thành"
-      },
-      "type": "Group",
-      "group": "Nhóm ITSS",
-      "member": [
-        {
-          "value": "Nguyễn Hoàng Anh",
-          "label": "Nguyễn Hoàng Anh",
-          "id": 5,
-          "name": "Nguyễn Hoàng Anh",
-          "password": "123456789",
-          "email": "anh@gmail.com"
-        },
-        {
-          "value": "Nguyễn Thị Hoài Linh",
-          "label": "Nguyễn Thị Hoài Linh",
-          "id": 2,
-          "name": "Nguyễn Thị Hoài Linh",
-          "password": "123456789",
-          "email": "linh@gmail.com"
-        }
-      ],
-      "rating": 0,
-      "id": 11
     }
   ]
 }

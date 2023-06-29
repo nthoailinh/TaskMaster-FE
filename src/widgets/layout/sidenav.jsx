@@ -23,7 +23,7 @@ const Stepper = () => {
           <Typography>{formattedDate}</Typography>
         </div>
         {upcomingTasks
-          .filter(({ footer }) => footer.status === "Chưa hoàn thành")
+          .filter(({ footer }) => footer.status === "Chưa thực hiện")
           .slice(0, 3)
           .map(
             (

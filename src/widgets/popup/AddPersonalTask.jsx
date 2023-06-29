@@ -123,7 +123,7 @@ function AddPersonalTask() {
       description: description,
       footer: {
         priority: selected,
-        status: "Chưa hoàn thành",
+        status: "Chưa thực hiện",
       },
       type: "Personal",
       rating: 0,

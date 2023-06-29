@@ -8,7 +8,7 @@ import axios from "axios";
 const kanbanColumns = [
   {
     title: "To do",
-    status: "Chưa hoàn thành",
+    status: "Chưa thực hiện",
   },
   {
     title: "In Progress",
@@ -59,11 +59,13 @@ export const KanbanBoard = ({ type }) => {
             )
             .map((task) => (
               <TaskCard
+                taskId={task.id}
                 key={task.taskName}
                 taskName={task.taskName}
                 workspace={task.workspace}
                 description={task.description}
                 color={task.color}
+                status={task.footer.status}
                 footer={
                   <div className="flex items-center justify-between">
                     <Typography className="font-normal text-blue-gray-600">
