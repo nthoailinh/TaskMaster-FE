@@ -12,6 +12,7 @@ import { EllipsisHorizontalIcon } from "@heroicons/react/24/solid";
 import { TaskContext } from "@/context/TaskContext";
 import API_URL from "@/constants";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -200,11 +201,25 @@ export function TaskCard({
 
   const deleteTask = async (id) => {
     try {
-      console.log(id);
-      console.log(upcomingTasks);
-      const updatedTasks = upcomingTasks.filter((task) => task.id !== id);
-      setUpcomingTasks(updatedTasks);
-      await axios.delete(`${API_URL}/tasks/${id}`);
+      const swalResponse = await Swal.fire({
+        title: "Xác nhận xóa task?",
+        text: "Bạn có chắc chắn muốn xóa task này?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Xóa",
+        cancelButtonText: "Hủy",
+        reverseButtons: true,
+        focusCancel: true,
+      });
+
+      if (swalResponse.isConfirmed) {
+        // Xác nhận xóa task
+        console.log(id);
+        console.log(upcomingTasks);
+        const updatedTasks = upcomingTasks.filter((task) => task.id !== id);
+        setUpcomingTasks(updatedTasks);
+        await axios.delete(`${API_URL}/tasks/${id}`);
+      }
     } catch (error) {
       console.log("Error deleting task:", error);
     }
