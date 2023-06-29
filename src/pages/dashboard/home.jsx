@@ -88,13 +88,15 @@ export function Home() {
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-4">
                 {upcomingTasks
                   .filter(({ footer }) => footer.status === "Chưa thực hiện")
-                  .map(({ workspace, taskName, time, ...rest }) => {
+                  .map(({ workspace, taskName, time, footer, id, ...rest }) => {
                     return (
                       <TaskCardShort
                         key={taskName}
                         {...rest}
+                        taskId={id}
                         taskName={taskName}
                         workspace={workspace}
+                        status={footer.status}
                         time={
                           <Typography className="font-normal text-blue-gray-600">
                             <span>Deadline</span>

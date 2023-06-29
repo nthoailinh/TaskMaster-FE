@@ -34,8 +34,60 @@ function getBrightness(hexColor) {
   return brightness < 0.5;
 }
 
-export function TaskCardShort({ color, workspace, taskName, time, cardColor }) {
+export function TaskCardShort({
+  taskId,
+  color,
+  workspace,
+  taskName,
+  time,
+  status,
+  cardColor,
+}) {
   const isDarkBackground = getBrightness(color);
+  const { upcomingTasks, setUpcomingTasks } = useContext(TaskContext);
+
+  const deleteTask = async (id) => {
+    try {
+      const swalResponse = await Swal.fire({
+        title: "Xác nhận xóa task?",
+        text: "Bạn có chắc chắn muốn xóa task này?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Xóa",
+        cancelButtonText: "Hủy",
+        reverseButtons: false,
+        focusCancel: true,
+      });
+
+      if (swalResponse.isConfirmed) {
+        const updatedTasks = upcomingTasks.filter((task) => task.id !== id);
+        setUpcomingTasks(updatedTasks);
+        await axios.delete(`${API_URL}/tasks/${id}`);
+      }
+    } catch (error) {
+      console.log("Error deleting task:", error);
+    }
+  };
+
+  const updateTaskStatus = async (id, newStatus) => {
+    try {
+      // Tìm task có id tương ứng trong mảng tasks
+      const task = upcomingTasks.find((task) => task.id === id);
+
+      if (task) {
+        // Cập nhật thuộc tính status của task
+        task.footer.status = newStatus;
+
+        // Cập nhật mảng tasks với task đã cập nhật
+        setUpcomingTasks([...upcomingTasks]);
+
+        // Gửi request API để cập nhật task trên server
+        await axios.patch(`${API_URL}/tasks/${id}`, { footer: task.footer });
+      }
+    } catch (error) {
+      console.log("Error updating task:", error);
+    }
+  };
 
   return (
     <Card className={`${cardColor}`}>
@@ -54,12 +106,12 @@ export function TaskCardShort({ color, workspace, taskName, time, cardColor }) {
             {taskName}
           </Typography>
         </div>
-        <div className="mt-1">
+        <div className="">
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button className="">
                 <EllipsisHorizontalIcon
-                  className="-mr-1 h-5 w-5 text-gray-700"
+                  className="-mr-1 h-7 w-7 text-gray-700"
                   aria-hidden="true"
                 />
               </Menu.Button>
@@ -74,7 +126,7 @@ export function TaskCardShort({ color, workspace, taskName, time, cardColor }) {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
@@ -108,51 +160,68 @@ export function TaskCardShort({ color, workspace, taskName, time, cardColor }) {
                   </Menu.Item>
                 </div>
                 <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Chuyển đến To do
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Chuyển đến In Progress
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Chuyển đến Done
-                      </a>
-                    )}
-                  </Menu.Item>
+                  {status !== "Chưa thực hiện" && (
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                          onClick={() =>
+                            updateTaskStatus(taskId, "Chưa thực hiện")
+                          }
+                        >
+                          Chuyển đến To do
+                        </a>
+                      )}
+                    </Menu.Item>
+                  )}
+
+                  {status !== "Đang thực hiện" && (
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                          onClick={() =>
+                            updateTaskStatus(taskId, "Đang thực hiện")
+                          }
+                        >
+                          Chuyển đến In Progress
+                        </a>
+                      )}
+                    </Menu.Item>
+                  )}
+
+                  {status !== "Đã hoàn thành" && (
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                          onClick={() =>
+                            updateTaskStatus(taskId, "Đã hoàn thành")
+                          }
+                        >
+                          Chuyển đến Done
+                        </a>
+                      )}
+                    </Menu.Item>
+                  )}
                 </div>
                 <div className="py-1">
                   <Menu.Item>
@@ -165,6 +234,7 @@ export function TaskCardShort({ color, workspace, taskName, time, cardColor }) {
                             : "text-gray-700",
                           "block px-4 py-2 text-sm"
                         )}
+                        onClick={() => deleteTask(taskId)}
                       >
                         Xóa
                       </a>
