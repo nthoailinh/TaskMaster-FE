@@ -280,15 +280,15 @@
       "time": {
         "startTime": {
           "hour": "17:00",
-          "day": "22/06/2023"
+          "day": "29/06/2023"
         },
         "endTime": {
           "hour": "18:00",
-          "day": "23/06/2023"
+          "day": "30/06/2023"
         },
         "deadlineTime": {
           "hour": "19:00",
-          "day": "25/06/2023"
+          "day": "30/06/2023"
         }
       },
       "description": "Hoàn thiện slide để trình bày tại Clevai",
@@ -338,7 +338,7 @@
         },
         "endTime": {
           "hour": "08:00",
-          "day": "29/06/2023"
+          "day": "30/06/2023"
         },
         "deadlineTime": {
           "hour": "07:00",
@@ -365,11 +365,11 @@
         },
         "endTime": {
           "hour": "17:00",
-          "day": "27/06/2023"
+          "day": "30/06/2023"
         },
         "deadlineTime": {
           "hour": "19:00",
-          "day": "29/06/2023"
+          "day": "30/06/2023"
         }
       },
       "description": "Bài tập lớn tìm đường đi trên bản đồ",
@@ -392,7 +392,7 @@
         },
         "endTime": {
           "hour": "00:00",
-          "day": "29/06/2023"
+          "day": "30/06/2023"
         },
         "deadlineTime": {
           "hour": "00:00",
@@ -429,7 +429,7 @@
       "description": "Phát triển mô hình ML mới để phục vụ nhân diện khuôn mặt dưới trời mưa",
       "footer": {
         "priority": "Không khẩn cấp",
-        "status": "Đang thực hiện"
+        "status": "Đã hoàn thành"
       },
       "type": "Personal",
       "rating": 4
