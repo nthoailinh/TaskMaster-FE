@@ -208,20 +208,37 @@ export function TaskCard({
         showCancelButton: true,
         confirmButtonText: "Xóa",
         cancelButtonText: "Hủy",
-        reverseButtons: true,
+        reverseButtons: false,
         focusCancel: true,
       });
 
       if (swalResponse.isConfirmed) {
-        // Xác nhận xóa task
-        console.log(id);
-        console.log(upcomingTasks);
         const updatedTasks = upcomingTasks.filter((task) => task.id !== id);
         setUpcomingTasks(updatedTasks);
         await axios.delete(`${API_URL}/tasks/${id}`);
       }
     } catch (error) {
       console.log("Error deleting task:", error);
+    }
+  };
+
+  const updateTaskStatus = async (id, newStatus) => {
+    try {
+      // Tìm task có id tương ứng trong mảng tasks
+      const task = upcomingTasks.find((task) => task.id === id);
+
+      if (task) {
+        // Cập nhật thuộc tính status của task
+        task.footer.status = newStatus;
+
+        // Cập nhật mảng tasks với task đã cập nhật
+        setUpcomingTasks([...upcomingTasks]);
+
+        // Gửi request API để cập nhật task trên server
+        await axios.patch(`${API_URL}/tasks/${id}`, { footer: task.footer });
+      }
+    } catch (error) {
+      console.log("Error updating task:", error);
     }
   };
 
@@ -313,6 +330,9 @@ export function TaskCard({
                               : "text-gray-700",
                             "block px-4 py-2 text-sm"
                           )}
+                          onClick={() =>
+                            updateTaskStatus(taskId, "Chưa thực hiện")
+                          }
                         >
                           Chuyển đến To do
                         </a>
@@ -331,6 +351,9 @@ export function TaskCard({
                               : "text-gray-700",
                             "block px-4 py-2 text-sm"
                           )}
+                          onClick={() =>
+                            updateTaskStatus(taskId, "Đang thực hiện")
+                          }
                         >
                           Chuyển đến In Progress
                         </a>
@@ -349,6 +372,9 @@ export function TaskCard({
                               : "text-gray-700",
                             "block px-4 py-2 text-sm"
                           )}
+                          onClick={() =>
+                            updateTaskStatus(taskId, "Đã hoàn thành")
+                          }
                         >
                           Chuyển đến Done
                         </a>
