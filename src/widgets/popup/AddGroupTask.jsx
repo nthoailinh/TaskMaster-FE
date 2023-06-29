@@ -208,7 +208,7 @@ function AddGroupTask() {
       description: description,
       footer: {
         priority: selected,
-        status: "Chưa hoàn thành",
+        status: "Chưa thực hiện",
       },
       type: "Group",
       group: group,
