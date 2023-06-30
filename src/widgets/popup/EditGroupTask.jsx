@@ -211,12 +211,12 @@ function EditGroupTask({ task, setIsEditPopupOpen }) {
       description: description,
       footer: {
         priority: selected,
-        status: "Chưa thực hiện",
+        status: task.footer.status,
       },
       type: "Group",
       group: group,
       member: selectedMembers,
-      rating: 0,
+      rating: task.rating,
     };
     const newUpcomingTasks = upcomingTasks.map((t) => {
       if (t.id === task.id) {

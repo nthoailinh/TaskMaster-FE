@@ -1,9 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState, useContext, useEffect } from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
 import { workspaces, users } from "@/data";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import API_URL from "@/constants";
 import {
@@ -28,6 +29,7 @@ function formatDate(dateString) {
 }
 
 function AddGroupTask({ closeFatherModal }) {
+  const location = useLocation();
   const { upcomingTasks, addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
@@ -229,14 +231,39 @@ function AddGroupTask({ closeFatherModal }) {
     closeModal();
   }
 
+  const isDashboardGroup = location.pathname === "/dashboard/group";
+
   return (
     <>
-      <figure className="mr-5 cursor-pointer" onClick={openModal}>
-        <img src="/public/img/group.png" alt="Nhóm" width="200" height="240" />
-        <figcaption className="text-center font-medium pt-4 text-xl">
-          Nhóm
-        </figcaption>
-      </figure>
+      {isDashboardGroup ? (
+        <Button
+          onClick={openModal}
+          color="blue"
+          className="mr-5 flex items-center normal-case"
+        >
+          <PlusIcon className="text-500 mr-1 h-5 w-5" />
+          <Typography
+            as="li"
+            variant="h6"
+            color="white"
+            className="p-1 font-normal"
+          >
+            Thêm việc
+          </Typography>
+        </Button>
+      ) : (
+        <figure className="mr-5 cursor-pointer" onClick={openModal}>
+          <img
+            src="/public/img/group.png"
+            alt="Nhóm"
+            width="200"
+            height="240"
+          />
+          <figcaption className="text-center font-medium pt-4 text-xl">
+            Nhóm
+          </figcaption>
+        </figure>
+      )}
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>

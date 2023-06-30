@@ -12,6 +12,10 @@ import { ArrowsRightLeftIcon, Bars2Icon } from "@heroicons/react/24/outline";
 import AddTask from "../popup/AddTask";
 import routes from "@/routes";
 import { NavLink, useLocation } from "react-router-dom";
+import Integrate from "../popup/Integrate";
+import CreateGroup from "../popup/CreateGroup";
+import AddPersonalTask from "../popup/AddPersonalTask";
+import AddGroupTask from "../popup/AddGroupTask";
 
 function NavList() {
   const location = useLocation();
@@ -75,6 +79,7 @@ function NavList() {
 }
 
 export function DashboardNavbar() {
+  const location = useLocation();
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
 
@@ -84,6 +89,12 @@ export function DashboardNavbar() {
       () => window.innerWidth >= 960 && setIsNavOpen(false)
     );
   }, []);
+  const isDashboard =
+    location.pathname === "/dashboard/home" ||
+    location.pathname === "/dashboard/home/detail/personal" ||
+    location.pathname === "/dashboard/home/detail/group";
+  const isDashboardPersonal = location.pathname === "/dashboard/personal";
+  const isDashboardGroup = location.pathname === "/dashboard/group";
 
   return (
     <div className="min-w-full py-0.5">
@@ -92,18 +103,11 @@ export function DashboardNavbar() {
           <NavList />
         </div>
         <div className="ml-auto flex items-center">
-          <Button color="purple" className="mr-5 flex items-center normal-case">
-            <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
-            <Typography
-              as="li"
-              variant="h6"
-              color="white"
-              className="p-1 font-normal"
-            >
-              Tích hợp
-            </Typography>
-          </Button>
-          <AddTask />
+          {isDashboard && <Integrate />}
+          {isDashboard && <AddTask />}
+          {isDashboardPersonal && <AddPersonalTask />}
+          {isDashboardGroup && <CreateGroup />}
+          {isDashboardGroup && <AddGroupTask />}
         </div>
         <IconButton
           size="sm"
