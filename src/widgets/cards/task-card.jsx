@@ -6,10 +6,14 @@ import {
   Typography,
   Rating,
 } from "@material-tailwind/react";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/solid";
 import { TaskContext } from "@/context/TaskContext";
+import ViewPersonalTask from "../popup/ViewPersonalTask";
+import ViewGroupTask from "../popup/ViewGroupTask";
+import EditPersonalTask from "../popup/EditPersonalTask";
+import EditGroupTask from "../popup/EditGroupTask";
 import API_URL from "@/constants";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -267,7 +271,16 @@ export function TaskCard({
   fullWidth,
 }) {
   const { upcomingTasks, setUpcomingTasks } = useContext(TaskContext);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+  const [isViewPopupOpen, setIsViewPopupOpen] = useState(false);
+  const [task, setTasks] = useState(null);
   const isDarkBackground = getBrightness(color);
+  const openEditPopup = () => {
+    setIsEditPopupOpen(true);
+  };
+  const openViewPopup = () => {
+    setIsViewPopupOpen(true);
+  };
 
   const deleteTask = async (id) => {
     try {
@@ -310,6 +323,18 @@ export function TaskCard({
     } catch (error) {
       console.log("Error updating task:", error);
     }
+  };
+
+  const viewTask = (id) => {
+    const taskSelect = upcomingTasks.find((task) => task.id === id);
+    setTasks(taskSelect);
+    openViewPopup();
+  };
+
+  const editTask = (id) => {
+    const taskSelect = upcomingTasks.find((task) => task.id === id);
+    setTasks(taskSelect);
+    openEditPopup();
   };
 
   return (
@@ -367,6 +392,7 @@ export function TaskCard({
                             : "text-gray-700",
                           "block px-4 py-2 text-sm"
                         )}
+                        onClick={() => viewTask(taskId)}
                       >
                         Xem
                       </a>
@@ -382,6 +408,7 @@ export function TaskCard({
                             : "text-gray-700",
                           "block px-4 py-2 text-sm"
                         )}
+                        onClick={() => editTask(taskId)}
                       >
                         Chỉnh sửa
                       </a>
@@ -476,6 +503,18 @@ export function TaskCard({
         </div>
       </CardBody>
       <CardFooter className="border-blue-gray-50 p-4">{footer}</CardFooter>
+      {isEditPopupOpen && task.type === "Personal" && (
+        <EditPersonalTask task={task} setIsEditPopupOpen={setIsEditPopupOpen} />
+      )}
+      {isEditPopupOpen && task.type === "Group" && (
+        <EditGroupTask task={task} setIsEditPopupOpen={setIsEditPopupOpen} />
+      )}
+      {isViewPopupOpen && task.type === "Personal" && (
+        <ViewPersonalTask task={task} setIsViewPopupOpen={setIsViewPopupOpen} />
+      )}
+      {isViewPopupOpen && task.type === "Group" && (
+        <ViewGroupTask task={task} setIsViewPopupOpen={setIsViewPopupOpen} />
+      )}
     </Card>
   );
 }

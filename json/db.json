@@ -460,6 +460,33 @@
       },
       "type": "Personal",
       "rating": 5
+    },
+    {
+      "id": 10,
+      "color": "#2196f3",
+      "taskName": "Đây là công việc abc",
+      "workspace": "HUST",
+      "time": {
+        "startTime": {
+          "hour": "10:20",
+          "day": "02/06/2023"
+        },
+        "endTime": {
+          "hour": "10:19",
+          "day": "02/07/2023"
+        },
+        "deadlineTime": {
+          "hour": "10:23",
+          "day": "02/07/2023"
+        }
+      },
+      "description": "Xin chào việc này",
+      "footer": {
+        "priority": "Không khẩn cấp",
+        "status": "Đã hoàn thành"
+      },
+      "type": "Personal",
+      "rating": 0
     }
   ]
 }

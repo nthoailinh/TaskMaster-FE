@@ -26,7 +26,7 @@ function formatDate(dateString) {
 }
 
 function AddPersonalTask() {
-  const { addTask } = useContext(TaskContext);
+  const { upcomingTasks, addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
@@ -103,6 +103,7 @@ function AddPersonalTask() {
 
   function handleSave() {
     const newPersonalTask = {
+      id: upcomingTasks[upcomingTasks.length - 1].id + 1,
       color: color,
       taskName: taskName,
       workspace: workspace,

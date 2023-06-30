@@ -18,6 +18,15 @@ import {
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
+function revertDate(dateString) {
+  const dateParts = dateString.split("/");
+  const day = dateParts[0];
+  const month = dateParts[1];
+  const year = dateParts[2].trim();
+
+  return `${year}-${month}-${day}`;
+}
+
 function formatDate(dateString) {
   const dateParts = dateString.split("-");
   const year = dateParts[0];
@@ -27,44 +36,37 @@ function formatDate(dateString) {
   return `${day}/${month}/${year}`;
 }
 
-function AddGroupTask() {
-  const { upcomingTasks, addTask } = useContext(TaskContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const [taskName, setTaskName] = useState("");
-  const [description, setDescription] = useState("");
+function ViewGroupTask({ task, setIsViewPopupOpen }) {
+  const { upcomingTasks, setUpcomingTasks } = useContext(TaskContext);
+  const [isOpen, setIsOpen] = useState(true);
+  const [taskName, setTaskName] = useState(task.taskName);
+  const [description, setDescription] = useState(task.description);
   const [groupOptions, setGroupOptions] = useState([""]);
   const [memberOptions, setMemberOptions] = useState([""]);
-  const [group, setGroup] = useState(groupOptions[0]);
-  const [selectedMembers, setSelectedMembers] = useState([]);
-  const [startTimeDay, setStartTimeDay] = useState("");
-  const [startTimeHour, setStartTimeHour] = useState("");
-  const [endTimeDay, setEndTimeDay] = useState("");
-  const [endTimeHour, setEndTimeHour] = useState("");
-  const [deadlineDay, setDeadlineDay] = useState("");
-  const [deadlineHour, setDeadlineHour] = useState("");
-  const [selected, setSelected] = useState(priorityOptions[0]);
-  const [workspace, setWorkspace] = useState("");
-  const [color, setColor] = useState("#2296f4");
+  const [group, setGroup] = useState(task.group);
+  const [selectedMembers, setSelectedMembers] = useState(task.member);
+  const [startTimeDay, setStartTimeDay] = useState(
+    revertDate(task.time.startTime.day)
+  );
+  const [startTimeHour, setStartTimeHour] = useState(task.time.startTime.hour);
+  const [endTimeDay, setEndTimeDay] = useState(
+    revertDate(task.time.endTime.day)
+  );
+  const [endTimeHour, setEndTimeHour] = useState(task.time.endTime.hour);
+  const [deadlineDay, setDeadlineDay] = useState(
+    revertDate(task.time.deadlineTime.day)
+  );
+  const [deadlineHour, setDeadlineHour] = useState(task.time.deadlineTime.hour);
+  const [selected, setSelected] = useState(task.footer.priority);
+  const [workspace, setWorkspace] = useState(task.workspace);
+  const [color, setColor] = useState(task.color);
 
   const [groups, setGroups] = useState([""]);
   const [selectedGroup, setSelectedGroup] = useState([""]);
 
   function closeModal() {
     setIsOpen(false);
-    setTaskName("");
-    setDescription("");
-    setStartTimeDay("");
-    setStartTimeHour("");
-    setEndTimeDay("");
-    setEndTimeHour("");
-    setDeadlineDay("");
-    setDeadlineHour("");
-    setWorkspace("");
-    setGroup("");
-    setGroups([""]);
-    setSelectedGroup([""]);
-    setGroupOptions([""]);
-    setMemberOptions([""]);
+    setIsViewPopupOpen(false);
   }
 
   function openModal() {
@@ -188,7 +190,7 @@ function AddGroupTask() {
 
   function handleSave() {
     const newGroupTask = {
-      id: upcomingTasks[upcomingTasks.length - 1].id + 1,
+      id: task.id,
       color: color,
       taskName: taskName,
       workspace: workspace,
@@ -216,9 +218,15 @@ function AddGroupTask() {
       member: selectedMembers,
       rating: 0,
     };
-    addTask(newGroupTask);
+    const newUpcomingTasks = upcomingTasks.map((t) => {
+      if (t.id === task.id) {
+        return newGroupTask;
+      }
+      return t;
+    });
+    setUpcomingTasks(newUpcomingTasks);
     axios
-      .post(`${API_URL}/tasks`, newGroupTask)
+      .put(`${API_URL}/tasks/${task.id}`, newGroupTask)
       .then((response) => {
         console.log(response.data);
       })
@@ -230,13 +238,6 @@ function AddGroupTask() {
 
   return (
     <>
-      <figure className="mr-5 cursor-pointer" onClick={openModal}>
-        <img src="/public/img/group.png" alt="Nhóm" width="200" height="240" />
-        <figcaption className="text-center font-medium pt-4 text-xl">
-          Nhóm
-        </figcaption>
-      </figure>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>
           <Transition.Child
@@ -265,7 +266,7 @@ function AddGroupTask() {
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Typography variant="h3" color="gray" className="pt-12">
-                      Thêm công việc nhóm
+                      Chỉnh sửa công việc nhóm
                     </Typography>
                     <XMarkIcon
                       onClick={closeModal}
@@ -303,6 +304,7 @@ function AddGroupTask() {
                   />
 
                   <MemberSelect
+                    defaultValue={selectedMembers}
                     memberOptions={memberOptions}
                     value={selectedMembers}
                     onChange={handleMemberChange}
@@ -322,23 +324,6 @@ function AddGroupTask() {
                     handleDeadlineDayChange={handleDeadlineDayChange}
                     handleDeadlineHourChange={handleDeadlineHourChange}
                   />
-
-                  <div className="flex justify-center mt-8 pt-6">
-                    <Button
-                      onClick={handleSave}
-                      color="blue"
-                      className="mr-16 capitalize text-sm w-32"
-                    >
-                      Lưu
-                    </Button>
-                    <Button
-                      onClick={closeModal}
-                      color="gray"
-                      className="capitalize text-sm w-32"
-                    >
-                      Hủy
-                    </Button>
-                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -349,4 +334,4 @@ function AddGroupTask() {
   );
 }
 
-export default AddGroupTask;
+export default ViewGroupTask;
