@@ -27,7 +27,7 @@ function formatDate(dateString) {
   return `${day}/${month}/${year}`;
 }
 
-function AddGroupTask() {
+function AddGroupTask({ closeFatherModal }) {
   const { upcomingTasks, addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
@@ -65,6 +65,7 @@ function AddGroupTask() {
     setSelectedGroup([""]);
     setGroupOptions([""]);
     setMemberOptions([""]);
+    closeFatherModal();
   }
 
   function openModal() {

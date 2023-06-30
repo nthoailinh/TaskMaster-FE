@@ -25,7 +25,7 @@ function formatDate(dateString) {
   return `${day}/${month}/${year}`;
 }
 
-function AddPersonalTask() {
+function AddPersonalTask({ closeFatherModal }) {
   const { upcomingTasks, addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
@@ -51,6 +51,7 @@ function AddPersonalTask() {
     setDeadlineDay("");
     setDeadlineHour("");
     setWorkspace("");
+    closeFatherModal();
   }
 
   function openModal() {

@@ -8,18 +8,18 @@ import AddPersonalTask from "./AddPersonalTask";
 function AddTask() {
   const [isOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
+  function closeFatherModal() {
     setIsOpen(false);
   }
 
-  function openModal() {
+  function openFatherModal() {
     setIsOpen(true);
   }
 
   return (
     <>
       <Button
-        onClick={openModal}
+        onClick={openFatherModal}
         color="blue"
         className="mr-5 flex items-center normal-case"
       >
@@ -35,7 +35,7 @@ function AddTask() {
       </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-20" onClose={closeModal}>
+        <Dialog as="div" className="relative z-20" onClose={closeFatherModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -65,14 +65,14 @@ function AddTask() {
                       Thêm công việc
                     </Typography>
                     <XMarkIcon
-                      onClick={closeModal}
+                      onClick={closeFatherModal}
                       className="h-6 w-6 text-gray-400 cursor-pointer"
                     />
                   </div>
 
                   <div className="flex justify-center mt-8 pt-2 space-x-20">
-                    <AddPersonalTask />
-                    <AddGroupTask />
+                    <AddPersonalTask closeFatherModal={closeFatherModal} />
+                    <AddGroupTask closeFatherModal={closeFatherModal} />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
