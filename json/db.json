@@ -215,6 +215,29 @@
               "email": "phuc@gmail.com"
             }
           ]
+        },
+        {
+          "name": "Nhóm IntroAI",
+          "members": [
+            {
+              "id": 3,
+              "name": "Vũ Minh Long",
+              "password": "123456789",
+              "email": "long@gmail.com"
+            },
+            {
+              "id": 4,
+              "name": "Đàm Ngọc Khánh",
+              "password": "123456789",
+              "email": "khanh@gmail.com"
+            },
+            {
+              "id": 5,
+              "name": "Nguyễn Hoàng Anh",
+              "password": "123456789",
+              "email": "anh@gmail.com"
+            }
+          ]
         }
       ]
     },
@@ -318,7 +341,7 @@
     },
     {
       "id": 3,
-      "color": "#ffeb3a",
+      "color": "#fcc2fc",
       "taskName": "AWS Spot Instance",
       "workspace": "Clevai",
       "time": {
@@ -865,12 +888,150 @@
           "day": "02/07/2023"
         }
       },
-      "description": "Xem lịch thi + note lại\nSắp xếp thời gian ôn thi",
+      "description": "Xem lịch thi + note lại.\nSắp xếp thời gian ôn thi",
       "footer": {
         "priority": "Không khẩn cấp",
         "status": "Chưa thực hiện"
       },
       "type": "Personal",
+      "rating": 0
+    },
+    {
+      "id": 22,
+      "color": "#2196f3",
+      "taskName": "Tạo mẫu thử giao diện",
+      "workspace": "HUST",
+      "time": {
+        "startTime": {
+          "hour": "08:27",
+          "day": "08/06/2023"
+        },
+        "endTime": {
+          "hour": "10:27",
+          "day": "30/06/2023"
+        },
+        "deadlineTime": {
+          "hour": "14:27",
+          "day": "30/06/2023"
+        }
+      },
+      "description": "Nguyên mẫu giao diện cho ứng dụng quản lý công việc TaskMaster",
+      "footer": {
+        "priority": "Khẩn cấp",
+        "status": "Đang thực hiện"
+      },
+      "type": "Group",
+      "group": "Nhóm TaskMaster",
+      "member": [
+        {
+          "value": "Phan Minh Anh Tuấn",
+          "label": "Phan Minh Anh Tuấn",
+          "id": 1,
+          "name": "Phan Minh Anh Tuấn",
+          "password": "123456789",
+          "email": "tuan@gmail.com"
+        },
+        {
+          "value": "Nguyễn Thị Hoài Linh",
+          "label": "Nguyễn Thị Hoài Linh",
+          "id": 2,
+          "name": "Nguyễn Thị Hoài Linh",
+          "password": "123456789",
+          "email": "linh@gmail.com"
+        }
+      ],
+      "rating": 0
+    },
+    {
+      "id": 23,
+      "color": "#2196f3",
+      "taskName": "Sửa báo cáo PTTKHT",
+      "workspace": "HUST",
+      "time": {
+        "startTime": {
+          "hour": "11:28",
+          "day": "30/06/2023"
+        },
+        "endTime": {
+          "hour": "11:28",
+          "day": "03/07/2023"
+        },
+        "deadlineTime": {
+          "hour": "11:28",
+          "day": "03/07/2023"
+        }
+      },
+      "description": "Thêm biểu đồ lớp",
+      "footer": {
+        "priority": "Khẩn cấp",
+        "status": "Chưa thực hiện"
+      },
+      "type": "Group",
+      "group": "Nhóm PTTKHT",
+      "member": [
+        {
+          "value": "Vũ Minh Long",
+          "label": "Vũ Minh Long",
+          "id": 3,
+          "name": "Vũ Minh Long",
+          "password": "123456789",
+          "email": "long@gmail.com"
+        },
+        {
+          "value": "Đàm Ngọc Khánh",
+          "label": "Đàm Ngọc Khánh",
+          "id": 4,
+          "name": "Đàm Ngọc Khánh",
+          "password": "123456789",
+          "email": "khanh@gmail.com"
+        }
+      ],
+      "rating": 0
+    },
+    {
+      "id": 24,
+      "color": "#2196f3",
+      "taskName": "Hoàn thiện bài tập lớn introAI",
+      "workspace": "HUST",
+      "time": {
+        "startTime": {
+          "hour": "11:33",
+          "day": "30/06/2023"
+        },
+        "endTime": {
+          "hour": "11:33",
+          "day": "06/07/2023"
+        },
+        "deadlineTime": {
+          "hour": "07:33",
+          "day": "07/07/2023"
+        }
+      },
+      "description": "Viết báo cáo phần thuật toán tìm đường đi trên bản đồ",
+      "footer": {
+        "priority": "Khẩn cấp",
+        "status": "Chưa thực hiện"
+      },
+      "type": "Group",
+      "group": "Nhóm IntroAI",
+      "member": [
+        {
+          "value": "Vũ Minh Long",
+          "label": "Vũ Minh Long",
+          "id": 3,
+          "name": "Vũ Minh Long",
+          "password": "123456789",
+          "email": "long@gmail.com"
+        },
+        {
+          "value": "Nguyễn Hoàng Anh",
+          "label": "Nguyễn Hoàng Anh",
+          "id": 5,
+          "name": "Nguyễn Hoàng Anh",
+          "password": "123456789",
+          "email": "anh@gmail.com"
+        }
+      ],
       "rating": 0
     }
   ]
