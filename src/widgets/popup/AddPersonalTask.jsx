@@ -1,11 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
 import { workspaces } from "@/data";
 import API_URL from "@/constants";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -25,7 +26,8 @@ function formatDate(dateString) {
   return `${day}/${month}/${year}`;
 }
 
-function AddPersonalTask() {
+function AddPersonalTask({ closeFatherModal }) {
+  const location = useLocation();
   const { upcomingTasks, addTask } = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
@@ -51,6 +53,7 @@ function AddPersonalTask() {
     setDeadlineDay("");
     setDeadlineHour("");
     setWorkspace("");
+    closeFatherModal();
   }
 
   function openModal() {
@@ -142,19 +145,39 @@ function AddPersonalTask() {
     closeModal();
   }
 
+  const isDashboardPersonal = location.pathname === "/dashboard/personal";
+
   return (
     <>
-      <figure className="mr-5 cursor-pointer" onClick={openModal}>
-        <img
-          src="/public/img/user.png"
-          alt="Cá nhân"
-          width="166"
-          height="200"
-        />
-        <figcaption className="text-center font-medium pt-6 text-xl">
-          Cá nhân
-        </figcaption>
-      </figure>
+      {isDashboardPersonal ? (
+        <Button
+          onClick={openModal}
+          color="blue"
+          className="mr-5 flex items-center normal-case"
+        >
+          <PlusIcon className="text-500 mr-1 h-5 w-5" />
+          <Typography
+            as="li"
+            variant="h6"
+            color="white"
+            className="p-1 font-normal"
+          >
+            Thêm việc
+          </Typography>
+        </Button>
+      ) : (
+        <figure className="mr-5 cursor-pointer" onClick={openModal}>
+          <img
+            src="/public/img/user.png"
+            alt="Cá nhân"
+            width="166"
+            height="200"
+          />
+          <figcaption className="text-center font-medium pt-6 text-xl">
+            Cá nhân
+          </figcaption>
+        </figure>
+      )}
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>

@@ -1,11 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ArrowsRightLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import AddGroupTask from "./AddGroupTask";
 import AddPersonalTask from "./AddPersonalTask";
 
-function AddTask() {
+function Integrate() {
   const [isOpen, setIsOpen] = useState(false);
 
   function closeFatherModal() {
@@ -18,19 +18,15 @@ function AddTask() {
 
   return (
     <>
-      <Button
-        onClick={openFatherModal}
-        color="blue"
-        className="mr-5 flex items-center normal-case"
-      >
-        <PlusIcon className="text-500 mr-1 h-5 w-5" />
+      <Button color="purple" className="mr-5 flex items-center normal-case">
+        <ArrowsRightLeftIcon className="text-500 mr-1 h-5 w-5" />
         <Typography
           as="li"
           variant="h6"
           color="white"
           className="p-1 font-normal"
         >
-          Thêm việc
+          Tích hợp
         </Typography>
       </Button>
 
@@ -84,4 +80,4 @@ function AddTask() {
   );
 }
 
-export default AddTask;
+export default Integrate;

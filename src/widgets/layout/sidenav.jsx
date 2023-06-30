@@ -22,48 +22,50 @@ const Stepper = () => {
           <Typography className="font-bold">To do list</Typography>
           <Typography>{formattedDate}</Typography>
         </div>
-        {upcomingTasks
-          .filter(({ footer }) => footer.status === "Chưa thực hiện")
-          .slice(0, 3)
-          .map(
-            (
-              { taskName, workspace, description, color, footer, time },
-              index
-            ) => (
-              <div
-                key={index}
-                className={`my-3 flex items-center pl-4 pb-1 pr-1 ${
-                  index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-5 "
-                }`}
-              >
-                <div className="mr-4">{time.startTime.hour}</div>
-                <Button
-                  className={`mr-4 rounded-full p-2 ${
-                    activeStep === index
-                      ? "bg-red-400 text-white"
-                      : "bg-gray-400"
+        <div className="grid grid-cols-1 gap-4">
+          {upcomingTasks
+            .filter(({ footer }) => footer.status === "Chưa thực hiện")
+            .slice(0, 3)
+            .map(
+              (
+                { taskName, workspace, description, color, footer, time },
+                index
+              ) => (
+                <div
+                  key={index}
+                  className={`flex items-center pl-4 pb-1 pr-1 ${
+                    index === 0 ? "rounded-xl bg-red-50 pt-5" : "pt-5"
                   }`}
                 >
-                  {index + 1}
-                </Button>
-                <TaskCard
-                  key={taskName}
-                  taskName={taskName}
-                  workspace={workspace}
-                  description={description}
-                  color={color}
-                  footer={
-                    <Typography className="font-normal text-blue-gray-600">
-                      <span>{footer.priority}</span>
-                      <br />
-                      <span>{footer.status}</span>&nbsp;
-                    </Typography>
-                  }
-                  cardColor={`${index === 0 ? "bg-red-50" : ""}`}
-                />
-              </div>
-            )
-          )}
+                  <div className="mr-4">{time.startTime.hour}</div>
+                  <Button
+                    className={`mr-4 rounded-full p-2 ${
+                      activeStep === index
+                        ? "bg-red-400 text-white"
+                        : "bg-gray-400"
+                    }`}
+                  >
+                    {index + 1}
+                  </Button>
+                  <TaskCard
+                    key={taskName}
+                    taskName={taskName}
+                    workspace={workspace}
+                    description={description}
+                    color={color}
+                    footer={
+                      <Typography className="font-normal text-blue-gray-600">
+                        <span>{footer.priority}</span>
+                        <br />
+                        <span>{footer.status}</span>&nbsp;
+                      </Typography>
+                    }
+                    cardColor={`${index === 0 ? "bg-red-50" : ""}`}
+                  />
+                </div>
+              )
+            )}
+        </div>
       </div>
     </div>
   );
