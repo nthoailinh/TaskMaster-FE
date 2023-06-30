@@ -69,7 +69,7 @@ export function Home() {
         </Card>
       </div>
       <div className="mb-10">
-        <Card className="overflow-hidden">
+        <Card className="overflow-visible">
           <CardHeader
             floated={false}
             shadow={false}

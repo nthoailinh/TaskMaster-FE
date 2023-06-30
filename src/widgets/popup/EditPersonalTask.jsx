@@ -1,22 +1,29 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useContext, useEffect } from "react";
+import { Fragment, useState, useContext } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TaskContext } from "@/context/TaskContext";
-import { workspaces, users } from "@/data";
-import axios from "axios";
+import { workspaces } from "@/data";
 import API_URL from "@/constants";
+import axios from "axios";
 import {
   DateTimeInputs,
   DescriptionInput,
   PrioritySelect,
-  WorkspaceInput,
   TaskNameInput,
-  GroupSelect,
-  MemberSelect,
+  WorkspaceInput,
 } from "./components";
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
+
+function revertDate(dateString) {
+  const dateParts = dateString.split("/");
+  const day = dateParts[0];
+  const month = dateParts[1];
+  const year = dateParts[2].trim();
+
+  return `${year}-${month}-${day}`;
+}
 
 function formatDate(dateString) {
   const dateParts = dateString.split("-");
@@ -27,44 +34,30 @@ function formatDate(dateString) {
   return `${day}/${month}/${year}`;
 }
 
-function AddGroupTask() {
-  const { upcomingTasks, addTask } = useContext(TaskContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const [taskName, setTaskName] = useState("");
-  const [description, setDescription] = useState("");
-  const [groupOptions, setGroupOptions] = useState([""]);
-  const [memberOptions, setMemberOptions] = useState([""]);
-  const [group, setGroup] = useState(groupOptions[0]);
-  const [selectedMembers, setSelectedMembers] = useState([]);
-  const [startTimeDay, setStartTimeDay] = useState("");
-  const [startTimeHour, setStartTimeHour] = useState("");
-  const [endTimeDay, setEndTimeDay] = useState("");
-  const [endTimeHour, setEndTimeHour] = useState("");
-  const [deadlineDay, setDeadlineDay] = useState("");
-  const [deadlineHour, setDeadlineHour] = useState("");
-  const [selected, setSelected] = useState(priorityOptions[0]);
-  const [workspace, setWorkspace] = useState("");
-  const [color, setColor] = useState("#2296f4");
-
-  const [groups, setGroups] = useState([""]);
-  const [selectedGroup, setSelectedGroup] = useState([""]);
+function EditPersonalTask({ task, setIsEditPopupOpen }) {
+  const { upcomingTasks, setUpcomingTasks } = useContext(TaskContext);
+  const [isOpen, setIsOpen] = useState(true);
+  const [taskName, setTaskName] = useState(task.taskName);
+  const [description, setDescription] = useState(task.description);
+  const [startTimeDay, setStartTimeDay] = useState(
+    revertDate(task.time.startTime.day)
+  );
+  const [startTimeHour, setStartTimeHour] = useState(task.time.startTime.hour);
+  const [endTimeDay, setEndTimeDay] = useState(
+    revertDate(task.time.endTime.day)
+  );
+  const [endTimeHour, setEndTimeHour] = useState(task.time.endTime.hour);
+  const [deadlineDay, setDeadlineDay] = useState(
+    revertDate(task.time.deadlineTime.day)
+  );
+  const [deadlineHour, setDeadlineHour] = useState(task.time.deadlineTime.hour);
+  const [selected, setSelected] = useState(task.footer.priority);
+  const [workspace, setWorkspace] = useState(task.workspace);
+  const [color, setColor] = useState(task.color);
 
   function closeModal() {
+    setIsEditPopupOpen(false);
     setIsOpen(false);
-    setTaskName("");
-    setDescription("");
-    setStartTimeDay("");
-    setStartTimeHour("");
-    setEndTimeDay("");
-    setEndTimeHour("");
-    setDeadlineDay("");
-    setDeadlineHour("");
-    setWorkspace("");
-    setGroup("");
-    setGroups([""]);
-    setSelectedGroup([""]);
-    setGroupOptions([""]);
-    setMemberOptions([""]);
   }
 
   function openModal() {
@@ -78,55 +71,6 @@ function AddGroupTask() {
   function handleDescriptionChange(event) {
     setDescription(event.target.value);
   }
-
-  function handleGroupChange(value) {
-    setGroup(value);
-  }
-
-  useEffect(() => {
-    const newSelectedGroup = groups.find((grp) => grp.name === group);
-    setSelectedGroup(newSelectedGroup);
-  }, [group, groups]);
-
-  useEffect(() => {
-    if (selectedGroup) {
-      console.log(selectedGroup.members);
-      setMemberOptions(
-        selectedGroup.members
-          ? selectedGroup.members.map((member) => member.name)
-          : []
-      );
-
-      setSelectedMembers(
-        selectedGroup.members && selectedGroup.members.length > 0
-          ? [selectedGroup.members[0].name]
-          : []
-      );
-    }
-  }, [selectedGroup]);
-
-  function handleMemberChange(value) {
-    setSelectedMembers(value);
-  }
-
-  useEffect(() => {
-    setSelectedMembers(
-      selectedMembers.map((item) => {
-        const user = users.find((u) => u.name === item.value);
-        if (user) {
-          return {
-            value: user.name,
-            label: user.name,
-            id: user.id,
-            name: user.name,
-            password: user.password,
-            email: user.email,
-          };
-        }
-        return item;
-      })
-    );
-  }, [selectedMembers]);
 
   function handleStartTimeDayChange(event) {
     setStartTimeDay(event.target.value);
@@ -156,39 +100,17 @@ function AddGroupTask() {
     setSelected(value);
   }
 
-  function updateGroupOptions(workspaceName) {
-    const selectedWorkspace = workspaces.find(
-      (ws) => ws.name === workspaceName
-    );
-    if (selectedWorkspace) {
-      setGroups(selectedWorkspace.groups);
-      setGroupOptions(selectedWorkspace.groups.map((group) => group.name));
-      setGroup(
-        selectedWorkspace.groups && selectedWorkspace.groups.length > 0
-          ? selectedWorkspace.groups[0].name
-          : ""
-      );
-    } else {
-      setGroups([]);
-      setGroupOptions([]);
-    }
-  }
-
   function handleWorkspaceChange(value) {
     setWorkspace(value);
   }
-
-  useEffect(() => {
-    updateGroupOptions(workspace);
-  }, [workspace]);
 
   function handleColorChange(color) {
     setColor(color);
   }
 
   function handleSave() {
-    const newGroupTask = {
-      id: upcomingTasks[upcomingTasks.length - 1].id + 1,
+    const newPersonalTask = {
+      id: task.id,
       color: color,
       taskName: taskName,
       workspace: workspace,
@@ -209,34 +131,32 @@ function AddGroupTask() {
       description: description,
       footer: {
         priority: selected,
-        status: "Chưa thực hiện",
+        status: task.footer.status,
       },
-      type: "Group",
-      group: group,
-      member: selectedMembers,
-      rating: 0,
+      type: "Personal",
+      rating: task.rating,
     };
-    addTask(newGroupTask);
+    const newUpcomingTasks = upcomingTasks.map((t) => {
+      if (t.id === task.id) {
+        return newPersonalTask;
+      }
+      return t;
+    });
+    setUpcomingTasks(newUpcomingTasks);
     axios
-      .post(`${API_URL}/tasks`, newGroupTask)
+      .put(`${API_URL}/tasks/${task.id}`, newPersonalTask)
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
+
     closeModal();
   }
 
   return (
     <>
-      <figure className="mr-5 cursor-pointer" onClick={openModal}>
-        <img src="/public/img/group.png" alt="Nhóm" width="200" height="240" />
-        <figcaption className="text-center font-medium pt-4 text-xl">
-          Nhóm
-        </figcaption>
-      </figure>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>
           <Transition.Child
@@ -265,7 +185,7 @@ function AddGroupTask() {
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 pb-8 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Typography variant="h3" color="gray" className="pt-12">
-                      Thêm công việc nhóm
+                      Chỉnh sửa công việc cá nhân
                     </Typography>
                     <XMarkIcon
                       onClick={closeModal}
@@ -283,7 +203,7 @@ function AddGroupTask() {
                     onChange={handleDescriptionChange}
                   />
 
-                  <div className="mt-5 flex">
+                  <div className="mt-8 flex">
                     <PrioritySelect
                       priorityOptions={priorityOptions}
                       value={selected}
@@ -295,18 +215,6 @@ function AddGroupTask() {
                       onChanges={{ handleWorkspaceChange, handleColorChange }}
                     />
                   </div>
-
-                  <GroupSelect
-                    groupOptions={groupOptions}
-                    value={group}
-                    onChange={handleGroupChange}
-                  />
-
-                  <MemberSelect
-                    memberOptions={memberOptions}
-                    value={selectedMembers}
-                    onChange={handleMemberChange}
-                  />
 
                   <DateTimeInputs
                     startTimeDay={startTimeDay}
@@ -323,7 +231,7 @@ function AddGroupTask() {
                     handleDeadlineHourChange={handleDeadlineHourChange}
                   />
 
-                  <div className="flex justify-center mt-8 pt-6">
+                  <div className="flex justify-center mt-8 pt-8">
                     <Button
                       onClick={handleSave}
                       color="blue"
@@ -349,4 +257,4 @@ function AddGroupTask() {
   );
 }
 
-export default AddGroupTask;
+export default EditPersonalTask;
