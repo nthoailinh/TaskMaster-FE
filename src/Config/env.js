@@ -1,3 +1,3 @@
 export const env = {
-    domain: 'http://localhost:3000'
-}
+  domain: "https://taskmaster-be.onrender.com",
+};
