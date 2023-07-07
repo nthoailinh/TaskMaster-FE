@@ -14,6 +14,7 @@ import {
   WorkspaceInput,
   TaskNameInput,
 } from "./components";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 const priorityOptions = ["Khẩn cấp", "Không khẩn cấp"];
 
@@ -105,6 +106,12 @@ function AddPersonalTask({ closeFatherModal }) {
   }
 
   function handleSave() {
+    if (taskName === null || taskName === "") {
+      // Kiểm tra nếu taskName là null hoặc rỗng
+      Swal.fire("Cảnh báo", "Vui lòng nhập tên công việc", "warning"); // Hiển thị cảnh báo sử dụng SweetAlert2
+      return; // Dừng hàm handleSave
+    }
+
     const newPersonalTask = {
       id: upcomingTasks[upcomingTasks.length - 1].id + 1,
       color: color,

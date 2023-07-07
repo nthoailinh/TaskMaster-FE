@@ -7,6 +7,7 @@ import { workspaces, users } from "@/data";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import API_URL from "@/constants";
+import Swal from "sweetalert2"; // Import SweetAlert2
 import {
   DateTimeInputs,
   DescriptionInput,
@@ -190,6 +191,11 @@ function AddGroupTask({ closeFatherModal }) {
   }
 
   function handleSave() {
+    if (taskName === null || taskName === "") {
+      // Kiểm tra nếu taskName là null hoặc rỗng
+      Swal.fire("Cảnh báo", "Vui lòng nhập tên công việc", "warning"); // Hiển thị cảnh báo sử dụng SweetAlert2
+      return; // Dừng hàm handleSave
+    }
     const newGroupTask = {
       id: upcomingTasks[upcomingTasks.length - 1].id + 1,
       color: color,
