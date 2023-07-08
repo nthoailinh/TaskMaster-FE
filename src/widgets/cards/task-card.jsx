@@ -47,8 +47,17 @@ export function TaskCardShort({
   status,
   cardColor,
 }) {
-  const isDarkBackground = getBrightness(color);
   const { upcomingTasks, setUpcomingTasks } = useContext(TaskContext);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+  const [isViewPopupOpen, setIsViewPopupOpen] = useState(false);
+  const [task, setTasks] = useState(null);
+  const isDarkBackground = getBrightness(color);
+  const openEditPopup = () => {
+    setIsEditPopupOpen(true);
+  };
+  const openViewPopup = () => {
+    setIsViewPopupOpen(true);
+  };
 
   const deleteTask = async (id) => {
     try {
@@ -91,6 +100,18 @@ export function TaskCardShort({
     } catch (error) {
       console.log("Error updating task:", error);
     }
+  };
+
+  const viewTask = (id) => {
+    const taskSelect = upcomingTasks.find((task) => task.id === id);
+    setTasks(taskSelect);
+    openViewPopup();
+  };
+
+  const editTask = (id) => {
+    const taskSelect = upcomingTasks.find((task) => task.id === id);
+    setTasks(taskSelect);
+    openEditPopup();
   };
 
   return (
@@ -142,6 +163,7 @@ export function TaskCardShort({
                             : "text-gray-700",
                           "block px-4 py-2 text-sm"
                         )}
+                        onClick={() => viewTask(taskId)}
                       >
                         Xem
                       </a>
@@ -157,6 +179,7 @@ export function TaskCardShort({
                             : "text-gray-700",
                           "block px-4 py-2 text-sm"
                         )}
+                        onClick={() => editTask(taskId)}
                       >
                         Chỉnh sửa
                       </a>
@@ -254,6 +277,18 @@ export function TaskCardShort({
         <CardFooter className="border-t border-blue-gray-50 p-4">
           {time}
         </CardFooter>
+      )}
+      {isEditPopupOpen && task.type === "Personal" && (
+        <EditPersonalTask task={task} setIsEditPopupOpen={setIsEditPopupOpen} />
+      )}
+      {isEditPopupOpen && task.type === "Group" && (
+        <EditGroupTask task={task} setIsEditPopupOpen={setIsEditPopupOpen} />
+      )}
+      {isViewPopupOpen && task.type === "Personal" && (
+        <ViewPersonalTask task={task} setIsViewPopupOpen={setIsViewPopupOpen} />
+      )}
+      {isViewPopupOpen && task.type === "Group" && (
+        <ViewGroupTask task={task} setIsViewPopupOpen={setIsViewPopupOpen} />
       )}
     </Card>
   );

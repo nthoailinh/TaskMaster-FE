@@ -29,7 +29,7 @@ const Stepper = () => {
             .slice(0, 3)
             .map(
               (
-                { taskName, workspace, description, color, footer, time },
+                { taskName, workspace, description, color, footer, time, id },
                 index
               ) => (
                 <div
@@ -49,11 +49,13 @@ const Stepper = () => {
                     {index + 1}
                   </Button>
                   <TaskCard
+                    taskId={id}
                     key={taskName}
                     taskName={taskName}
                     workspace={workspace}
                     description={description}
                     color={color}
+                    status={footer.status}
                     footer={
                       <Typography className="font-normal text-blue-gray-600">
                         <span>{footer.priority}</span>
