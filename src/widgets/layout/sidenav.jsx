@@ -6,6 +6,7 @@ import { TaskCard } from "@/widgets/cards";
 import { useMaterialTailwindController } from "@/context";
 import { format, isToday } from "date-fns";
 import { TaskContext } from "@/context/TaskContext";
+import { upcomingTask } from "@/data";
 
 const Stepper = () => {
   const { upcomingTasks } = useContext(TaskContext);
