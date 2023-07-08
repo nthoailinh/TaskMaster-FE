@@ -144,7 +144,7 @@ const Login = () => {
     <div
       className="grid grid-cols-2 gap-4 h-screen"
       style={{
-        backgroundImage: `url(${"/public/img/background.jpg"})`,
+        backgroundImage: `url(${"../img/background.jpg"})`,
         backgroundSize: "cover",
         width: "100vw",
         height: "100vh",
@@ -152,7 +152,7 @@ const Login = () => {
     >
       <div>
         <img
-          src="/public/img/TaskMasterLogo.png"
+          src="../img/TaskMasterLogo.png"
           style={{
             position: "relative",
             left: "50%",

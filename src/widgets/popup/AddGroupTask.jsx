@@ -259,12 +259,7 @@ function AddGroupTask({ closeFatherModal }) {
         </Button>
       ) : (
         <figure className="mr-5 cursor-pointer" onClick={openModal}>
-          <img
-            src="/public/img/group.png"
-            alt="Nhóm"
-            width="200"
-            height="240"
-          />
+          <img src="../img/group.png" alt="Nhóm" width="200" height="240" />
           <figcaption className="text-center font-medium pt-4 text-xl">
             Nhóm
           </figcaption>

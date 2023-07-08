@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { ApiCaller } from '@/Config/axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { ApiCaller } from "@/Config/axios";
 import {
   Card,
   CardHeader,
@@ -14,10 +14,10 @@ import {
 } from "@material-tailwind/react";
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(true); // State mới để kiểm tra tính hợp lệ của mật khẩu
   const navigate = useNavigate();
 
@@ -41,20 +41,20 @@ const Register = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    navigate("/login")
-  }
+    navigate("/login");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Perform registration logic here, e.g., send registration request to the server
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Confirm Password:", confirmPassword);
     ApiCaller({
       url: "/users",
-      method: "GET"
-    }).then(res => {
+      method: "GET",
+    }).then((res) => {
       const data = res.data;
       //Lất id
       const id = data.reduce((max, item) => {
@@ -65,53 +65,48 @@ const Register = () => {
         }
       }, 0);
       if (data.length > 0) {
-        const checkEmail = data.findIndex(i => i.email === email.trim());
+        const checkEmail = data.findIndex((i) => i.email === email.trim());
         if (checkEmail !== -1) {
           if (password.length >= 8) {
             ApiCaller({
               url: "/users",
               method: "POST",
               data: {
-                "id": id,
-                "name": name,
-                "password": password,
-                "email": email,
-              }
-            }).then(res => {
-              console.log(res);
-
-            }).catch(err => {
-
+                id: id,
+                name: name,
+                password: password,
+                email: email,
+              },
             })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {});
           } else {
-            Swal.fire('Vui lòng đặt mật khẩu tối thiểu 8 ký tự')
+            Swal.fire("Vui lòng đặt mật khẩu tối thiểu 8 ký tự");
           }
         } else {
-          Swal.fire('Email đã được đăng ký tài khoản. Vui lòng đăng nhập !')
+          Swal.fire("Email đã được đăng ký tài khoản. Vui lòng đăng nhập !");
         }
-
       } else {
         ApiCaller({
           url: "/users",
           method: "POST",
           data: {
-            "id": id,
-            "name": name,
-            "password": password,
-            "email": email,
-          }
-        }).then(res => {
-          console.log(res);
-
-        }).catch(err => {
-
+            id: id,
+            name: name,
+            password: password,
+            email: email,
+          },
         })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {});
       }
+    });
 
-    })
-
-
-    navigate('/login'); // Redirect to login page after successful registration
+    navigate("/login"); // Redirect to login page after successful registration
   };
 
   // return (
@@ -128,11 +123,11 @@ const Register = () => {
   //           <Input size="lg" label="Name" />
   //           <Input size="lg" label="Email" />
   //           <Input type="password" size="lg" onChange={handlePasswordChange} label="Password" value={password} />
-            // {!isPasswordValid && (
-            //   <Typography color="red" className="mt-1 font-normal">
-            //     Mật khẩu phải có ít nhất 8 ký tự!
-            //   </Typography>
-            // )}
+  // {!isPasswordValid && (
+  //   <Typography color="red" className="mt-1 font-normal">
+  //     Mật khẩu phải có ít nhất 8 ký tự!
+  //   </Typography>
+  // )}
   //         </div>
   //         <Checkbox
   //           label={
@@ -171,31 +166,39 @@ const Register = () => {
   //   </div>
   // );
 
-  
   return (
-    <div className="grid grid-cols-2 gap-4 h-screen" style={{
-      backgroundImage: `url(${'/public/img/background.jpg'})`,
-      backgroundSize: 'cover',
-      width: '100vw',
-      height: '100vh'
-    }}>
+    <div
+      className="grid grid-cols-2 gap-4 h-screen"
+      style={{
+        backgroundImage: `url(${"../img/background.jpg"})`,
+        backgroundSize: "cover",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
       <div>
-        <img src="/public/img/TaskMasterLogo.png" style={{
-          position: 'relative',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          msTransform: 'translate(-50%, -50%)'
-        }} />
+        <img
+          src="../img/TaskMasterLogo.png"
+          style={{
+            position: "relative",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            msTransform: "translate(-50%, -50%)",
+          }}
+        />
       </div>
       <div>
-        <Card className="w-96" style={{
-          position: 'relative',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          msTransform: 'translate(-50%, -50%)'
-        }}>
+        <Card
+          className="w-96"
+          style={{
+            position: "relative",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            msTransform: "translate(-50%, -50%)",
+          }}
+        >
           <CardHeader
             variant="gradient"
             color="blue"
@@ -208,7 +211,12 @@ const Register = () => {
           <CardBody className="flex flex-col gap-4">
             <Input label="Họ tên" size="lg" />
             <Input label="Tài khoản" size="lg" />
-            <Input label="Mật khẩu" size="lg" onChange={handlePasswordChange} value={password} />
+            <Input
+              label="Mật khẩu"
+              size="lg"
+              onChange={handlePasswordChange}
+              value={password}
+            />
             {!isPasswordValid && (
               <Typography color="red" className="mt-1 font-normal">
                 Mật khẩu phải có ít nhất 8 ký tự!
@@ -231,7 +239,7 @@ const Register = () => {
                 variant="small"
                 color="blue"
                 className="ml-1 font-bold"
-                onClick = {(e)=> handleSignIn(e)}
+                onClick={(e) => handleSignIn(e)}
               >
                 Đăng nhập
               </Typography>

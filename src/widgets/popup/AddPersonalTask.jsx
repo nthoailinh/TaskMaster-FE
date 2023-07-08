@@ -174,12 +174,7 @@ function AddPersonalTask({ closeFatherModal }) {
         </Button>
       ) : (
         <figure className="mr-5 cursor-pointer" onClick={openModal}>
-          <img
-            src="/public/img/user.png"
-            alt="Cá nhân"
-            width="166"
-            height="200"
-          />
+          <img src="../img/user.png" alt="Cá nhân" width="166" height="200" />
           <figcaption className="text-center font-medium pt-6 text-xl">
             Cá nhân
           </figcaption>
