@@ -421,11 +421,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "11:50",
-        day: "26/06/2023",
+        day: "26/07/2023",
       },
       deadlineTime: {
         hour: "10:50",
-        day: "30/06/2023",
+        day: "30/07/2023",
       },
     },
     description: "Cần làm những gì để chuyển từ GG Cloud sang AWS",
@@ -495,11 +495,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "23:55",
-        day: "05/07/2023",
+        day: "05/08/2023",
       },
       deadlineTime: {
         hour: "14:55",
-        day: "06/07/2023",
+        day: "06/08/2023",
       },
     },
     description: "Ôn 13 bài từ đầu kỳ đến giờ",
@@ -578,11 +578,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "11:02",
-        day: "02/07/2023",
+        day: "02/08/2023",
       },
       deadlineTime: {
         hour: "11:03",
-        day: "02/07/2023",
+        day: "02/08/2023",
       },
     },
     description: "Xem lịch thi + note lại\nSắp xếp thời gian ôn thi",
