@@ -14,11 +14,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "18:00",
-        day: "03/07/2023",
+        day: "15/07/2023",
       },
       deadlineTime: {
         hour: "21:00",
-        day: "04/07/2023",
+        day: "16/07/2023",
       },
     },
     description: "Áp dụng Machine Learning vào dự đoán lưu lượng mạng SDN",
@@ -41,11 +41,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "18:00",
-        day: "30/06/2023",
+        day: "18/07/2023",
       },
       deadlineTime: {
         hour: "19:00",
-        day: "30/06/2023",
+        day: "30/07/2023",
       },
     },
     description: "Hoàn thiện slide để trình bày tại Clevai",
@@ -68,11 +68,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "00:00",
-        day: "30/06/2023",
+        day: "30/07/2023",
       },
       deadlineTime: {
         hour: "00:00",
-        day: "30/06/2023",
+        day: "30/07/2023",
       },
     },
     description: "Học flutter để làm các dự án mobile của công ty",
@@ -95,11 +95,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "00:00",
-        day: "01/07/2023",
+        day: "19/07/2023",
       },
       deadlineTime: {
         hour: "00:00",
-        day: "04/07/2023",
+        day: "19/07/2023",
       },
     },
     description:
@@ -123,11 +123,11 @@ export let upcomingTask = [
       },
       endTime: {
         hour: "00:00",
-        day: "29/06/2023",
+        day: "29/07/2023",
       },
       deadlineTime: {
         hour: "00:00",
-        day: "30/06/2023",
+        day: "30/07/2023",
       },
     },
     description: "Học keras để implement các mô hình sau quá trình nghiên cứu",
